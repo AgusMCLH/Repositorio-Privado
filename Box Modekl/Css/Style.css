@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box 0px;
+}
+h1{
+display: inline-block;
+margin-left: 23rem;
+
+}
+
+.seccion1{
+    background-color: aqua;
+    /* margin-bottom: 30px; */
+    margin: 30px 30px 30px 20px;
+    border-top: solid 6px dimgray;
+    border-right: solid 6px darkgray;
+    padding: 30px;
+    width: 400px;
+    height: 400px;
+    overflow: auto;
+    display: inline-block;
+
+}
+
+
+.seccion2{
+    margin: 30px 30px 30px 0px;
+    margin-top: 30px;
+    background-color: bisque;
+    margin-bottom: 30px;
+    padding: 30px;
+    width: 400px;
+    height: 400px;
+    overflow: auto;
+    display: inline-block;
+}
