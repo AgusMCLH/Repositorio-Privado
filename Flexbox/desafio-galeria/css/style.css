@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(5, 5, 5);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    color: white;
+    height: 50px;
+    text-align: center;
+}
+
+img{
+    width: 250px;
+    height: 150px;
+    opacity: .4;
+    border: 2px double grey;
+    transition: .5s;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+
+img:hover{
+    opacity: 1;
+    border: solid 2px white ;
+}
