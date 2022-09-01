@@ -37,7 +37,7 @@ body{
     font-size: 20px;
 }
 
-ul, ol {
+.container ul,.container ol {
     list-style:none;
 }
 
@@ -420,7 +420,7 @@ main .gridhome{
 }
 
 .tablecontainer{
-    background-color: rgba(0, 0, 0, 0.146);
+    background-color: rgba(0, 0, 0, 0.172);
 }
 .tablecontainer p{
     margin: 10px;
@@ -429,4 +429,131 @@ main .gridhome{
 .tablecontainer span{
     color: #005ac2;
     font-size: 25px;
+}
+
+
+
+.contacto-box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.contacto-box input{
+    display: block;
+    width: 100vh;
+    height: 4vh;
+}
+.contacto-box textarea{
+    display: block;
+    width: 100vh;
+    height: 40vh;
+}
+
+.contacto-box label,input, textarea,button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    font-size: 1rem;
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.telefonos{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.telefonos .tablecontainer{
+    padding: 10px;
+    border-radius: 10px;
+    margin: 30px 10px;
+    border:dashed 3px  #005ac2;
+}
+
+.contacto .nosotros{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* ARTIGAS */
+
+.artigasmain .titulo{
+    margin-bottom: 40px;
+    background-color: #98BC11;
+}
+.artigassect span{
+    color: #029139;
+}
+
+.videoartigas{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.artigassect h3{
+    color: #98BC11;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+/* ADHU */
+
+.titulo{
+    margin: 40px;
+}
+.adhu p span{
+    color: #005ac2;
+}
+
+.adhu ul{
+    list-style-type: square;
+    text-align: justify;
+    margin: auto;
+    width: 90%;
+}
+
+/* ESCUELA */
+
+.escuela .nosotros div span{
+    color: #005ac2;
+}
+
+.escuela .nosotros{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  
+}
+
+.escuela .nosotros div{
+    width: 48%;
+    display: inline;
+    padding: 2%;
+}
+.escuela .nosotros{
+    margin-bottom: 80px;
+}
+
+/* UNIDAD CENTRO */
+
+.unidadcentro .nosotros span{
+    color: #005ac2;
+}
+.unidadcentro .nosotros ul{
+    position: relative;
+    right: -70px;
+    margin: 20px 0px;
+}
+
+/* UNIDAD PORTONES */
+
+.unidadportones .nosotros span{
+    color: #005ac2;
+}
+
+.unidadportones .nosotros{
+    height: 50vh;
 }
