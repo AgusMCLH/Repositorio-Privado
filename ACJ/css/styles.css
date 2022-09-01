@@ -46,6 +46,7 @@ ul, ol {
 }
 
 .menu li a {
+    transition: .3s;
     background-color:#005bc2ac;
     color:#fff;
     text-decoration:none;
@@ -173,7 +174,7 @@ main{
     background-color: #ececec;
 }
 
-main .padre{
+main .gridhome{
     width: 100%;
     height: 100%;
     display: grid;
@@ -309,4 +310,123 @@ main .padre{
     background-color: cornflowerblue;
     height: auto;
 
+}
+
+.titulo{
+    position: relative;
+    left: -80px;
+    border-radius: 10px;
+    width: 110%;
+    height: 80px;
+    background-color: #005ac2;
+}
+.titulo p{
+    position: relative;
+    top: 20px;
+    right: -30px;
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.bold{
+    font-weight: bolder;
+}
+
+.nosotros p{
+    text-align: justify;
+    margin: auto;
+    width: 90%;
+}
+
+.nosotros h3{
+    margin-top: 30px;
+    color: #192153;
+    font-size:30px ;
+    margin-bottom: 10px;
+}
+
+.gridnosotros{
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr;
+    grid-template-rows: 0.25fr 0.25fr 1.5fr;
+    grid-template-areas: 
+    "vision valores valores"
+    "mision mision mision"
+    "directores directores directores";
+    width: 80%;
+    height: 900px;
+}
+
+.directores{
+    padding: 20px;
+    width: 100%;
+    grid-area: directores;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.mision{
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    grid-area: mision;
+    border-bottom: #192153 solid 1px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.valores{
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    grid-area: valores;
+    border-bottom: #192153 solid 1px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.vision{
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    grid-area: vision;
+    border-right: #192153 solid 1px;
+    border-bottom: #192153 solid 1px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.gridnosotros h4{
+    text-align: center;
+    color: #192153;
+    font-size:30px ;
+}
+
+.gridnosotros p{
+    text-align: left;
+    font-size: 15px;
+}
+
+.directores table{
+    width: 100%;
+    height: 100%;
+}
+
+.tablecontainer{
+    background-color: rgba(0, 0, 0, 0.146);
+}
+.tablecontainer p{
+    margin: 10px;
+}
+
+.tablecontainer span{
+    color: #005ac2;
+    font-size: 25px;
 }
