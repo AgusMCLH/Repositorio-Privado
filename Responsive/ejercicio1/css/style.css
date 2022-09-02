@@ -1,0 +1,14 @@
+*{margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: white;
+    transition: .5s;
+}
+
+@media screen and (min-width: 760px) {
+    body{
+        background-color: black;
+    }}
