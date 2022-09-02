@@ -504,6 +504,9 @@ input[type="button"] {
 .titulo{
     margin: 40px;
 }
+.adhu, .unidadcentro,.unidadportones{
+    min-height: 70vh;
+}
 .adhu p span{
     color: #005ac2;
 }
