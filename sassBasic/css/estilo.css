@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #e796f8;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header .img {
+  text-align: center;
+}
+
+header .img img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: white 5px solid;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+header .img img:hover {
+  border: #6f098e 5px solid;
+}
+
+header h1 {
+  text-align: center;
+  color: #6f098e;
+  padding: 20px;
+}
+
+header h3 {
+  font-weight: normal;
+  font-style: italic;
+  padding: 20px;
+}
+
+header h3 .remarcar {
+  font-weight: bold;
+  color: #6f098e;
+}
+
+header h3 .remarcar:hover {
+  color: fuchsia;
+}
+
+main .subt {
+  padding: 30px;
+  text-align: center;
+  color: white;
+  background-color: #6f098e;
+}
+
+main div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main div .compatible {
+  padding: 10px;
+}
+
+main div .compatible h3 {
+  color: #6f098e;
+  text-align: center;
+}
+
+main div .compatible p {
+  color: blue;
+  line-height: 2;
+}
+
+main div .rico {
+  padding: 10px;
+}
+
+main div .rico h3 {
+  color: #6f098e;
+  text-align: center;
+}
+
+main div .rico p {
+  color: #3a9e0c;
+  line-height: 2;
+}
+
+footer h4 {
+  padding: 20px;
+  text-align: center;
+  color: #e796f8;
+  background-color: #6f098e;
+  font-size: 1.5rem;
+}
