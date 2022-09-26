@@ -1,0 +1,35 @@
+header{
+    .img{
+        text-align: center;
+        img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: white 5px solid;
+            padding: 10px;
+            margin-top: 10px;
+            &:hover{
+                border: purple 5px solid;
+            }
+        }
+    }
+    h1{
+        text-align: center;
+        color: purple;
+        padding: 20px;
+    }
+    h3{
+        font-weight: normal;
+        font-style: italic;
+        padding: 20px;
+        .remarcar{
+            font-weight: bold;
+            color: purple;
+            &:hover{
+                color: fuchsia;
+            }
+        }
+    }
+}
+
+
