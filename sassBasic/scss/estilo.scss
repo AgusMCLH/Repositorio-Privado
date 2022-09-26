@@ -1,16 +1,3 @@
-$rosita: #e796f8;
-$violeta:#6f098e;
-$medida:120px;
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-}
 body{
-    background-color: $rosita;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: red;
 }
-@import "header";
-@import "main";
-@import "footer";
