@@ -1,0 +1,46 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.caja{
+    width: 300PX;
+    height: 300px;
+    margin: 20px;
+    display: inline-block;
+    border: black solid 1px;
+    transition: .5s;
+}
+
+.gradiente1{
+    background-image: linear-gradient(to top, green, yellow, red);
+    
+}
+
+.gradiente2{
+    background: radial-gradient(ellipse, navy, pink, blueviolet);
+    height: 150px;
+    transition: 2s;
+}
+
+.gradiente3{
+    background: linear-gradient(red, blue, yellow, green, black, cyan);
+}
+
+.gradiente4{
+    background: radial-gradient(circle, black, white);
+}
+
+.gradiente1:hover{
+    transform: translate(90px, 20px);
+}
+.gradiente2:hover{
+    transform: rotate(360deg);
+}
+.gradiente3:hover{
+    transform: scale(1.2,1.2);
+}
+.gradiente4:hover{
+    transform: skew(10deg, 20deg);
+}

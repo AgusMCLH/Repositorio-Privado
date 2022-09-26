@@ -100,14 +100,13 @@ body{
     .contenedor{
         width: 100%;
         grid-template-columns:1fr;
-    grid-template-rows: auto auto auto auto;
-    grid-template-areas: 
-     "header"
-     "main" 
-     "aside"
-     "footer";
-        }
-        
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas: 
+        "header"
+        "main" 
+        "aside"
+        "footer";
+            }
     }
 
 @media screen and (max-width:420px) {

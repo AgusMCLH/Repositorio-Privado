@@ -1,0 +1,576 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ececec;
+
+}
+.menu_container{
+    border-radius: 0px 0px 10px 10px;
+    width: 95%;
+    height: 80px;
+    max-height: 200px;
+    margin: 0px auto;
+    position: sticky;
+    top: 0%;
+    background-color: #005ac2;
+    text-align: center;
+    z-index: 500;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.menu_container img{
+    position: relative;
+    top: 7px;
+    display: inline;
+    height: 65px;
+}
+
+.container{
+    align-self: center;
+    position: relative;
+    right: 200px;
+    font-size: 20px;
+}
+
+.container ul,.container ol {
+    list-style:none;
+}
+
+.menu > li {
+    float:left;
+}
+
+.menu li a {
+    transition: .3s;
+    background-color:#005bc2ac;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 12px;
+    display:block;
+}
+
+.menu li a:hover {
+    background-color:rgba(0, 49, 105, 0.715);
+}
+
+.menu li ul {
+    display:none;
+    position:absolute;
+    min-width:140px;
+}
+
+.menu li:hover > ul {
+    display:block;
+}
+
+.menu li ul li {
+    position:relative;
+}
+
+.menu li ul li ul {
+    right:-140px;
+    top:0px;
+}
+
+
+.navimage{
+    height: 65px;
+}
+
+
+.navbar a{
+    color: white;
+}
+
+.nav-link:hover{
+    color: red;
+}
+
+/* ↑↑↑↑↑ Menu ↑↑↑↑↑ */
+footer{
+    background-color: #005ac2;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0px 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+
+}
+
+footer .logos{
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: center; 
+    gap: 10px;
+}
+
+footer .derechos, footer .redes{
+    width: 377px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: center; 
+}
+
+footer .derechos a{
+    text-decoration: none;
+}
+footer .derechos .acjlink{
+    color: red;
+}
+footer .derechos .coderhouselink{
+    color: black;
+}
+
+footer .derechos{
+    color: rgba(255, 255, 255, 0.798);
+    text-align: center;
+}
+
+.derechos span{
+    font-weight: bolder;
+    color: red;
+    font-size: 20px;
+}
+.redes{
+    gap: 10px;
+}
+.logosocial img{
+    width: 30px;
+    margin-left: 20px;
+}
+
+.redes a{
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.acj, .ymca{
+    display: flex;
+    color: white;
+}
+.acj p, .ymca p{
+    margin: 5px;
+}
+
+footer .acj img, footer .ymca img{
+    height: 65px;
+    border-right: 2px solid rgb(0, 49, 105);
+}
+footer .acj img{
+    padding: 0 8px 0 8px;
+}
+footer .ymca img{
+    padding-right: 5px;
+}
+
+/* ↑↑↑↑↑ Footer ↑↑↑↑↑ */
+main{
+    width: 80%;
+    height: auto;
+    margin: 0px auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #ececec;
+}
+
+main .gridhome{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas: 
+    "plan plan"
+    "horarios horarios"
+    "unite fundacion"
+    "aporte fundacion"
+    "trabaja iuacj";
+}
+
+
+.hijo{
+    border-radius: 10px;
+    
+}
+.hijo img{
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.plan{
+    background-color: #005ac2;
+    grid-area: plan;
+    height: auto;
+}
+
+.horarios{
+    grid-area: horarios;
+    background-color: #192153;
+    height: 150px;
+    text-align: center;
+    overflow: auto;
+    display: block;
+    
+}
+
+.horarioslista{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    margin-top: auto;
+    position: relative;
+    top: 15px;
+}
+
+.horarios img{
+    width: 70px;
+    height: auto;
+    display: inline;
+}
+.horarioslista a{
+    color: #aeedff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+.horarioslista span{
+    color: white;
+    font-weight: bolder;
+}
+
+.unite{
+    grid-area: unite;
+    background-color: beige;
+    height: auto;
+    background-image: url(./../img/veni_fondo.png);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #848688;
+    color: white;
+    padding: 30px 20px;
+    font-size: 14px;
+}
+
+.unite span{
+    font-weight: 900;
+    font-size: 28px;
+}
+
+.unite a{
+    transition: .5s;
+    text-decoration: none;
+    color: #192153;
+    display: inline-block;
+    font-size: 20px;
+    padding: 5px 15px;
+    margin: 10px;
+    background-color: #aeedff;
+    border-radius: 15px;
+    font-weight: 700;
+}
+
+.unite a:hover{
+    text-decoration: none;
+    color: #192153;
+    display: inline-block;
+    font-size: 30px;
+    padding: 5px 15px;
+    margin: 0px;
+    background-color: #aeedff;
+    border-radius: 15px;
+    font-weight: 700;
+}
+
+.fundacion{
+    grid-area: fundacion;
+    background-color: red;
+    height: auto;
+
+}
+.aporte{
+    grid-area: aporte;
+    background-color: coral;
+    height: auto;
+}
+
+.trabaja{
+    grid-area: trabaja;
+    background-color: yellow;
+    height: auto;
+
+}
+
+.iuacj{
+    grid-area: iuacj;
+    background-color: cornflowerblue;
+    height: auto;
+
+}
+
+.titulo{
+    position: relative;
+    left: -80px;
+    border-radius: 10px;
+    width: 110%;
+    height: 80px;
+    background-color: #005ac2;
+}
+.titulo p{
+    position: relative;
+    top: 20px;
+    right: -30px;
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.bold{
+    font-weight: bolder;
+}
+
+.nosotros p{
+    text-align: justify;
+    margin: auto;
+    width: 90%;
+}
+
+.nosotros h3{
+    margin-top: 30px;
+    color: #192153;
+    font-size:30px ;
+    margin-bottom: 10px;
+}
+
+.gridnosotros{
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr;
+    grid-template-rows: 0.25fr 0.25fr 1.5fr;
+    grid-template-areas: 
+    "vision valores valores"
+    "mision mision mision"
+    "directores directores directores";
+    width: 80%;
+    height: 900px;
+}
+
+.directores{
+    padding: 20px;
+    width: 100%;
+    grid-area: directores;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.mision{
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    grid-area: mision;
+    border-bottom: #192153 solid 1px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.valores{
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    grid-area: valores;
+    border-bottom: #192153 solid 1px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.vision{
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    grid-area: vision;
+    border-right: #192153 solid 1px;
+    border-bottom: #192153 solid 1px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.gridnosotros h4{
+    text-align: center;
+    color: #192153;
+    font-size:30px ;
+}
+
+.gridnosotros p{
+    text-align: left;
+    font-size: 15px;
+}
+
+.directores table{
+    width: 100%;
+    height: 100%;
+}
+
+.tablecontainer{
+    background-color: rgba(0, 0, 0, 0.172);
+}
+.tablecontainer p{
+    margin: 10px;
+}
+
+.tablecontainer span{
+    color: #005ac2;
+    font-size: 25px;
+}
+
+
+
+.contacto-box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.contacto-box input{
+    display: block;
+    width: 100vh;
+    height: 4vh;
+}
+.contacto-box textarea{
+    display: block;
+    width: 100vh;
+    height: 40vh;
+}
+
+.contacto-box label,input, textarea,button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    font-size: 1rem;
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.telefonos{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.telefonos .tablecontainer{
+    padding: 10px;
+    border-radius: 10px;
+    margin: 30px 10px;
+    border:dashed 3px  #005ac2;
+}
+
+.contacto .nosotros{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* ARTIGAS */
+
+.artigasmain .titulo{
+    margin-bottom: 40px;
+    background-color: #98BC11;
+}
+.artigassect span{
+    color: #029139;
+}
+
+.videoartigas{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.artigassect h3{
+    color: #98BC11;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+/* ADHU */
+
+.titulo{
+    margin: 40px;
+}
+.adhu, .unidadcentro,.unidadportones{
+    min-height: 70vh;
+}
+.adhu p span{
+    color: #005ac2;
+}
+
+.adhu ul{
+    list-style-type: square;
+    text-align: justify;
+    margin: auto;
+    width: 90%;
+}
+
+/* ESCUELA */
+
+.escuela .nosotros div span{
+    color: #005ac2;
+}
+
+.escuela .nosotros{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  
+}
+
+.escuela .nosotros div{
+    width: 48%;
+    display: inline;
+    padding: 2%;
+}
+.escuela .nosotros{
+    margin-bottom: 80px;
+}
+
+/* UNIDAD CENTRO */
+
+.unidadcentro .nosotros span{
+    color: #005ac2;
+}
+.unidadcentro .nosotros ul{
+    position: relative;
+    right: -70px;
+    margin: 20px 0px;
+}
+
+/* UNIDAD PORTONES */
+
+.unidadportones .nosotros span{
+    color: #005ac2;
+}
+
+.unidadportones .nosotros{
+    height: 50vh;
+}
