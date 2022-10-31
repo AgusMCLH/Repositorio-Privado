@@ -1,0 +1,16 @@
+$ancho:420px;
+$blue:#4285f4;
+$green:#33d374;
+
+.caja1{
+    background-color: $blue;
+    width: $ancho/2;
+}
+.caja2{
+    background-color: $green;
+    width: $ancho+100;
+}
+.caja3{
+    background-color: $blue;
+    width: $ancho - 50/2;
+}
