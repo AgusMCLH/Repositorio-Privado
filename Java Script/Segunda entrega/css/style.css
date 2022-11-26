@@ -1,0 +1,24 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body main h1 {
+  text-align: center;
+  margin: 20px 0px;
+}
+body main .formularios h2 {
+  text-align: center;
+}
+body main .formularios .inputcontainer {
+  height: 140px;
+  overflow: hidden;
+  width: 60vw;
+  margin: 3vw auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+}/*# sourceMappingURL=style.css.map */
