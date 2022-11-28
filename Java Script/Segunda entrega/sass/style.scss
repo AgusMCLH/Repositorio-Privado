@@ -1,7 +1,13 @@
 *{
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;}
+    box-sizing: border-box;
+font-size: 16px;}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
 
 body{
     main{
@@ -9,20 +15,104 @@ body{
             text-align: center;
             margin: 20px 0px;
         }
-        .formularios{
-            h2{
-                text-align: center;
+        .button{
+            border-radius: 25px;
+            border: 1px solid black;
+            font-weight: 600;
+            padding: 5px;
+            font-size: 12px;
+            display: inline-block;
+            &:hover{
+                cursor: pointer;
             }
+            margin: auto  auto 2vw auto;
+        }
+        .formularios{
+            height: 0px;
+            overflow: hidden;
+            transition: height .3s;
             .inputcontainer{
-                height: 140px;
-                overflow: hidden;
                 width: 60vw;
-                margin: 3vw auto;
+                margin: 0px auto;
                 display: flex;
                 flex-direction: column;
                 flex-wrap: nowrap;
                 align-items: center;
                 gap: 10px;
+                input[type=text]{
+                    border-radius: 25px;
+                    width: 200px;
+                    margin: 0px 10px;
+                    text-indent: 5px;
+                }
+                label{
+                    position: relative;
+                    top: 3px;
+                    display: inline-block;
+                    width: 80px;
+                    text-align: right;
+                    overflow: hidden;
+                }
+            }
+        }
+        .productos{
+            margin: auto;
+            width: 90vw;
+            background-color: red;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            row-gap: 50px;
+            .product{
+                justify-content: space-around;
+                height: 300px;
+                border: 1px solid black;
+                display: flex;
+                flex-direction: column;
+                h3{
+                    display: inline;
+                }
+                .product__name{
+                    align-self: center;
+                    height: 40px;
+                }
+                .product__price_discounted{
+                    height: 40px;
+                    display: flex;
+                    .product__originalprice{
+                        p{
+                            text-decoration: line-through;
+                        }
+                    }
+                }
+                .product__price{
+                    height: 40px;
+                    .product__discount{
+                        display: none;
+                    }
+                }
+
+                .product__description{
+                    height: 30%;
+                    overflow: hidden;
+                }
+
+                .product__category{
+                    margin-left: auto;
+                }
+                
+                .buy{
+                    padding: 10px;
+                    border-radius: 15px;
+                    border: 1px solid black;
+                    width: fit-content;
+                    background-color: rgb(0, 255, 94);
+                    color: white;
+                    margin-top: auto;
+                    font-weight: 700;
+                    text-decoration: none;
+                }
             }
         }
     }

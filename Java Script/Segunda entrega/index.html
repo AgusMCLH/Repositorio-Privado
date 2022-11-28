@@ -10,8 +10,10 @@
   <body>
     <main>
       <h1>Simulador de productos</h1>
+      <div class="center">
+        <button class="button" id="collapse">Ingrese los datos</button>
+      </div>
       <div class="formularios">
-        <h2>Ingrese los datos</h2>
         <div class="inputcontainer">
           <div class="input">
             <label for="Nombre">Nombre</label
@@ -33,9 +35,95 @@
             <label for="Categoria">Categoria</label
             ><input type="text" name="" id="Categoria" />
           </div>
+          <div class="input_button">
+            <button class="button" id="addProduct">Agregar</button>
+          </div>
         </div>
       </div>
-      <div class="productos"></div>
+      <div class="productos">
+        <div class="product">
+          <div class="product__name">
+            <h3>Producto A</h3>
+          </div>
+          <div class="product__price">
+            <div class="product__originalprice">
+              <p>$14000</p>
+            </div>
+            <div class="product__discount">
+              <p>15</p>
+            </div>
+          </div>
+          <div class="product__description">
+            <p>ASDFGHJKMNBVFGTH</p>
+          </div>
+          <div class="product__category">
+            <h3>Otros</h3>
+          </div>
+          <a href="#" class="buy">Comprar</a>
+        </div>
+        <div class="product">
+          <div class="product__name">
+            <h3>Producto A</h3>
+          </div>
+          <div class="product__price">
+            <div class="product__originalprice">
+              <p>$14000</p>
+            </div>
+            <div class="product__discount">
+              <p>15</p>
+            </div>
+          </div>
+          <div class="product__description">
+            <p>ASDFGHJKMNBVFGTH</p>
+          </div>
+          <div class="product__category">
+            <h3>Otros</h3>
+          </div>
+          <a href="#" class="buy">Comprar</a>
+        </div>
+        <div class="product">
+          <div class="product__name">
+            <h3>Producto A</h3>
+          </div>
+          <div class="product__price">
+            <div class="product__originalprice">
+              <p>$14000</p>
+            </div>
+            <div class="product__discount">
+              <p>15</p>
+            </div>
+          </div>
+          <div class="product__description">
+            <p>ASDFGHJKMNBVFGTH</p>
+          </div>
+          <div class="product__category">
+            <h3>Otros</h3>
+          </div>
+          <a href="#" class="buy">Comprar</a>
+        </div>
+
+        <div class="product">
+          <div class="product__name">
+            <h3>Producto A</h3>
+          </div>
+          <div class="product__price_discounted">
+            <div class="product__originalprice">
+              <p>$14000</p>
+            </div>
+            <div class="product__discount">
+              <p>15</p>
+            </div>
+          </div>
+          <div class="product__description">
+            <p>ASDFGHJKMNBVFGTH</p>
+          </div>
+          <div class="product__category">
+            <h3>Otros</h3>
+          </div>
+          <a href="#" class="buy">Comprar</a>
+        </div>
+      </div>
     </main>
+    <script src="js/index.js" defer></script>
   </body>
 </html>
