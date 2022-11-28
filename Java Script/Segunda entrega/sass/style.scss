@@ -10,6 +10,7 @@ font-size: 16px;}
 }
 
 body{
+    overflow-x: hidden;
     main{
         h1{
             text-align: center;
@@ -55,10 +56,23 @@ body{
                 }
             }
         }
-        .productos{
+        .search__container{
+            display: flex;
+            flex-direction: row-reverse;
+            overflow: hidden;
+            width: 0vw;
             margin: auto;
+            transition: .3s;
+            a{
+                height: 24px;
+            }
+            input{
+                width: 80vw;
+            }
+        }
+        .productos{
+            margin: 30px auto;
             width: 90vw;
-            background-color: red;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
@@ -66,28 +80,50 @@ body{
             row-gap: 50px;
             .product{
                 justify-content: space-around;
-                height: 300px;
+                height: 340px;
+                width: 200px;
+                padding: 10px;
                 border: 1px solid black;
                 display: flex;
                 flex-direction: column;
+                border-radius: 10px;
+                background-color: rgb(233, 233, 233);
                 h3{
                     display: inline;
                 }
                 .product__name{
                     align-self: center;
                     height: 40px;
+                    overflow: hidden;
+                    h3{
+                        font-size: 20px;
+                    }
                 }
                 .product__price_discounted{
                     height: 40px;
+                    overflow: hidden;
                     display: flex;
+                    flex-wrap: wrap;
                     .product__originalprice{
                         p{
                             text-decoration: line-through;
+                            font-size: 13px;
                         }
+                    }
+                    .product__discount{
+                        p{
+                            color: rgb(0, 186, 68);;
+                            font-size: 13px;
+                        }
+                    }
+                    .product__finalPrice{
+                        width: 99%;
+                        font-weight: 700;
                     }
                 }
                 .product__price{
                     height: 40px;
+                    overflow: hidden;
                     .product__discount{
                         display: none;
                     }
@@ -95,25 +131,63 @@ body{
 
                 .product__description{
                     height: 30%;
-                    overflow: hidden;
+                    overflow-y: hidden;
                 }
 
                 .product__category{
                     margin-left: auto;
+                    height: 16px;
+                    overflow: hidden;
                 }
                 
                 .buy{
                     padding: 10px;
                     border-radius: 15px;
-                    border: 1px solid black;
+                    
                     width: fit-content;
-                    background-color: rgb(0, 255, 94);
+                    background-color: rgb(0, 186, 68);
                     color: white;
                     margin-top: auto;
                     font-weight: 700;
                     text-decoration: none;
                 }
             }
+        }
+    }
+    .error_toggler{
+        position: absolute;
+        width: 300px;
+        height: 20vh;
+        top: 20px;
+        right: -350px;
+        transition: .3s;
+        
+        background-color: white;
+        .error__container{
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            
+            .error_window{
+                border-radius: 10px;
+                width: 90%;
+                height: 80%;
+                margin: auto;
+                background-color: rgb(118, 0, 0);
+                padding:5px;
+                box-shadow: 0px 0px 30px 10px rgb(114, 114, 114);
+                p{
+                    color: rgb(214, 214, 214);
+                    margin: 5px;
+                    text-indent: 5px;
+                }
+                h3{
+                    color: white;
+                    text-align: center;
+                }
+            }
+
         }
     }
 }

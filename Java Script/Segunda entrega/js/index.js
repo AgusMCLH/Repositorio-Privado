@@ -10,7 +10,6 @@ const listaInputsLetras = [productName, productDescription, productCategory];
 //Crea un array de todos los campos que tengan que contener números
 const listaInputsNumber = [productPrice, productDiscount];
 const regexLetter = /[a-zA-Z]/;
-const regexNumber = /[0-9]/;
 let productos = [];
 let checkedCamps = 0;
 let divProductos = document.getElementsByClassName('productos');
@@ -84,7 +83,10 @@ addButton.addEventListener('click', () => {
     if (validarLetras(listaInputsLetras[i])) {
       checkedCamps++;
     } else {
-      console.log(listaInputsLetras[i] + 'no cumple');
+      showErrorCard(
+        `Error en el campo ${listaInputsLetras[i].id}`,
+        'El campo solo admite letras'
+      );
     }
   }
   //Recorre el array de los campos de numeros validandolos
@@ -98,7 +100,6 @@ addButton.addEventListener('click', () => {
   if (productDiscount.value <= 100 && productDiscount.value >= 0) {
     if (checkedCamps === listaInputsLetras.concat(listaInputsNumber).length) {
       agregar();
-      console.log('todo ok');
     }
   }
 });
@@ -133,16 +134,75 @@ const agregar = () => {
     desc: productDescription.value,
     category: productCategory.value,
   });
-  console.log(productos);
+  showProducts();
 };
 
-const showProducts = () => {
+let showProducts = () => {
   let acumulador = '';
   productos.forEach((producto) => {
-    // acumulador += ;
+    if (producto.discount == 0) {
+      acumulador += `
+      <div class="product">
+      <div class="product__name">
+        <h3>${producto.name}</h3>
+        </div>
+        <div class="product__price">
+          <div class="product__originalprice">
+            <p>${producto.price}</p>
+            </div>
+            <div class="product__discount">
+            <p>N/A</p>
+            </div>
+            </div>
+            <div class="product__description">
+            <p>${producto.desc}</p>
+            </div>
+            <div class="product__category">
+            <h3>${producto.category}</h3>
+            </div>
+            <a href="#" class="buy">Comprar</a>
+            </div>`;
+    } else {
+      let discountedPrice =
+        producto.price - (producto.price / 100) * producto.discount;
+      acumulador += `
+      <div class="product">
+        <div class="product__name">
+          <h3>${producto.name}</h3>
+          </div>
+        <div class="product__price_discounted">
+          <div class="product__originalprice">
+          <p>${producto.price}</p>
+          </div>
+          <div class="product__discount">
+            <p>${producto.discount}% off</p>
+            </div>
+            <div class="product__finalPrice">
+            <p>$${discountedPrice}</p>
+          </div>
+        </div>
+        <div class="product__description">
+          <p>${producto.desc}</p>
+        </div>
+        <div class="product__category">
+          <h3>${producto.category}</h3>
+        </div>
+        <a href="#" class="buy">Comprar</a>
+    </div>`;
+    }
   });
+  divProductos.innerHTML = acumulador;
+  if (productos.length > 5) {
+    document.getElementById('search__container').style.width = '80vw';
+  }
 };
 
-console.log(divProductos);
-
-// divProductos.style.backgroundColor = 'black';
+const showErrorCard = (title, message) => {
+  document.getElementById('error_toggler').style.right = '30px';
+  document.getElementById('error_window').innerHTML = `
+  <h3>${title}</h3>
+  <p>${message}</p>`;
+  setTimeout(() => {
+    document.getElementById('error_toggler').style.right = '-350px';
+  }, 2000);
+};
