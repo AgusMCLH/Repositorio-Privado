@@ -1,0 +1,92 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #403D39;
+}
+body header nav {
+  width: 100vw;
+  height: 8vw;
+  background-color: #252422;
+}
+body header nav .nav_container {
+  height: 100%;
+}
+body header nav .nav_container .nav__barrasuperior {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  height: 50%;
+  align-items: center;
+}
+body header nav .nav_container .nav__barrasuperior img {
+  height: 150%;
+}
+body header nav .nav_container .nav__barrasuperior .nav__search_container {
+  display: flex;
+  align-items: center;
+}
+body header nav .nav_container .nav__barrasuperior .nav__search_container input {
+  height: 2.5vw;
+  width: 50vw;
+  border-radius: 5px;
+  border: none;
+  color: #252422;
+}
+body header nav .nav_container .nav__barrasuperior .nav__search_container .nav__search_icon {
+  height: 2vw;
+  position: relative;
+  right: 5%;
+  filter: invert(19%) sepia(2%) saturate(2046%) hue-rotate(355deg) brightness(103%) contrast(87%);
+}
+body header nav .nav_container .nav__barrasuperior .entraoregistrate a {
+  color: #CCC4B8;
+  text-decoration: none;
+}
+body header nav .nav_container .nav__barrasuperior .entraoregistrate a:hover {
+  color: #FFFCF2;
+}
+body header nav .nav_container .nav__barrasuperior .nav__cart_icon {
+  height: 3vw;
+  filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
+}
+body header nav .nav_container .nav__barrasuperior .nav__cart_icon:hover {
+  filter: invert(45%) sepia(28%) saturate(4987%) hue-rotate(348deg) brightness(97%) contrast(88%);
+}
+body header nav .nav_container .nav__barraInferior {
+  height: 50%;
+  width: 95%;
+  margin: auto;
+}
+body header nav .nav_container .nav__barraInferior ul {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  align-items: center;
+}
+body header nav .nav_container .nav__barraInferior ul li {
+  display: flex;
+  align-items: center;
+  padding: 0px 10%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: 70%;
+  list-style: none;
+  border-right: #FFFCF2 3px solid;
+}
+body header nav .nav_container .nav__barraInferior ul li a {
+  color: #CCC4B8;
+  text-decoration: none;
+  font-weight: 700;
+}
+body header nav .nav_container .nav__barraInferior ul li a:hover {
+  color: #FFFCF2;
+}
+body header nav .nav_container .nav__barraInferior ul li:last-child {
+  border-right: none;
+}/*# sourceMappingURL=style.css.map */

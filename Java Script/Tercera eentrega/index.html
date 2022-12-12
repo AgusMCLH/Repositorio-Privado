@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Segunda Entrega CoderHouse Agustin Diaz</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Simulador de productos</h1>
+      <p class="carrito_toggler" id="carrito_toggler">
+        Carrito <img src="assets/carrito-de-compras.png" alt="" srcset="" />
+      </p>
+      <div class="center">
+        <button class="button" id="collapse">Ingrese los datos</button>
+      </div>
+      <div class="formularios">
+        <div class="inputcontainer">
+          <div class="input">
+            <label for="Nombre">Nombre</label
+            ><input type="text" name="" id="Nombre" />
+          </div>
+          <div class="input">
+            <label for="Precio">Precio</label
+            ><input type="text" name="" id="Precio" />
+          </div>
+          <div class="input">
+            <label for="Descuento">Descuento</label
+            ><input type="text" name="" id="Descuento" />
+          </div>
+          <div class="input">
+            <label for="Descripcion">Descripcion</label
+            ><input type="text" name="" id="Descripcion" />
+          </div>
+          <div class="input">
+            <label for="Categoria">Categoria</label
+            ><input type="text" name="" id="Categoria" />
+          </div>
+          <div class="input_button">
+            <button class="button" id="addProduct">Agregar</button>
+          </div>
+        </div>
+      </div>
+      <div class="search__container" id="search__container">
+        <a href="#" id="buscadorButton"
+          ><img src="assets/SVG/search.svg" alt=""
+        /></a>
+        <input type="text" name="" id="buscadorInput" />
+      </div>
+      <div class="productos"></div>
+      <div class="error_toggler" id="error_toggler">
+        <div class="error__container" id="error_container">
+          <div class="error_window" id="error_window">
+            <h3>Error en el campo de Nombre</h3>
+            <p>El campo solo admite letras</p>
+          </div>
+        </div>
+      </div>
+      <div class="success_toggler" id="success_toggler">
+        <div class="success__container" id="success_container">
+          <div class="success_window" id="success_window"></div>
+        </div>
+      </div>
+      <div class="carrito_container" id="carrito_container">
+        <div class="carrito">
+          <div class="cross_container">
+            <img src="assets/x.png" class="cross" id="cross" alt="" />
+          </div>
+          <h3>Carrito</h3>
+          <div class="main_cart" id="main_cart"></div>
+        </div>
+      </div>
+    </main>
+    <script src="js/index.js" defer></script>
+  </body>
+</html>

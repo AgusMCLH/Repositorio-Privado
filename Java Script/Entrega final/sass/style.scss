@@ -1,0 +1,106 @@
+$blanco: #FFFCF2;
+$gris: #CCC4B8;
+$negro1: #403D39;
+$negro2: #252422;
+$naranja: #EA5E29;
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $negro1;
+    header{
+        nav{
+            width: 100vw;
+            height: 8vw;
+            background-color: $negro2;
+            .nav_container{
+                height: 100%;
+                .nav__barrasuperior{
+                    margin: auto;
+                    display: flex;
+                    justify-content: space-between;
+                    width: 95%;
+                    height: 50%;
+                    // overflow: hidden;
+                    
+                    align-items: center;
+                    img{
+                        height: 150%;
+                        
+                    }
+                    .nav__search_container{
+                        display: flex;
+                        align-items: center;
+                        input{
+                            height: 2.5vw;
+                            width: 50vw;
+                            border-radius: 5px;
+                            border: none;
+                            color: $negro2;
+                        }
+                        .nav__search_icon{
+                            height: 2vw;
+                            position: relative;
+                            right: 5%;
+                            filter: invert(19%) sepia(2%) saturate(2046%) hue-rotate(355deg) brightness(103%) contrast(87%);
+                        }
+                    }
+                    .entraoregistrate{
+                        a{
+                            color: $gris;
+                            text-decoration: none;
+                            &:hover{
+                                color: $blanco;
+                            }
+                        }
+                    }
+                    .nav__cart_icon{
+                        height: 3vw;
+                        filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
+                        &:hover{
+                            filter: invert(45%) sepia(28%) saturate(4987%) hue-rotate(348deg) brightness(97%) contrast(88%);
+                        }
+                    }
+                }
+                .nav__barraInferior{
+                    height: 50%;
+                    width: 95%;
+                    margin: auto;
+                    // border: white 1px solid;
+                    ul{
+                        display: flex;
+                        justify-content: space-around;
+                        height: 100%;
+                        align-items: center;
+                        li{
+                            display: flex;
+                            align-items: center;
+                            padding: 0px 10%;
+                            width: max-content;
+                            height: 70%;
+                            list-style: none;
+                            border-right: $blanco 3px solid;
+                            
+                            a{
+                                color: $gris;
+                                text-decoration: none;
+                                font-weight: 700;
+                                &:hover{
+                                    color: $blanco;
+                                }
+
+                            }
+                            &:last-child{
+                                border-right: none;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}

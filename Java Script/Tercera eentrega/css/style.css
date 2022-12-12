@@ -1,0 +1,350 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  overflow-x: hidden;
+}
+body main h1 {
+  text-align: center;
+  margin: 20px 0px;
+}
+body main .button {
+  border-radius: 25px;
+  border: 1px solid black;
+  font-weight: 600;
+  padding: 5px;
+  font-size: 12px;
+  display: inline-block;
+  margin: auto auto 2vw auto;
+}
+body main .button:hover {
+  cursor: pointer;
+}
+body main .formularios {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.3s;
+}
+body main .formularios .inputcontainer {
+  width: 60vw;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+}
+body main .formularios .inputcontainer input[type=text] {
+  border-radius: 25px;
+  width: 200px;
+  margin: 0px 10px;
+  text-indent: 5px;
+}
+body main .formularios .inputcontainer label {
+  position: relative;
+  top: 3px;
+  display: inline-block;
+  width: 80px;
+  text-align: right;
+  overflow: hidden;
+}
+body main .search__container {
+  display: flex;
+  flex-direction: row-reverse;
+  overflow: hidden;
+  width: 0vw;
+  margin: auto;
+  transition: 0.3s;
+}
+body main .search__container a {
+  height: 24px;
+}
+body main .search__container input {
+  width: 80vw;
+}
+body main .productos {
+  margin: 30px auto;
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  row-gap: 50px;
+}
+body main .productos .product {
+  justify-content: space-around;
+  height: 340px;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: rgb(233, 233, 233);
+}
+body main .productos .product h3 {
+  display: inline;
+}
+body main .productos .product .product__name {
+  align-self: center;
+  height: 40px;
+  overflow: hidden;
+}
+body main .productos .product .product__name h3 {
+  font-size: 20px;
+}
+body main .productos .product .product__price_discounted {
+  height: 40px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+body main .productos .product .product__price_discounted .product__originalprice p {
+  text-decoration: line-through;
+  font-size: 13px;
+}
+body main .productos .product .product__price_discounted .product__discount p {
+  color: rgb(0, 186, 68);
+  font-size: 13px;
+}
+body main .productos .product .product__price_discounted .product__finalPrice {
+  width: 99%;
+  font-weight: 700;
+}
+body main .productos .product .product__price {
+  height: 40px;
+  overflow: hidden;
+}
+body main .productos .product .product__price .product__discount {
+  display: none;
+}
+body main .productos .product .product__description {
+  height: 30%;
+  overflow-y: hidden;
+}
+body main .productos .product .product__category {
+  margin-left: auto;
+  height: 16px;
+  overflow: hidden;
+}
+body main .productos .product .buy {
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: rgb(0, 186, 68);
+  color: white;
+  margin-top: auto;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+body .error_toggler {
+  position: absolute;
+  width: 300px;
+  height: 20vh;
+  top: 20px;
+  right: -350px;
+  transition: 0.3s;
+  background-color: white;
+}
+body .error_toggler .error__container {
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+body .error_toggler .error__container .error_window {
+  border-radius: 10px;
+  width: 90%;
+  height: 80%;
+  margin: auto;
+  background-color: rgb(118, 0, 0);
+  padding: 5px;
+  box-shadow: 0px 0px 30px 10px rgb(114, 114, 114);
+}
+body .error_toggler .error__container .error_window p {
+  color: rgb(214, 214, 214);
+  margin: 5px;
+  text-indent: 5px;
+}
+body .error_toggler .error__container .error_window h3 {
+  color: white;
+  text-align: center;
+}
+body .success_toggler {
+  position: absolute;
+  width: 300px;
+  height: 20vh;
+  top: 20px;
+  right: -350px;
+  transition: 0.3s;
+  background-color: white;
+}
+body .success_toggler .success__container {
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+body .success_toggler .success__container .success_window {
+  border-radius: 10px;
+  width: 90%;
+  height: 80%;
+  margin: auto;
+  background-color: rgb(0, 197, 23);
+  padding: 5px;
+  box-shadow: 0px 0px 30px 10px rgb(114, 114, 114);
+}
+body .success_toggler .success__container .success_window p {
+  color: rgb(214, 214, 214);
+  margin: 5px;
+  text-indent: 5px;
+}
+body .success_toggler .success__container .success_window h3 {
+  color: white;
+  text-align: center;
+}
+body .carrito_toggler {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+body .carrito_toggler img {
+  height: 10px;
+}
+body .carrito_container {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.61);
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+}
+body .carrito_container .carrito {
+  background-color: white;
+  width: 80%;
+  height: 80vh;
+}
+body .carrito_container .carrito .cross_container {
+  z-index: 1;
+  width: 99%;
+  position: relative;
+  top: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+body .carrito_container .carrito .cross_container .cross {
+  cursor: pointer;
+  height: 20px;
+}
+body .carrito_container .carrito h3 {
+  position: relative;
+  top: -20px;
+  width: 100%;
+  text-align: center;
+  font-size: 3vw;
+}
+body .carrito_container .carrito .main_cart {
+  height: 87%;
+  width: 100%;
+  overflow: auto;
+}
+body .carrito_container .carrito .main_cart .cart_NHP {
+  margin: 15% auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 40px;
+}
+body .carrito_container .carrito .main_cart .product {
+  margin: 10px 0px;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid black;
+}
+body .carrito_container .carrito .main_cart .product .product__name {
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+body .carrito_container .carrito .main_cart .product .product__name h3 {
+  position: static;
+  font-size: 15px;
+  overflow: hidden;
+}
+body .carrito_container .carrito .main_cart .product .product__price_discounted {
+  width: 13%;
+  height: 40px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+body .carrito_container .carrito .main_cart .product .product__price_discounted .product__originalprice p {
+  text-decoration: line-through;
+  font-size: 13px;
+}
+body .carrito_container .carrito .main_cart .product .product__price_discounted .product__discount p {
+  color: rgb(0, 186, 68);
+  font-size: 13px;
+}
+body .carrito_container .carrito .main_cart .product .product__price_discounted .product__finalPrice {
+  width: 99%;
+  font-weight: 700;
+}
+body .carrito_container .carrito .main_cart .product .product__price {
+  width: 13%;
+  height: 40px;
+  overflow: hidden;
+}
+body .carrito_container .carrito .main_cart .product .product__price .product__discount {
+  display: none;
+}
+body .carrito_container .carrito .main_cart .product .product__description {
+  overflow: hidden;
+  width: 20%;
+}
+body .carrito_container .carrito .main_cart .product .product__category {
+  overflow: hidden;
+  width: 10%;
+}
+body .carrito_container .carrito .main_cart .product .product__category h3 {
+  position: static;
+  font-size: 15px;
+}
+body .carrito_container .carrito .main_cart .product .cross_container {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+body .carrito_container .carrito .main_cart .product .cross_container button {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: transparent;
+  border: none;
+}
+body .carrito_container .carrito .main_cart .product .cross_container button img {
+  cursor: pointer;
+  width: 10px;
+}/*# sourceMappingURL=style.css.map */
