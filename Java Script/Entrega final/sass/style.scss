@@ -3,18 +3,46 @@ $gris: #CCC4B8;
 $negro1: #403D39;
 $negro2: #252422;
 $naranja: #EA5E29;
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
 *{
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
 }
 
+
+
+
+.slick-arrow{
+    &:nth-child(3){
+        right: -3vw;
+    }
+    &:nth-child(1){
+        left: -3vw;
+        transform: rotate(180deg);
+    }
+    position: absolute;
+    z-index: 1;
+    align-self: center;
+    color: transparent;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-image: url("../assets/arrow.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    background-color: rgba($color: #ffffff, $alpha: 0.3);
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(305deg) brightness(103%) contrast(101%);
+}
+
 body{
     background-color: $negro1;
     header{
         nav{
-            width: 100vw;
-            height: 8vw;
+            overflow: hidden;
+            width: 100%;
+            height: 100px;
             background-color: $negro2;
             .nav_container{
                 height: 100%;
@@ -24,32 +52,40 @@ body{
                     justify-content: space-between;
                     width: 95%;
                     height: 50%;
-                    // overflow: hidden;
-                    
                     align-items: center;
                     img{
                         height: 150%;
-                        
                     }
                     .nav__search_container{
                         display: flex;
                         align-items: center;
+                        border-bottom: 2px solid $gris;
+                        border-right: 2px solid $gris;
+                        padding-right: 0.5%;
+                        border-radius: 10px;
                         input{
-                            height: 2.5vw;
-                            width: 50vw;
+                            background-color: transparent;
+                            height: 35px;
+                            width: 600px;
+                            outline: none;
+                            text-indent: 10px;
                             border-radius: 5px;
                             border: none;
-                            color: $negro2;
+                            color: $blanco;
+                            font-size: 20px;
+                            
+                                
+                            
                         }
                         .nav__search_icon{
-                            height: 2vw;
-                            position: relative;
-                            right: 5%;
+                            cursor: pointer;
+                            height: 30px;
                             filter: invert(19%) sepia(2%) saturate(2046%) hue-rotate(355deg) brightness(103%) contrast(87%);
                         }
                     }
                     .entraoregistrate{
                         a{
+                            font-size: 20px ;
                             color: $gris;
                             text-decoration: none;
                             &:hover{
@@ -58,10 +94,12 @@ body{
                         }
                     }
                     .nav__cart_icon{
-                        height: 3vw;
+                        height: 40px;
                         filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
+                        cursor: pointer;
                         &:hover{
                             filter: invert(45%) sepia(28%) saturate(4987%) hue-rotate(348deg) brightness(97%) contrast(88%);
+
                         }
                     }
                 }
@@ -76,25 +114,21 @@ body{
                         height: 100%;
                         align-items: center;
                         li{
-                            display: flex;
-                            align-items: center;
-                            padding: 0px 10%;
-                            width: max-content;
-                            height: 70%;
                             list-style: none;
-                            border-right: $blanco 3px solid;
-                            
+                            width: 100%;
+                            text-align: center;
+                            border-right: 1px solid $blanco;
+                            &:last-child{
+                                border-right: none;
+                            }
                             a{
+                                font-size: 20px;
                                 color: $gris;
                                 text-decoration: none;
-                                font-weight: 700;
+                                transition: color 0.3s;
                                 &:hover{
                                     color: $blanco;
                                 }
-
-                            }
-                            &:last-child{
-                                border-right: none;
                             }
                         }
                         
@@ -102,5 +136,324 @@ body{
                 }
             }
         }
+    }
+    
+    main{
+        .hero_slider__container{
+            margin-top: 40px;
+            .hero_slider{
+                .hero_slider__content{
+                    position: relative;
+                    img{
+                        width: 100%;
+                    }
+                    .overlay{
+                        position: absolute;
+                        top: 0px;
+                        right: 0px;
+                        font-family: 'Pathway Gothic One', sans-serif;
+                    }
+                    .slider_running__bann1{
+                        top: 5%;
+                        right: 35%;
+                        font-size: 250px;
+                        color: #7c7c7c;
+                        font-style: italic;
+                        font-weight: 900;
+                    }
+                    .slider_running__bann2{
+                        top: 53%;
+                        right: 13%;
+                        font-size: 200px;
+                        font-style: italic;
+                        font-weight: 900;
+                        color: transparent;
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #7c7c7c;
+                        
+                    }
+                    .slider_generic__bann{
+                        top: 57%;
+                        left: 15%;
+                        font-size: 190px;
+                        color: $blanco;
+                        font-style: italic;
+                        font-weight: 900;  
+                        -webkit-text-stroke-color: #7c7c7c;
+                        filter: drop-shadow(-4px 1px 1px $negro2);
+                        
+                    }
+                }
+            }
+        }
+
+        h1{
+            color: $blanco;
+            font-size: 60px;
+            font-family: 'Pathway Gothic One', sans-serif;
+            font-style: italic;
+            text-align: center;
+            margin-top: 30px;
+        }
+        h2{
+            color: $gris;
+            font-size: 49px;
+            font-family: 'Pathway Gothic One', sans-serif;
+            font-style: italic;
+            width: fit-content;
+            margin: 5vw 0px 0px 10vw;
+        }
+        .index_text{
+            width: 60%;
+            margin: auto;
+            text-align: center;
+            color: $gris;
+            font-size: 20px;
+            p{
+                margin: 30px 0px;
+            }
+        }
+        .mostSelledProducts__container{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            height: 80%;
+            .product__container{
+                // width: 30%;
+                overflow: hidden;
+                margin: 0px 14px;
+                display: flex;
+                justify-content: center;
+                div{
+                    width: 300px;
+                    img{
+                        width: 100%;
+                        
+                    }
+                    p{
+                        color: $gris;
+                        text-align: center;
+                        margin: 7px;
+                        font-size: 18px;
+                        &:last-child{
+                            font-weight: 900;
+                            color: $naranja;
+                        }
+                    }
+                }
+            }
+        }
+
+        .cat__container{
+            margin: 80px auto;
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            .cat{
+                position: relative;
+                img{
+                    width: 400px;
+                    height: 400px;
+                }
+                &:hover{
+                    cursor: pointer;
+                    .overlay{
+                        opacity: 100%;
+                    }
+                }
+                .overlay{
+                    transition: opacity 0.3s;
+                    opacity: 0%;
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 99%;
+                    background-color: rgba($color: $negro2, $alpha: 0.5);
+                    top: 0px;
+                    h3{
+                        color: $naranja;
+                        font-size: 40px;
+                        filter: drop-shadow(2px 2px 0px $negro2);
+                    }
+                }
+            }
+        }
+    }
+
+}
+footer{
+    overflow: hidden;
+    width: 100%;
+    height: 250px;
+    background-color: $negro2;
+    display: grid;
+    grid-template-columns: 0.25fr 0.25fr 0.25fr 0.5fr 0.75fr 300px;
+    grid-template-rows: 0.75fr 0.25fr;
+    grid-template-areas: 
+    "logo logo logo acercade empty socialmedia"
+    "location copyright copyright copyright empty notations";
+    .logo{
+        grid-area: logo;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div{
+            h2{
+                color: $blanco;
+                font-size: 60px;
+                font-style: italic;
+                font-weight: 900;
+                font-family: 'Pathway Gothic One', sans-serif;
+
+            }
+        }
+        img{
+            width: 150px;
+        }
+    }
+    .acercade{
+        grid-area: acercade;
+        div{
+            position: relative;
+            right: -30px;
+            top: 40px;
+            width: fit-content;
+            h4{
+                color: $blanco;
+                font-size: 20px;
+                font-style: italic;
+                font-family: 'Pathway Gothic One', sans-serif;
+                font-weight: 300;
+                width: fit-content;
+            }
+            ul{
+                width: fit-content;
+                li{
+                    width: fit-content;
+                    a{
+                        color: $gris;
+                        text-decoration: none;
+                        transition: color 0.3s;
+                        font-size: 15px;
+                        width: fit-content;
+                        &:hover{
+                            color: $blanco;
+                        }
+                    }
+                    height: 15px;
+                    list-style: none;
+                    margin: 8px;
+                    text-indent: 9px;
+                }
+            }
+        }
+    }
+    .empty{
+        grid-area: empty;
+    }
+    .socialmedia{
+        grid-area: socialmedia;
+        .socialmedia__container{
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-evenly;
+            div{
+                opacity: 30%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $gris;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                transition: opacity 0.3s;
+                cursor: pointer ;
+                img{
+                    width: 25px;
+                    height: 25px;
+                }
+                &:hover{
+                    opacity: 100%;
+                }
+            }
+        }
+    }
+    .location{
+        grid-area: location;
+        position: relative;
+        div{
+            bottom: 5px;
+            position: absolute;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            img{
+                margin-right: 5px;
+                width: 15px;
+                filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(305deg) brightness(103%) contrast(101%);
+
+            }
+            p{
+                color: $blanco;
+                font-weight: 700;
+                font-size: 15px;
+            }
+        }
+
+    }
+    .copyright{
+        grid-area: copyright;
+        position: relative;
+        div{
+            position: absolute;
+            bottom: 5px;
+            p{
+                color: $gris;
+                width: fit-content;
+                font-size: 15px;
+            }
+        }
+    }
+    .notations{
+        grid-area: notations;
+        position: relative;
+        div{
+            width: 100%;
+            position: absolute;
+            bottom: 5px;
+            display: flex;
+            justify-content: space-evenly;
+            a{
+                color: $gris;
+                text-decoration: none;
+                transition: color 0.3s;
+                font-size: 15px;
+                width: fit-content;
+                &:hover{
+                    color: $blanco;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:420px) {
+    footer{
+        width: 100%;
+        height: 200px;
+        text-align: center;
+        grid-template-columns: 0.3fr 1fr;
+        grid-template-rows: 0.25fr 0.5fr 0.25fr 0.2fr 0.2fr;
+        grid-template-areas: 
+        "logo logo"
+        "acercade acercade"
+        "socialmedia socialmedia"
+        "location copyright"
+        "notations notations";
+    }
+    .empty{
+        display: none;
     }
 }
