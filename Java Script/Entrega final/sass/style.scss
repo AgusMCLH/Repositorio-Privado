@@ -15,10 +15,10 @@ $naranja: #EA5E29;
 
 .slick-arrow{
     &:nth-child(3){
-        right: -3vw;
+        right: -30px;
     }
     &:nth-child(1){
-        left: -3vw;
+        left: -30px;
         transform: rotate(180deg);
     }
     position: absolute;
@@ -107,7 +107,6 @@ body{
                     height: 50%;
                     width: 95%;
                     margin: auto;
-                    // border: white 1px solid;
                     ul{
                         display: flex;
                         justify-content: space-around;
@@ -140,7 +139,7 @@ body{
     
     main{
         .hero_slider__container{
-            margin-top: 40px;
+            margin: 5vw 0px;
             .hero_slider{
                 .hero_slider__content{
                     position: relative;
@@ -156,7 +155,7 @@ body{
                     .slider_running__bann1{
                         top: 5%;
                         right: 35%;
-                        font-size: 250px;
+                        font-size: 20vw;
                         color: #7c7c7c;
                         font-style: italic;
                         font-weight: 900;
@@ -164,7 +163,7 @@ body{
                     .slider_running__bann2{
                         top: 53%;
                         right: 13%;
-                        font-size: 200px;
+                        font-size: 15vw;
                         font-style: italic;
                         font-weight: 900;
                         color: transparent;
@@ -175,7 +174,7 @@ body{
                     .slider_generic__bann{
                         top: 57%;
                         left: 15%;
-                        font-size: 190px;
+                        font-size: 15vw;
                         color: $blanco;
                         font-style: italic;
                         font-weight: 900;  
@@ -193,7 +192,6 @@ body{
             font-family: 'Pathway Gothic One', sans-serif;
             font-style: italic;
             text-align: center;
-            margin-top: 30px;
         }
         h2{
             color: $gris;
@@ -201,7 +199,7 @@ body{
             font-family: 'Pathway Gothic One', sans-serif;
             font-style: italic;
             width: fit-content;
-            margin: 5vw 0px 0px 10vw;
+            margin: 3% 0px 1% 10%;
         }
         .index_text{
             width: 60%;
@@ -219,7 +217,6 @@ body{
             display: flex;
             height: 80%;
             .product__container{
-                // width: 30%;
                 overflow: hidden;
                 margin: 0px 14px;
                 display: flex;
@@ -248,7 +245,10 @@ body{
             margin: 80px auto;
             width: 90%;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 50px 25px;
             .cat{
                 position: relative;
                 img{
@@ -293,7 +293,7 @@ footer{
     grid-template-rows: 0.75fr 0.25fr;
     grid-template-areas: 
     "logo logo logo acercade empty socialmedia"
-    "location copyright copyright copyright empty notations";
+    "location location location location empty notations";
     .logo{
         grid-area: logo;
         display: flex;
@@ -381,14 +381,16 @@ footer{
         }
     }
     .location{
+        margin-left: 10%;
         grid-area: location;
         position: relative;
-        div{
-            bottom: 5px;
-            position: absolute;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        .location_location{
             display: flex;
-            width: 100%;
-            justify-content: center;
+            align-items: center;
             img{
                 margin-right: 5px;
                 width: 15px;
@@ -401,20 +403,14 @@ footer{
                 font-size: 15px;
             }
         }
-
-    }
-    .copyright{
-        grid-area: copyright;
-        position: relative;
-        div{
-            position: absolute;
-            bottom: 5px;
+        .location_copy{
             p{
                 color: $gris;
-                width: fit-content;
+                font-weight: 700;
                 font-size: 15px;
             }
         }
+
     }
     .notations{
         grid-area: notations;
@@ -424,10 +420,10 @@ footer{
             position: absolute;
             bottom: 5px;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-evenly;
             a{
                 color: $gris;
-                text-decoration: none;
                 transition: color 0.3s;
                 font-size: 15px;
                 width: fit-content;
@@ -439,21 +435,105 @@ footer{
     }
 }
 
+@media screen and (max-width:1200px) {
+    footer{
+        height: fit-content;
+        text-align: center;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(2, 1fr) 0.3fr;
+        grid-template-areas: 
+        "logo socialmedia"
+        "acercade acercade"
+        "location notations";
+        .empty{
+            display: none;
+        }
+        .location{
+            justify-content: center;
+            margin-left: 0%;
+            gap: 0px;
+            align-content: flex-end;
+        }
+        .acercade{
+            display: flex;
+            justify-content: center;
+            div{
+                position: static;
+                ul{
+                    width: 100%;
+                    li{
+                        width: 100%;
+                        text-align: center;
+                        margin: 10px 0px;
+                        text-indent: 0px;
+                    }
+                }
+            }
+        }
+    }
+
+}
 @media screen and (max-width:420px) {
     footer{
-        width: 100%;
-        height: 200px;
+        row-gap: 30px;
+        height: 600px;
         text-align: center;
-        grid-template-columns: 0.3fr 1fr;
+        grid-template-columns: 1fr;
         grid-template-rows: 0.25fr 0.5fr 0.25fr 0.2fr 0.2fr;
         grid-template-areas: 
-        "logo logo"
-        "acercade acercade"
-        "socialmedia socialmedia"
-        "location copyright"
-        "notations notations";
+        "logo"
+        "acercade"
+        "socialmedia"
+        "location"
+        "notations";
+        .empty{
+            display: none;
+        }
+        .location{
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            margin: 20px 0px;
+            flex-wrap: nowrap;
+        }
+        .acercade{
+            display: flex;
+            justify-content: center;
+            div{
+                position: static;
+                ul{
+                    width: 100%;
+                    li{
+                        width: 100%;
+                        text-align: center;
+                        margin: 10px 0px;
+                        text-indent: 0px;
+                    }
+                }
+            }
+        }
     }
-    .empty{
-        display: none;
+
+    body{
+        main{
+            .mostSelledProducts__container{
+                width: 70%;
+            }
+            h1{
+                font-size: 40px;
+            }
+            h2{
+                font-size: 29px;
+            }
+            .cat__container{
+                    .cat{
+                        img{
+                            width: 250px;
+                            height: 250px;
+                        }
+                    }
+                }
+
+        }
     }
 }
