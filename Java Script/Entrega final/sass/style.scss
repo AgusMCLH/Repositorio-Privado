@@ -35,10 +35,19 @@ $naranja: #EA5E29;
     background-color: rgba($color: #ffffff, $alpha: 0.3);
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(305deg) brightness(103%) contrast(101%);
 }
+.nav__spacer{
+    display: none;
+}
+.nav__spacer1{
+    display: none;
+}
 
 body{
     background-color: $negro1;
     header{
+        .nav__responsive{
+            display: none;
+        }
         nav{
             overflow: hidden;
             width: 100%;
@@ -87,7 +96,6 @@ body{
                         a{
                             font-size: 20px ;
                             color: $gris;
-                            text-decoration: none;
                             &:hover{
                                 color: $blanco;
                             }
@@ -437,105 +445,114 @@ footer{
 }
 
 @media screen and (max-width:1200px) {
-    header{
-        nav{
-            // overflow: hidden;
-            width: 100%;
-            height: 100px;
-            background-color: $negro2;
-            .nav_container{
-                height: 100%;
-                .nav__barrasuperior{
-                    margin: auto;
-                    display: flex;
-                    justify-content: space-between;
-                    width: 95%;
-                    height: 50%;
-                    align-items: center;
-                    #nav-toggle { cursor: pointer; padding: 10px 35px 16px 0px; }
-                    #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
-                      cursor: pointer;
-                      border-radius: 5px;
-                      height: 3px;
-                      width: 35px;
-                      background: white;
-                      position: absolute;
-                      display: block;
-                      content: '';
-                    }
-                    #nav-toggle span:before {
-                      top: -10px; 
-                    }
-                    #nav-toggle span:after {
-                      bottom: -10px;
-                    }
+    body{
 
-                    #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
-                      transition: all 500ms ease-in-out;
-                    }
-                    #nav-toggle.active span {
-                      background-color: transparent;
-                    }
-                    #nav-toggle.active span:before, #nav-toggle.active span:after {
-                      top: 0;
-                    }
-                    #nav-toggle.active span:before {
-                      transform: rotate(45deg);
-                    }
-                    #nav-toggle.active span:after {
-                      transform: rotate(-45deg);
-                    }
-                    img{
+        header{
+            .nav__responsive{
+                display: block;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 3;
+                width: 450px;
+                height: 100vh;
+                background-color: $negro2;
+                .nav__responsive_top{
+                    overflow: hidden;
+                    width: fit-content;
+                    margin: auto;
+                    height: 130px;
+                    display: flex;
+                    align-items: center;
+                    h2{
+                        font-size: 120px;
+                        color: $blanco;
+                        font-family: "Pathway Gothic One", sans-serif;
+                        font-style: italic;
+                        font-weight: 900;
+                    }img{
                         height: 150%;
                     }
-                    .nav__search_container{
-                        display: flex;
-                        align-items: center;
-                        border-bottom: 2px solid $gris;
-                        border-right: 2px solid $gris;
-                        padding-right: 0.5%;
-                        border-radius: 10px;
-                        input{
-                            background-color: transparent;
-                            height: 35px;
-                            width: 600px;
-                            outline: none;
-                            text-indent: 10px;
-                            border-radius: 5px;
-                            border: none;
-                            color: $blanco;
-                            font-size: 20px;
-                            
-                                
-                            
-                        }
-                        .nav__search_icon{
-                            cursor: pointer;
-                            height: 30px;
-                            filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
-                        }
-                    }
-                    .entraoregistrate{
-                        display: none;
-                        a{
-                            font-size: 20px ;
-                            color: $gris;
-                            text-decoration: none;
+                }
+                .nav__responsive_content{
+                    width: 90%;
+                    margin: auto;
+                    ul{
+                        li{
+                            width: 100%;
+                            // text-indent: 20px;
+                            margin: 3% 0px;
+                            list-style: none;
+                            a{
+                                margin-left: 30px;
+                                font-size: 30px;
+                                color: $gris;
+                                &:hover{
+                                    color: $blanco;
+                                    
+                                }
+                            }
                             &:hover{
-                                color: $blanco;
+                                &::before{
+                                    content: "";
+                                    height: 100%;
+                                    border: $blanco 1px solid;
+                                }
                             }
                         }
                     }
-                    .nav__cart_icon{
-                        height: 40px;
-                        filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
-                        cursor: pointer;
-                    
-                    }
-                    
                 }
-                .nav__barraInferior{
-                    display: none;
+            }
+            nav{
+                .nav_container{
+                    height: 100%;
+                    .nav__barrasuperior{
+                        height: 100%;
+                        #nav-toggle {z-index: 5; cursor: pointer; padding: 10px 35px 16px 0px; }
+                        #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+                          cursor: pointer;
+                          border-radius: 5px;
+                          height: 3px;
+                          width: 35px;
+                          background: white;
+                          position: absolute;
+                          display: block;
+                          content: '';
+                        }
+                        #nav-toggle span:before {
+                          top: -10px; 
+                        }
+                        #nav-toggle span:after {
+                          bottom: -10px;
+                        }
+    
+                        #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+                          transition: all 500ms ease-in-out;
+                        }
+                        #nav-toggle.active span {
+                          background-color: transparent;
+                        }
+                        #nav-toggle.active span:before, #nav-toggle.active span:after {
+                          top: 0;
+                        }
+                        #nav-toggle.active span:before {
+                          transform: rotate(45deg);
+                        }
+                        #nav-toggle.active span:after {
+                          transform: rotate(-45deg);
+                        }
+                        img{
+                            height: 100%;
+                        }
+                        .entraoregistrate{
+                            display: none;
+                        }
+
+                        
+                    }
+                    .nav__barraInferior{
+                        display: none;
+                    }
                 }
             }
         }
@@ -580,7 +597,84 @@ footer{
     }
 
 }
+
+@media screen and (max-width:992px) {
+    .nav__spacer{
+        display: block;
+        width: 14vw;
+    }
+    .logo{
+        min-height: 140%;
+        ::before{
+            content: "NIKE";
+        font-size: 80px;
+        font-family: "Pathway Gothic One", sans-serif;
+        font-style: italic;
+        font-weight: 800;
+        color: $blanco;
+        position: absolute;
+        top: 0%;
+        left: 5%;
+        }
+    }
+   
+    body{
+        header{
+            nav{
+                .nav_container{
+                    
+                    .nav__barrasuperior{
+                        .nav__search_container{
+                            display: none;
+                        }
+                    }   
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (max-width:578px) {
+    .logo{
+        ::before{
+        left: 15vw;
+        }
+    }
+    body{
+        header{
+            nav{
+                .nav_container{
+                    
+                    .nav__barrasuperior{
+                        justify-content: center;
+                        .nav__cart_icon{
+                            display: none;
+                        }
+                        #nav-toggle{
+                            position: absolute;
+                            right: 2%;
+                        }
+                        .nav__spacer{
+                            display: none;
+                        }
+                        .nav__spacer1{
+                            display: block;
+                            width: 30%;
+                        }
+                    }   
+                }
+            }
+        }
+    }
+}
+
 @media screen and (max-width:420px) {
+    .logo{
+        ::before{
+        left: 4vw;
+        }
+    }
     footer{
         row-gap: 30px;
         height: 600px;

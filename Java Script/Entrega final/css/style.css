@@ -28,8 +28,19 @@
   transform: rotate(180deg);
 }
 
+.nav__spacer {
+  display: none;
+}
+
+.nav__spacer1 {
+  display: none;
+}
+
 body {
   background-color: #403D39;
+}
+body header .nav__responsive {
+  display: none;
 }
 body header nav {
   overflow: hidden;
@@ -78,7 +89,6 @@ body header nav .nav_container .nav__barrasuperior .nav__search_container .nav__
 body header nav .nav_container .nav__barrasuperior .entraoregistrate a {
   font-size: 20px;
   color: #CCC4B8;
-  text-decoration: none;
 }
 body header nav .nav_container .nav__barrasuperior .entraoregistrate a:hover {
   color: #FFFCF2;
@@ -415,27 +425,70 @@ footer .notations div a:hover {
 }
 
 @media screen and (max-width: 1200px) {
-  header nav {
-    width: 100%;
-    height: 100px;
+  body header .nav__responsive {
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 3;
+    width: 450px;
+    height: 100vh;
     background-color: #252422;
   }
-  header nav .nav_container {
-    height: 100%;
-  }
-  header nav .nav_container .nav__barrasuperior {
+  body header .nav__responsive .nav__responsive_top {
+    overflow: hidden;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
     margin: auto;
+    height: 130px;
     display: flex;
-    justify-content: space-between;
-    width: 95%;
-    height: 50%;
     align-items: center;
   }
-  header nav .nav_container .nav__barrasuperior #nav-toggle {
+  body header .nav__responsive .nav__responsive_top h2 {
+    font-size: 120px;
+    color: #FFFCF2;
+    font-family: "Pathway Gothic One", sans-serif;
+    font-style: italic;
+    font-weight: 900;
+  }
+  body header .nav__responsive .nav__responsive_top img {
+    height: 150%;
+  }
+  body header .nav__responsive .nav__responsive_content {
+    width: 90%;
+    margin: auto;
+  }
+  body header .nav__responsive .nav__responsive_content ul li {
+    width: 100%;
+    margin: 3% 0px;
+    list-style: none;
+  }
+  body header .nav__responsive .nav__responsive_content ul li a {
+    margin-left: 30px;
+    font-size: 30px;
+    color: #CCC4B8;
+  }
+  body header .nav__responsive .nav__responsive_content ul li a:hover {
+    color: #FFFCF2;
+  }
+  body header .nav__responsive .nav__responsive_content ul li:hover::before {
+    content: "";
+    height: 100%;
+    border: #FFFCF2 1px solid;
+  }
+  body header nav .nav_container {
+    height: 100%;
+  }
+  body header nav .nav_container .nav__barrasuperior {
+    height: 100%;
+  }
+  body header nav .nav_container .nav__barrasuperior #nav-toggle {
+    z-index: 5;
     cursor: pointer;
     padding: 10px 35px 16px 0px;
   }
-  header nav .nav_container .nav__barrasuperior #nav-toggle span, header nav .nav_container .nav__barrasuperior #nav-toggle span:before, header nav .nav_container .nav__barrasuperior #nav-toggle span:after {
+  body header nav .nav_container .nav__barrasuperior #nav-toggle span, body header nav .nav_container .nav__barrasuperior #nav-toggle span:before, body header nav .nav_container .nav__barrasuperior #nav-toggle span:after {
     cursor: pointer;
     border-radius: 5px;
     height: 3px;
@@ -445,71 +498,34 @@ footer .notations div a:hover {
     display: block;
     content: "";
   }
-  header nav .nav_container .nav__barrasuperior #nav-toggle span:before {
+  body header nav .nav_container .nav__barrasuperior #nav-toggle span:before {
     top: -10px;
   }
-  header nav .nav_container .nav__barrasuperior #nav-toggle span:after {
+  body header nav .nav_container .nav__barrasuperior #nav-toggle span:after {
     bottom: -10px;
   }
-  header nav .nav_container .nav__barrasuperior #nav-toggle span, header nav .nav_container .nav__barrasuperior #nav-toggle span:before, header nav .nav_container .nav__barrasuperior #nav-toggle span:after {
+  body header nav .nav_container .nav__barrasuperior #nav-toggle span, body header nav .nav_container .nav__barrasuperior #nav-toggle span:before, body header nav .nav_container .nav__barrasuperior #nav-toggle span:after {
     transition: all 500ms ease-in-out;
   }
-  header nav .nav_container .nav__barrasuperior #nav-toggle.active span {
+  body header nav .nav_container .nav__barrasuperior #nav-toggle.active span {
     background-color: transparent;
   }
-  header nav .nav_container .nav__barrasuperior #nav-toggle.active span:before, header nav .nav_container .nav__barrasuperior #nav-toggle.active span:after {
+  body header nav .nav_container .nav__barrasuperior #nav-toggle.active span:before, body header nav .nav_container .nav__barrasuperior #nav-toggle.active span:after {
     top: 0;
   }
-  header nav .nav_container .nav__barrasuperior #nav-toggle.active span:before {
+  body header nav .nav_container .nav__barrasuperior #nav-toggle.active span:before {
     transform: rotate(45deg);
   }
-  header nav .nav_container .nav__barrasuperior #nav-toggle.active span:after {
+  body header nav .nav_container .nav__barrasuperior #nav-toggle.active span:after {
     transform: rotate(-45deg);
   }
-  header nav .nav_container .nav__barrasuperior img {
-    height: 150%;
+  body header nav .nav_container .nav__barrasuperior img {
+    height: 100%;
   }
-  header nav .nav_container .nav__barrasuperior .nav__search_container {
-    display: flex;
-    align-items: center;
-    border-bottom: 2px solid #CCC4B8;
-    border-right: 2px solid #CCC4B8;
-    padding-right: 0.5%;
-    border-radius: 10px;
-  }
-  header nav .nav_container .nav__barrasuperior .nav__search_container input {
-    background-color: transparent;
-    height: 35px;
-    width: 600px;
-    outline: none;
-    text-indent: 10px;
-    border-radius: 5px;
-    border: none;
-    color: #FFFCF2;
-    font-size: 20px;
-  }
-  header nav .nav_container .nav__barrasuperior .nav__search_container .nav__search_icon {
-    cursor: pointer;
-    height: 30px;
-    filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
-  }
-  header nav .nav_container .nav__barrasuperior .entraoregistrate {
+  body header nav .nav_container .nav__barrasuperior .entraoregistrate {
     display: none;
   }
-  header nav .nav_container .nav__barrasuperior .entraoregistrate a {
-    font-size: 20px;
-    color: #CCC4B8;
-    text-decoration: none;
-  }
-  header nav .nav_container .nav__barrasuperior .entraoregistrate a:hover {
-    color: #FFFCF2;
-  }
-  header nav .nav_container .nav__barrasuperior .nav__cart_icon {
-    height: 40px;
-    filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
-    cursor: pointer;
-  }
-  header nav .nav_container .nav__barraInferior {
+  body header nav .nav_container .nav__barraInferior {
     display: none;
   }
   footer {
@@ -547,7 +563,55 @@ footer .notations div a:hover {
     text-indent: 0px;
   }
 }
+@media screen and (max-width: 992px) {
+  .nav__spacer {
+    display: block;
+    width: 14vw;
+  }
+  .logo {
+    min-height: 140%;
+  }
+  .logo ::before {
+    content: "NIKE";
+    font-size: 80px;
+    font-family: "Pathway Gothic One", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    color: #FFFCF2;
+    position: absolute;
+    top: 0%;
+    left: 5%;
+  }
+  body header nav .nav_container .nav__barrasuperior .nav__search_container {
+    display: none;
+  }
+}
+@media screen and (max-width: 578px) {
+  .logo ::before {
+    left: 15vw;
+  }
+  body header nav .nav_container .nav__barrasuperior {
+    justify-content: center;
+  }
+  body header nav .nav_container .nav__barrasuperior .nav__cart_icon {
+    display: none;
+  }
+  body header nav .nav_container .nav__barrasuperior #nav-toggle {
+    position: absolute;
+    right: 2%;
+  }
+  body header nav .nav_container .nav__barrasuperior .nav__spacer {
+    display: none;
+  }
+  body header nav .nav_container .nav__barrasuperior .nav__spacer1 {
+    display: block;
+    width: 30%;
+  }
+}
 @media screen and (max-width: 420px) {
+  .logo ::before {
+    left: 4vw;
+  }
   footer {
     row-gap: 30px;
     height: 600px;
