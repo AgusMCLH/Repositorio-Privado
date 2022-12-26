@@ -73,7 +73,7 @@ body header nav .nav_container .nav__barrasuperior .nav__search_container input 
 body header nav .nav_container .nav__barrasuperior .nav__search_container .nav__search_icon {
   cursor: pointer;
   height: 30px;
-  filter: invert(19%) sepia(2%) saturate(2046%) hue-rotate(355deg) brightness(103%) contrast(87%);
+  filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
 }
 body header nav .nav_container .nav__barrasuperior .entraoregistrate a {
   font-size: 20px;
@@ -87,9 +87,6 @@ body header nav .nav_container .nav__barrasuperior .nav__cart_icon {
   height: 40px;
   filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
   cursor: pointer;
-}
-body header nav .nav_container .nav__barrasuperior .nav__cart_icon:hover {
-  filter: invert(45%) sepia(28%) saturate(4987%) hue-rotate(348deg) brightness(97%) contrast(88%);
 }
 body header nav .nav_container .nav__barraInferior {
   height: 50%;
@@ -121,7 +118,7 @@ body header nav .nav_container .nav__barraInferior ul li a:hover {
   color: #FFFCF2;
 }
 body main .hero_slider__container {
-  margin: 5vw 0px;
+  margin: 3vw 0px;
 }
 body main .hero_slider__container .hero_slider .hero_slider__content {
   position: relative;
@@ -413,7 +410,108 @@ footer .notations div a:hover {
   color: #FFFCF2;
 }
 
+.icon_active {
+  filter: invert(45%) sepia(28%) saturate(4987%) hue-rotate(348deg) brightness(97%) contrast(88%);
+}
+
 @media screen and (max-width: 1200px) {
+  header nav {
+    width: 100%;
+    height: 100px;
+    background-color: #252422;
+  }
+  header nav .nav_container {
+    height: 100%;
+  }
+  header nav .nav_container .nav__barrasuperior {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    height: 50%;
+    align-items: center;
+  }
+  header nav .nav_container .nav__barrasuperior #nav-toggle {
+    cursor: pointer;
+    padding: 10px 35px 16px 0px;
+  }
+  header nav .nav_container .nav__barrasuperior #nav-toggle span, header nav .nav_container .nav__barrasuperior #nav-toggle span:before, header nav .nav_container .nav__barrasuperior #nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 5px;
+    height: 3px;
+    width: 35px;
+    background: white;
+    position: absolute;
+    display: block;
+    content: "";
+  }
+  header nav .nav_container .nav__barrasuperior #nav-toggle span:before {
+    top: -10px;
+  }
+  header nav .nav_container .nav__barrasuperior #nav-toggle span:after {
+    bottom: -10px;
+  }
+  header nav .nav_container .nav__barrasuperior #nav-toggle span, header nav .nav_container .nav__barrasuperior #nav-toggle span:before, header nav .nav_container .nav__barrasuperior #nav-toggle span:after {
+    transition: all 500ms ease-in-out;
+  }
+  header nav .nav_container .nav__barrasuperior #nav-toggle.active span {
+    background-color: transparent;
+  }
+  header nav .nav_container .nav__barrasuperior #nav-toggle.active span:before, header nav .nav_container .nav__barrasuperior #nav-toggle.active span:after {
+    top: 0;
+  }
+  header nav .nav_container .nav__barrasuperior #nav-toggle.active span:before {
+    transform: rotate(45deg);
+  }
+  header nav .nav_container .nav__barrasuperior #nav-toggle.active span:after {
+    transform: rotate(-45deg);
+  }
+  header nav .nav_container .nav__barrasuperior img {
+    height: 150%;
+  }
+  header nav .nav_container .nav__barrasuperior .nav__search_container {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #CCC4B8;
+    border-right: 2px solid #CCC4B8;
+    padding-right: 0.5%;
+    border-radius: 10px;
+  }
+  header nav .nav_container .nav__barrasuperior .nav__search_container input {
+    background-color: transparent;
+    height: 35px;
+    width: 600px;
+    outline: none;
+    text-indent: 10px;
+    border-radius: 5px;
+    border: none;
+    color: #FFFCF2;
+    font-size: 20px;
+  }
+  header nav .nav_container .nav__barrasuperior .nav__search_container .nav__search_icon {
+    cursor: pointer;
+    height: 30px;
+    filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
+  }
+  header nav .nav_container .nav__barrasuperior .entraoregistrate {
+    display: none;
+  }
+  header nav .nav_container .nav__barrasuperior .entraoregistrate a {
+    font-size: 20px;
+    color: #CCC4B8;
+    text-decoration: none;
+  }
+  header nav .nav_container .nav__barrasuperior .entraoregistrate a:hover {
+    color: #FFFCF2;
+  }
+  header nav .nav_container .nav__barrasuperior .nav__cart_icon {
+    height: 40px;
+    filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
+    cursor: pointer;
+  }
+  header nav .nav_container .nav__barraInferior {
+    display: none;
+  }
   footer {
     height: -webkit-fit-content;
     height: -moz-fit-content;

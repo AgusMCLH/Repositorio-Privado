@@ -80,7 +80,7 @@ body{
                         .nav__search_icon{
                             cursor: pointer;
                             height: 30px;
-                            filter: invert(19%) sepia(2%) saturate(2046%) hue-rotate(355deg) brightness(103%) contrast(87%);
+                            filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
                         }
                     }
                     .entraoregistrate{
@@ -97,10 +97,7 @@ body{
                         height: 40px;
                         filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
                         cursor: pointer;
-                        &:hover{
-                            filter: invert(45%) sepia(28%) saturate(4987%) hue-rotate(348deg) brightness(97%) contrast(88%);
 
-                        }
                     }
                 }
                 .nav__barraInferior{
@@ -139,7 +136,7 @@ body{
     
     main{
         .hero_slider__container{
-            margin: 5vw 0px;
+            margin: 3vw 0px;
             .hero_slider{
                 .hero_slider__content{
                     position: relative;
@@ -435,7 +432,117 @@ footer{
     }
 }
 
+.icon_active{
+    filter: invert(45%) sepia(28%) saturate(4987%) hue-rotate(348deg) brightness(97%) contrast(88%);
+}
+
 @media screen and (max-width:1200px) {
+    header{
+        nav{
+            // overflow: hidden;
+            width: 100%;
+            height: 100px;
+            background-color: $negro2;
+            .nav_container{
+                height: 100%;
+                .nav__barrasuperior{
+                    margin: auto;
+                    display: flex;
+                    justify-content: space-between;
+                    width: 95%;
+                    height: 50%;
+                    align-items: center;
+                    #nav-toggle { cursor: pointer; padding: 10px 35px 16px 0px; }
+                    #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+                      cursor: pointer;
+                      border-radius: 5px;
+                      height: 3px;
+                      width: 35px;
+                      background: white;
+                      position: absolute;
+                      display: block;
+                      content: '';
+                    }
+                    #nav-toggle span:before {
+                      top: -10px; 
+                    }
+                    #nav-toggle span:after {
+                      bottom: -10px;
+                    }
+
+                    #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+                      transition: all 500ms ease-in-out;
+                    }
+                    #nav-toggle.active span {
+                      background-color: transparent;
+                    }
+                    #nav-toggle.active span:before, #nav-toggle.active span:after {
+                      top: 0;
+                    }
+                    #nav-toggle.active span:before {
+                      transform: rotate(45deg);
+                    }
+                    #nav-toggle.active span:after {
+                      transform: rotate(-45deg);
+                    }
+                    img{
+                        height: 150%;
+                    }
+                    .nav__search_container{
+                        display: flex;
+                        align-items: center;
+                        border-bottom: 2px solid $gris;
+                        border-right: 2px solid $gris;
+                        padding-right: 0.5%;
+                        border-radius: 10px;
+                        input{
+                            background-color: transparent;
+                            height: 35px;
+                            width: 600px;
+                            outline: none;
+                            text-indent: 10px;
+                            border-radius: 5px;
+                            border: none;
+                            color: $blanco;
+                            font-size: 20px;
+                            
+                                
+                            
+                        }
+                        .nav__search_icon{
+                            cursor: pointer;
+                            height: 30px;
+                            filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
+                        }
+                    }
+                    .entraoregistrate{
+                        display: none;
+                        a{
+                            font-size: 20px ;
+                            color: $gris;
+                            text-decoration: none;
+                            &:hover{
+                                color: $blanco;
+                            }
+                        }
+                    }
+                    .nav__cart_icon{
+                        height: 40px;
+                        filter: invert(86%) sepia(10%) saturate(265%) hue-rotate(357deg) brightness(93%) contrast(85%);
+                        cursor: pointer;
+                    
+                    }
+                    
+                }
+                .nav__barraInferior{
+                    display: none;
+                }
+            }
+        }
+    }
+
+
+
     footer{
         height: fit-content;
         text-align: center;
