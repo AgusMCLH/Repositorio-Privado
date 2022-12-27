@@ -444,7 +444,7 @@ footer{
     filter: invert(45%) sepia(28%) saturate(4987%) hue-rotate(348deg) brightness(97%) contrast(88%);
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width:2000px) {
     body{
 
         header{
@@ -481,7 +481,7 @@ footer{
                         li{
                             width: 100%;
                             // text-indent: 20px;
-                            margin: 3% 0px;
+                            padding: 3% 0px;
                             list-style: none;
                             a{
                                 margin-left: 30px;
@@ -494,8 +494,10 @@ footer{
                             }
                             &:hover{
                                 &::before{
-                                    content: "";
+                                    content: "O";
                                     height: 100%;
+                                    width: 50px;
+                                    color: $blanco;
                                     border: $blanco 1px solid;
                                 }
                             }

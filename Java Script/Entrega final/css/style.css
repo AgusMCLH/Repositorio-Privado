@@ -424,7 +424,7 @@ footer .notations div a:hover {
   filter: invert(45%) sepia(28%) saturate(4987%) hue-rotate(348deg) brightness(97%) contrast(88%);
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 2000px) {
   body header .nav__responsive {
     display: block;
     position: absolute;
@@ -461,7 +461,7 @@ footer .notations div a:hover {
   }
   body header .nav__responsive .nav__responsive_content ul li {
     width: 100%;
-    margin: 3% 0px;
+    padding: 3% 0px;
     list-style: none;
   }
   body header .nav__responsive .nav__responsive_content ul li a {
@@ -473,8 +473,10 @@ footer .notations div a:hover {
     color: #FFFCF2;
   }
   body header .nav__responsive .nav__responsive_content ul li:hover::before {
-    content: "";
+    content: "O";
     height: 100%;
+    width: 50px;
+    color: #FFFCF2;
     border: #FFFCF2 1px solid;
   }
   body header nav .nav_container {
