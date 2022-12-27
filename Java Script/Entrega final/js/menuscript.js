@@ -2,28 +2,17 @@
 document.getElementById('btn_open').addEventListener('click', open_close_menu);
 
 //Declaramos variables
-var side_menu = document.getElementById('menu_side');
-var btn_open = document.getElementById('btn_open');
-var body = document.getElementById('body');
-var logo = document.getElementById('fab_nike');
-var header = document.getElementById('header_content');
-var searchcamp = document.getElementById('nav__search_input');
-var searchbutton = document.getElementById('search_button');
+let side_menu = document.getElementById('menu_side');
+let btn_open = document.getElementById('btn_open');
+let body = document.getElementById('body');
+let logo = document.getElementById('fab_nike');
+let header = document.getElementById('header_content');
+let searchcamp = document.getElementById('nav__search_input');
+let searchbutton = document.getElementById('search_button');
 
+//alterna el campo de busqueda
 searchbutton.addEventListener('click', () => {
-  if (searchcamp.classList.contains('input_transition_active')) {
-    console.log(searchcamp.value);
-    searchcamp.classList.toggle('input_transition_active');
-  } else {
-    searchcamp.classList.toggle('input_transition_active');
-  }
-  // }
-});
-
-searchcamp.addEventListener('keydown', (e) => {
-  if (e.key == 'Enter') {
-    searchbutton.click();
-  }
+  searchcamp.classList.toggle('input_transition_active');
 });
 
 //Evento para mostrar y ocultar menú

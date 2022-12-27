@@ -25,10 +25,48 @@ header{
     position: fixed;
     top: 0;
     z-index: 200;
+    transition: 300ms;
 }
 
+.header__content{
+    width: calc(100% - 80px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: 300ms;
+}
+.header__content_active{
+    width: calc(100% - 240px);
+}
+.header__search{
+    width: fit-content;
+    overflow: hidden;
+    position: absolute;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+.header__search div{
+    border-bottom: 1px solid black;
+}
+.header__search i{
+    cursor: pointer;
+}
+.fa-cart-shopping{
+    margin-left: 20px;
+}
 
-
+.header__search div input{
+    border: none;
+    width: 0px;
+    padding-bottom: 5px;
+    outline: none;  
+    background-color: transparent;
+    transition: width 300ms;
+}
+.header__search .input_transition_active{
+    width: 50vw;
+}
 .fab__nike{
     position: relative;
     top: -0px;
@@ -161,8 +199,19 @@ a.selected{
 
 
 @media screen and (max-width: 760px){
+    body{
+        margin-left: 0px;
+    }
+    header{
+        margin-left: 80px;
+    }
     .body_move{
         margin-left: 0px;
+    }
+
+    .header__content_active{
+        width: calc(100% + 80px);
+    
     }
 
     .menu__side_move{
