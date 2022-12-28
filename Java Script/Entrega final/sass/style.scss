@@ -545,6 +545,7 @@ footer{
 
 }
 main{
+    position: relative;
     .showingproduct_container{
         .buttonclose{
             width: 30px;
@@ -559,20 +560,96 @@ main{
             }
         }
         z-index: 3;
-        width: calc(100% - 80px);
-        height: 1372px;
+        width: 100%;
+        height: 100%;
         background-color: rgba($color: $gris, $alpha: 0.3);
-        position: fixed;
+        position: absolute;
         top: -10px;
         right: 0px;
         display: flex;
         justify-content: center;
         .showingproduct_main{
-            position: relative;
+            position: fixed;
             top: 89px;
             background-color: $negro1;
-            height: 100%;
+            height: fit-content;
             width: 80%;
+            overflow: hidden;
+            .showingproduct_main_content{
+                padding-bottom: 50px;
+                position: relative;
+                width: 90%;
+                margin: 50px auto;
+                .modal__image_cont{
+                    width: 400px;
+                    height: 400px;
+                    img{
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                .modal_right{
+                    position: absolute;
+                    left: 415px;
+                    top: 0px;
+                    width: 56%;
+                    .modal__title_cont{
+                        h3{
+                            padding: 15px;
+                            font-size: 90px;
+                            font-style: italic;
+                            font-weight: 900;
+                            background: linear-gradient(97.87deg, #ED4D10 14.25%, #FFFFFF 131.66%);
+                            font-family: "Pathway Gothic One", sans-serif;
+                            background-color: $blanco;
+                            -webkit-text-fill-color: transparent;
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            line-height: 80px;
+                        }
+                    }
+                    .modal__price_cont{
+                        p{
+                            margin-bottom: 20px;
+                            font-style: italic;
+                            font-weight: 900;
+                            font-size: 30px;
+                            font-family: "Pathway Gothic One", sans-serif;
+                            color: $blanco;
+    
+                        }
+                    }
+                    .modal__buttons_cont{
+                        display: flex;
+                        flex-direction: column;
+                        width: 550px;
+                        gap: 20px;
+                        a{
+                            display: flex;
+                            width: 100%;
+                            align-items: center;
+                            justify-content: center;
+                            height: 50px;
+                            color: $blanco;
+                            font-size: 20px;
+                            border-radius: 5px;
+                            transition: 300ms;
+                            i{
+                                margin: 0px 5px;
+                            }   
+                            &:hover{
+                                scale: 1.03;
+                            }
+                        }
+                        .modal__buttonpay{
+                            background-color: $naranja;
+                        }
+                        .modal__buttoncart{
+                            background-color: $negro2;
+                        }
+                    }
+                }
+            }
         }
     }
 
