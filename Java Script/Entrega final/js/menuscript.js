@@ -27,6 +27,9 @@ function open_close_menu() {
     header.classList.remove('header__content_active');
   }
 }
+document
+  .getElementById('cart__toggle_button')
+  .addEventListener('click', () => {});
 
 //Si el ancho de la página es menor a 760px, ocultará el menú al recargar la página
 
