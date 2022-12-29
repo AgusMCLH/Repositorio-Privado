@@ -41,11 +41,11 @@ body{
     .carrito_container{
         display: block;
         background-color: $negro2;
-        z-index: 3;
-        position: absolute;
+        z-index: 5;
+        position: fixed;
         right: 20px;
         width: 500px;
-        height: fit-content;
+        height: 0px;
         overflow: hidden;
         .carrito{
             padding: 5px;
@@ -53,6 +53,17 @@ body{
             position: relative;
             .carrito__productos{
                 height: 200px;
+                overflow: scroll;
+                .carrito__sinproducto{
+                    color: $naranja;
+                    font-size: 30px;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: underline;
+                }
                 .carrito__producto{
                     display: flex;
                     justify-content: space-between;
@@ -67,6 +78,12 @@ body{
                         img{
                             height: 75px;
                             width: 75px;
+                        }
+                    }
+                    .producto__nombre{
+                        width: 50%;
+                        p{
+                            width: 100%;
                         }
                     }
                     
@@ -111,6 +128,9 @@ body{
                 }
             }
         }
+    }
+    .carrito_container_active{
+        height: calc(280px + 60px);
     }
     margin-left: 80px;
     margin-top: 80px;
@@ -954,6 +974,81 @@ main{
     bottom: 0;
     right: 0;
   }
+
+.rlnike{
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    background-color: $negro2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .swal2-container{
+        position: absolute ;
+        height: 100vh;
+    }
+    .goback{
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        a{
+            color: $blanco;
+        }
+    }
+    .formcontainer{
+        background-color: $negro1;
+        width: 20vw;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: fixed;
+        top: 30%;
+        .inputs_cont{
+            display: flex;
+            flex-direction: column;
+            color: $blanco;
+            font-size: 20px;
+            font-family: "Pathway Gothic One", sans-serif;
+            font-style: italic;
+            width: 80%;
+            div{
+                margin-bottom: 30px;
+                display: flex;
+                flex-direction: column;
+                input{
+                    background-color: transparent;
+                    border: none;
+                    border-bottom: 1px solid $negro2;
+                    border-right: 1px solid $negro2;
+                    border-radius: 3px;
+                    outline: none;  
+                    color: $blanco;
+                    margin-top: 5px;
+                }   
+            }
+        }
+        .botones{
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            a{
+                background-color: $naranja;
+                padding:5px 40%;
+                border-radius: 3px;
+                color: $blanco;
+                font-size: 15px;
+                font-family: "Pathway Gothic One", sans-serif;
+                font-style: italic;
+            }
+        }
+    }
+}
+
   @-webkit-keyframes load3 {
     0% {
       -webkit-transform: rotate(0deg);

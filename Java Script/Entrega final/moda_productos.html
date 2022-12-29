@@ -30,10 +30,21 @@
           </div>
           <div class="header__search"><div>
               <input type="text" id="nav__search_input"><i class="fa-solid fa-magnifying-glass" id="search_button"></i>
-          </div><i class="fa-solid fa-cart-shopping cart_icon"></i></div>
+          </div><i class="fa-solid fa-cart-shopping cart_icon" id="cart__toggle_button"></i></div>
       </div>
-  </header>
-
+    </header>
+    <div class="carrito_container" id="carrito_container">
+      <div class="carrito">
+        <div class="carrito__productos" id="contenedorDeProductosEnCarrito">
+          <p class='carrito__sinproducto'>No tienes productos en tu carrito</p>
+          
+        </div>
+        <div class="carrito__info" id="carrito_info">
+          <div class="subtotal"><p id="carritoSubTotal">$5000</p></div>
+          <div class="button"><p href="#"><i class="fa-solid fa-bag-shopping"></i>Pagar</p></div>
+        </div>
+      </div>
+    </div>
   <div class="menu__side" id="menu_side">
     <div class="name__page">
       <img src="assets/nike.svg" class="fab__nike" id="fab_nike"></img>
@@ -69,27 +80,21 @@
         </div>
       </a>
 
-      <a href="#">
+      <a href="login.html">
         <div class="option">
           <i class="fa-solid fa-arrow-right-to-bracket"></i>
           <h4>Iniciar sesion</h4>
-        </div>
-      </a>
-      <a href="#">
-        <div class="option">
-          <i class="fa-solid fa-scroll"></i>
-          <h4>Registrarse</h4>
         </div>
       </a>
     </div>
   </div>
     <main>
       <div class="showingproduct_container" id="mainproductpage">
-        <div class="buttonclose"><i class="fa-solid fa-xmark" id="mainproductclosebutton"></i></div>
+        <div class="buttonclose" onclick="cerrarmodal()"><i class="fa-solid fa-xmark" id="mainproductclosebutton"></i></div>
         <div class="showingproduct_main">
           <div class="showingproduct_main_content">
             <div class="modal__image_cont" id="modal_image_cont">
-              <img src="img/poductImage/nikeWinflow_9.png" alt="">
+              <img src="img/poductImage/nikeWinflow_9.png" alt="nikeWinflow_9">
             </div>
             <div class="modal_right">
               <div class="modal__title_cont">
@@ -98,7 +103,7 @@
               <div class="modal__price_cont">
                 <p id="modal__price">UYU 6990</p>
               </div>
-              <div class="modal__buttons_cont">
+              <div class="modal__buttons_cont" id="modal__buttons_cont">
                 <a href="" class="modal__buttonpay"><i class="fa-solid fa-bag-shopping"></i>  Comprar</a>
                 <a href="" class="modal__buttoncart"><i class="fa-solid fa-cart-shopping cart_icon"></i>Agregar al carrito</a>
               </div>
@@ -120,7 +125,7 @@
       type="text/javascript"
       src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
-    <script type="text/javascript" src="js/modaproductos.js"></script>
+    <script type="text/javascript" src="js/modaProductos.js"></script>
     <script src="js/sliders.js"></script>
     <script src="js/menuscript.js"></script>
   </body>
@@ -133,19 +138,19 @@
       <div>
         <h4>ACERCA DE NIKE</h4>
         <ul>
-          <li><a href="">Noticias</a></li>
-          <li><a href="">Empleo</a></li>
-          <li><a href="">Inversores</a></li>
+          <li><a href="http://news.nike.com/">Noticias</a></li>
+          <li><a href="https://jobs.nike.com/es/">Empleo</a></li>
+          <li><a href="http://investors.nike.com/">Inversores</a></li>
         </ul>
       </div>
     </div>
     <div class="empty"></div>
     <div class="socialmedia">
       <div class="socialmedia__container">
-        <div><img src="assets/facebook.svg" alt="" /></div>
-        <div><img src="assets/instagram.svg" alt="" /></div>
-        <div><img src="assets/twitter.svg" alt="" /></div>
-        <div><img src="assets/youtube.svg" alt="" /></div>
+        <a href="https://www.facebook.com/nike"><div><img src="assets/facebook.svg" alt="facebook" /></div></a>
+        <a href="https://www.instagram.com/nike/"><div><img src="assets/instagram.svg" alt="instagram" /></div></a>
+        <a href="https://twitter.com/nike"><div><img src="assets/twitter.svg" alt="twitter" /></div></a>
+        <a href="https://www.youtube.com/@nike"><div><img src="assets/youtube.svg" alt="youtube" /></div></a>
       </div>
     </div>
     <div class="location">
@@ -159,7 +164,7 @@
     </div>
     <div class="notations">
       <div>
-        <a href="">Terminos de uso</a><a href="">Politica de privacidad</a>
+        <a href="http://agreementservice.svs.nike.com/uy/es_la/rest/agreement?agreementType=termsOfUse&uxId=com.nike.commerce.nikedotcom.web&country=UY&language=es&requestType=redirect">Terminos de uso</a><a href="https://agreementservice.svs.nike.com/rest/agreement?agreementType=privacyPolicy&uxId=default&country=UY&language=es&requestType=redirect">Politica de privacidad</a>
       </div>
     </div>
   </footer>

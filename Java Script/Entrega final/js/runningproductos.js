@@ -1,4 +1,5 @@
 let productos_global = [];
+
 let mainproductpage = document.getElementById('mainproductpage');
 const callML = () => {
   return fetch(
@@ -16,7 +17,6 @@ const render = (productos) => {
   var identificador = '';
   productos.forEach((e) => {
     identificador = "'" + e.id.toString() + "'";
-    console.log(identificador);
     acumulador += `
     <div class="product__container" onclick="productmodal(${identificador})">
     <div>
@@ -35,7 +35,7 @@ const getinfo = async () => {
 };
 
 const productmodal = (id) => {
-  console.log(id);
+  let idpreparado = "'" + id + "'";
   mainproductpage.style.display = 'flex';
   let producto_mostrado = productos_global.find((e) => e.id === id);
   document.getElementById('modal_title').innerText = producto_mostrado.title;
@@ -45,9 +45,12 @@ const productmodal = (id) => {
   document.getElementById(
     'modal__price'
   ).innerText = `UYU ${producto_mostrado.price}`;
+  document.getElementById('modal__buttons_cont').innerHTML = `
+  <a href="#" class="modal__buttonpay"><i class="fa-solid fa-bag-shopping"></i>  Comprar</a>
+  <a href="#" class="modal__buttoncart" onclick="agregaralcarrito(${idpreparado})"><i class="fa-solid fa-cart-shopping cart_icon"></i>Agregar al carrito</a>`;
 };
+
 document.addEventListener('keydown', (e) => {
-  console.log(e.key);
   if (e.key == 'Escape') {
     document.getElementById('mainproductclosebutton').click();
   }
@@ -59,3 +62,7 @@ document
   });
 
 getinfo();
+
+const cerrarmodal = () => {
+  document.getElementById('mainproductpage').style.display = 'none';
+};
