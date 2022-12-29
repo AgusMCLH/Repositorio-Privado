@@ -65,14 +65,12 @@ const jsonearrespuestaproducto = (objeto) => {
   return objeto.json();
 };
 const cargarcarrito = async () => {
-  console.log('cargando');
   let productosencarrito =
     [
       ...new Set(
         JSON.parse(localStorage.getItem('supermegacarrito2k22hechoporAD'))
       ),
     ] || [];
-  console.log(productosencarrito.length);
   if (productosencarrito.length == 0) {
     document.getElementById('contenedorDeProductosEnCarrito').innerHTML =
       "<p class='carrito__sinproducto'>No tienes productos en tu carrito</p>";
@@ -122,12 +120,8 @@ const eliminardelcarrito = (id) => {
         JSON.parse(localStorage.getItem('supermegacarrito2k22hechoporAD'))
       ),
     ] || [];
-  console.log(productosencarrito);
-  console.log(`ID a buscar: ${id}`);
-  console.log(productosencarrito.indexOf(idpreparado));
   let indexeliminado = productosencarrito.indexOf(idpreparado);
   productosencarrito.splice(indexeliminado, 1);
-  console.log(productosencarrito);
   localStorage.setItem(
     'supermegacarrito2k22hechoporAD',
     JSON.stringify(productosencarrito)
