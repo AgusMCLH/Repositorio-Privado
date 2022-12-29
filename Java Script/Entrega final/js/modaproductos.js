@@ -1,16 +1,19 @@
 let productos_global = [];
 
 let mainproductpage = document.getElementById('mainproductpage');
+//llamada a Mercado Libre para recuperar los productos
 const callML = () => {
   return fetch(
     'https://api.mercadolibre.com/sites/MLU/search?q=remeras+nike#json'
   );
 };
 
+//Genera un objeto json a partir de la llamda
 const jsonearrespuesta = (objeto) => {
   return objeto.json();
 };
 
+// renderiza en el DOM los poductos
 const render = (productos) => {
   productos_global = productos;
   let acumulador = '';
@@ -28,12 +31,15 @@ const render = (productos) => {
   });
   document.getElementById('productoslista').innerHTML = acumulador;
 };
+
+//"Centralita" que maneja las funciones asincronicas
 const getinfo = async () => {
   let respuesta = await callML();
   respuesta = await jsonearrespuesta(respuesta);
   render(await respuesta.results);
 };
 
+//muestra el modal de los productos y carga los datos
 const productmodal = (id) => {
   let idpreparado = "'" + id + "'";
   mainproductpage.style.display = 'flex';
@@ -50,6 +56,7 @@ const productmodal = (id) => {
   <a href="#" class="modal__buttoncart" onclick="agregaralcarrito(${idpreparado})"><i class="fa-solid fa-cart-shopping cart_icon"></i>Agregar al carrito</a>`;
 };
 
+//cierra el modal si el usuario pulsa esc
 document.addEventListener('keydown', (e) => {
   if (e.key == 'Escape') {
     document.getElementById('mainproductclosebutton').click();
@@ -63,6 +70,7 @@ document
 
 getinfo();
 
+//funcion aparte para cerrar el modal
 const cerrarmodal = () => {
   document.getElementById('mainproductpage').style.display = 'none';
 };
