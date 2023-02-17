@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Parrafo from './../rednerdeparrafo/rederdep';
+import data from './../Files/Products.json';
 
 const productos = [
   {
@@ -32,9 +33,9 @@ const Test = () => {
   const [listaDeProductos, funcionAgrgarProducto] = useState([]);
   useEffect(() => {
     const promesa = new Promise((res) => {
-      setTimeout(() => {
-        res(productos);
-      }, 3000);
+      // setTimeout(() => {
+      res(data);
+      // }, 3000);
     });
     promesa.then((res) => {
       funcionAgrgarProducto(res);

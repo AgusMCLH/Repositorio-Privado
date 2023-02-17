@@ -1,16 +1,16 @@
 import React from 'react';
 
 const Parrafo = ({ productos }) => {
-  console.log(productos);
   return (
     <>
-      {productos.map((producto) => (
-        <p key={producto.id}>
-          El producto {producto.name} tiene un precio de {producto.price}
+      {productos.map(({ id, name, price }) => (
+        <p key={id}>
+          El producto {name} tiene un precio de {price}
         </p>
       ))}
     </>
   );
+  console.log(productos);
 };
 
 export default Parrafo;
