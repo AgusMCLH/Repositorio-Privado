@@ -139,7 +139,6 @@ body main .productos .product .product__category {
 body main .productos .product .buy {
   padding: 10px;
   border-radius: 15px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   background-color: rgb(0, 186, 68);

@@ -159,7 +159,6 @@ body header .header__content_active {
   width: calc(100% - 240px);
 }
 body header .header__search {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   overflow: hidden;
@@ -345,7 +344,6 @@ body main h2 {
   font-size: 49px;
   font-family: "Pathway Gothic One", sans-serif;
   font-style: italic;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 3% 0px 1% 10%;
@@ -461,7 +459,6 @@ footer .acercade div {
   position: relative;
   right: -30px;
   top: 40px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -471,17 +468,14 @@ footer .acercade div h4 {
   font-style: italic;
   font-family: "Pathway Gothic One", sans-serif;
   font-weight: 300;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 footer .acercade div ul {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 footer .acercade div ul li {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   height: 15px;
@@ -494,7 +488,6 @@ footer .acercade div ul li a {
   text-decoration: none;
   transition: color 0.3s;
   font-size: 15px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -575,7 +568,6 @@ footer .notations div a {
   color: #CCC4B8;
   transition: color 0.3s;
   font-size: 15px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -617,7 +609,6 @@ main .showingproduct_container .showingproduct_main {
   position: fixed;
   margin-top: 1vw;
   width: 80%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   background-color: #403D39;
@@ -728,7 +719,6 @@ main .showingproduct_container .showingproduct_main .showingproduct_main_content
 
 @media screen and (max-width: 1200px) {
   footer {
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
     text-align: center;
@@ -882,7 +872,6 @@ main .showingproduct_container .showingproduct_main .showingproduct_main_content
   background: #ffffff;
   background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
   position: relative;
-  -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
 }
 
@@ -983,15 +972,6 @@ main .showingproduct_container .showingproduct_main .showingproduct_main_content
   font-size: 15px;
   font-family: "Pathway Gothic One", sans-serif;
   font-style: italic;
-}
-
-@-webkit-keyframes load3 {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 @keyframes load3 {
   0% {
