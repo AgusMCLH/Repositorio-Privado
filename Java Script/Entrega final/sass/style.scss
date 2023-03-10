@@ -638,9 +638,16 @@ main{
                 display: flex;
                 flex-wrap: wrap;
                 .modal__image_cont{
+                    background-color: white;
+                    aspect-ratio: 1/1;
                     width: 50%;
+                    display: grid;
+                    place-items: center;
                     img{
-                        width: 100%;
+                        min-width: 50%;
+                        min-height: 50%;
+                        max-width: 100%;
+                        max-height: 100%;
                     }
                 }
                 .modal_right{
@@ -728,10 +735,23 @@ main{
         justify-content: center;
         position: relative;
         div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             width: 300px;
-            img{
-                width: 100%;
-                
+            .thumbnail__container{
+                width: 300px;
+                height: 300px;
+                overflow: hidden;
+                display: grid;
+                place-items: center;
+                background-color: white;
+                img{
+                    
+                    max-width: 100%;
+                    max-height: 300px;
+                    
+                }
             }
             p{
                 color: $gris;

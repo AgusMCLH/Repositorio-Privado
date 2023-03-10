@@ -18,12 +18,19 @@ const render = (productos) => {
   productos_global = productos;
   let acumulador = '';
   var identificador = '';
+  let claves = [];
+  let thumbnail = '';
   productos.forEach((e) => {
+    claves = Object.keys(e.variations_data);
+    thumbnail = e.variations_data[claves[0]].thumbnail;
+
     identificador = "'" + e.id.toString() + "'";
     acumulador += `
     <div class="product__container" onclick="productmodal(${identificador})">
     <div>
-    <img src="${e.thumbnail}" alt="${e.title}"/>
+    <div class="thumbnail__container">
+    <img src="${thumbnail}" alt="${e.title}"/>
+    </div>
     <p>${e.title}</p>
     <p>$${e.price}</p>
     </div>
@@ -44,10 +51,13 @@ const productmodal = (id) => {
   let idpreparado = "'" + id + "'";
   mainproductpage.style.display = 'flex';
   let producto_mostrado = productos_global.find((e) => e.id === id);
+  let claves = Object.keys(producto_mostrado.variations_data);
+  let thumbnail = producto_mostrado.variations_data[claves[0]].thumbnail;
+  console.log(producto_mostrado);
   document.getElementById('modal_title').innerText = producto_mostrado.title;
   document.getElementById(
     'modal_image_cont'
-  ).innerHTML = `<img src="${producto_mostrado.thumbnail}" alt="${producto_mostrado.title}">`;
+  ).innerHTML = `<img src="${thumbnail}" alt="${producto_mostrado.title}">`;
   document.getElementById(
     'modal__price'
   ).innerText = `UYU ${producto_mostrado.price}`;
