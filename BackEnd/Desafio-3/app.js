@@ -1,7 +1,8 @@
-import express, { json } from 'express';
-import fs from 'fs';
+import express from 'express';
 import productManager from './desafio.js';
 const app = express();
+
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.send(
@@ -10,11 +11,23 @@ app.get('/', (req, res) => {
 });
 
 app.get('/products', async (req, res) => {
-  const products = await productManager.getProducts();
+  let limite = req.query.limit;
+  console.log('consulta', limite);
+  let products = await productManager.getProducts();
+  if (limite !== undefined) {
+    products = products.slice(0, limite);
+  }
   res.send(
-    `<p>${JSON.stringify(products)}</p><br><br> cantidad: ${products.length}`
+    `<p>${JSON.stringify(products)}</p><br> <p>cantidad: ${
+      products.length
+    }</p><br> ${
+      limite !== undefined
+        ? `<p>limite: ${limite}</p>`
+        : 'Mostrando todos los productos'
+    }`
   );
 });
+
 app.get('/products/:pid', async (req, res) => {
   const idBuscado = Number(req.params.pid);
   const product = await productManager.getProductByID(idBuscado);
@@ -30,10 +43,3 @@ app.get('/product-random', async (req, res) => {
 app.listen(8080, () => {
   console.log('Server started on port 8080');
 });
-
-const testing = async () => {
-  console.log(await productManager.getProducts());
-  console.log('//////////////////////////////////////////////');
-  console.log(await productManager.getProductByID());
-};
-testing();

@@ -60,7 +60,6 @@ class Producto {
         await fs.promises.readFile(this.path, 'utf-8')
       );
 
-      console.log(productosJSON);
       return productosJSON;
     } catch (error) {
       console.log('Error al obtener productos', error);
