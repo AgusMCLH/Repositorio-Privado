@@ -40,6 +40,6 @@ app.get('/product-random', async (req, res) => {
   res.send(`<p>${JSON.stringify(product)}</p>`);
 });
 
-app.listen(8080, () => {
-  console.log('Server started on port 8080');
+app.listen(8081, () => {
+  console.log('Server started on port 8081');
 });
