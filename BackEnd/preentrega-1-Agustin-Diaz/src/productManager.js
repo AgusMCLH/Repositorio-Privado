@@ -14,22 +14,42 @@ class Producto {
     try {
       if (
         title === undefined ||
+        typeof title !== 'string' ||
         description === undefined ||
+        typeof title !== 'string' ||
         price === undefined ||
-        thumbnail === undefined ||
+        typeof price !== 'number' ||
         code === undefined ||
-        stock === undefined
+        typeof code !== 'string' ||
+        stock === undefined ||
+        typeof stock !== 'number'
       ) {
         //Si alguno de los campos esta vacio el sistema se lo hace saber al usuario
-        console.error(
-          `El producto con el codigo "${code}" no fue ingresado - Algun campo esta vacio`
-        );
-        return;
+        return {
+          code: 400,
+          msg: `El producto no fue ingresado - Algun campo esta vacio`,
+        };
+      }
+      if (thumbnail === undefined) {
+        thumbnail = ['Sin foto'];
+      } else {
+        if (typeof thumbnail !== 'object' || thumbnail.length === 0) {
+          return {
+            code: 400,
+            msg: `El producto con el codigo "${code}" no fue agregado - Algun campo esta vacio o en un formato incorrecto`,
+          };
+        }
+      }
+      if (thumbnail === undefined) {
+        thumbnail = ['Sin foto'];
       }
       //Utiliza la funcion privada de Existe codigo para verificar que no exista el producto en el array
       if (this.#ExisteCodigo(code)) {
         console.warn(`El producto con el codigo "${code}" ya fue ingresado`);
-        return;
+        return {
+          code: 400,
+          msg: `El producto con el codigo "${code}" ya fue ingresado`,
+        };
       }
       //Crea el producto a ser pusheado
       const producto = {
@@ -50,9 +70,13 @@ class Producto {
         `El producto de codigo: ${producto.code} fue agregado con el id: ${producto.id}`
       );
       await fs.promises.writeFile(this.path, JSON.stringify(this.productos));
-      return;
+      return {
+        code: 201,
+        msg: `el producto fue agregado correctamente`,
+      };
     } catch (error) {
       console.log('Error al agregar producto', error);
+      return { code: 500, msg: `Error al agregar producto: ${error}` };
     }
   }
 
@@ -78,13 +102,11 @@ class Producto {
         return product.id === id;
       });
       //Si el index es -1 es porque no existe el producto
-      if (index !== -1) {
-        return productosJSON[index];
-      } else if (index === -1) {
+      if (index === -1) {
         return `No existe ningun producto con el id ${id}`;
+      } else {
+        return productosJSON[index];
       }
-
-      return;
     } catch (error) {
       console.log('Error al obtener producto por ID', error);
     }
@@ -100,7 +122,7 @@ class Producto {
 
   //Actualiza el producto, recibe el ID, y los campos a actualizar
   async updateProduct({
-    id,
+    idAEditar,
     title,
     description,
     price,
@@ -110,41 +132,63 @@ class Producto {
     stock,
   }) {
     if (
-      id === undefined ||
       status === undefined ||
+      typeof status !== 'boolean' ||
       title === undefined ||
+      typeof title !== 'string' ||
       description === undefined ||
+      typeof description !== 'string' ||
       price === undefined ||
-      thumbnail === undefined ||
+      typeof price !== 'number' ||
       code === undefined ||
-      stock === undefined
+      typeof code !== 'string' ||
+      stock === undefined ||
+      typeof stock !== 'number'
     ) {
       //Si alguno de los campos esta vacio el sistema se lo hace saber al usuario
-      console.error(
-        `El producto con el codigo "${id}" no fue actualizado - Algun campo esta vacio`
-      );
-      return;
+      return {
+        code: 400,
+        msg: `El producto con el id "${idAEditar}" no fue actualizado - Algun campo esta vacio o en un formato incorrecto`,
+      };
     }
     try {
+      if (thumbnail === undefined) {
+        thumbnail = ['Sin foto'];
+      } else {
+        if (typeof thumbnail !== 'object' || thumbnail.length === 0) {
+          return {
+            code: 400,
+            msg: `El producto con el id "${idAEditar}" no fue actualizado - Algun campo esta vacio o en un formato incorrecto`,
+          };
+        }
+      }
+      console.error(typeof thumbnail);
       this.productos = await this.getProducts();
       //Busca el producto por ID
       let index = this.productos.findIndex((product) => {
-        return product.id === id;
+        return product.id === idAEditar;
       });
       //Si el index es -1 es porque no existe el producto
       if (index === -1) {
-        console.error(`No existe ningun producto con el id ${id}`);
-        return;
+        console.error(`No existe ningun producto con el id ${idAEditar}`);
+        return {
+          code: 404,
+          msg: `No existe ningun producto con el id ${idAEditar}`,
+        };
       }
       //Si el codigo es distinto al codigo del producto que se quiere actualizar y el codigo ya existe entonces envia un mensaje de error
       if (code !== this.productos[index].code) {
         if (this.#ExisteCodigo(code)) {
           console.warn(`El producto con el codigo "${code}" ya fue ingresado`);
-          return;
+          return {
+            code: 400,
+            msg: `El producto con el codigo "${code}" ya fue ingresado`,
+          };
         }
       }
       //Actualiza los campos del producto
       this.productos[index] = {
+        id: idAEditar,
         title,
         description,
         price,
@@ -156,17 +200,22 @@ class Producto {
       //Le avisa al usuario que se actualizo correctamente
       await fs.promises.writeFile(this.path, JSON.stringify(this.productos));
       console.info(
-        `El producto con el id ${id} fue actualizado correctamente a: `,
+        `El producto con el id ${idAEditar} fue actualizado correctamente a: `,
         this.productos[index]
       );
-      return;
+      return {
+        code: 200,
+        msg: `El producto con el id ${idAEditar} fue actualizado correctamente a: \n${JSON.stringify(
+          this.productos[index]
+        )}`,
+      };
     } catch (error) {
       console.log('Error al actualizar producto', error);
     }
   }
 
   //Elimina un producto por ID
-  async deleteProducto(id) {
+  async deleteProduct(id) {
     try {
       let productosJSON = JSON.parse(
         await fs.promises.readFile(this.path, 'utf-8')
@@ -178,14 +227,17 @@ class Producto {
       //Si el index es -1 es porque no existe el producto
       if (index === -1) {
         console.error(`No existe ningun producto con el id ${id}`);
-        return;
+        return { code: 404, msg: `No existe ningun producto con el id ${id}` };
       }
       //Elimina el producto del array
       productosJSON.splice(index, 1);
       //Le avisa al usuario que se elimino correctamente
       console.info(`El producto con el id ${id} fue eliminado correctamente`);
       await fs.promises.writeFile(this.path, JSON.stringify(productosJSON));
-      return;
+      return {
+        code: 200,
+        msg: `El producto con el id ${id} fue elminado correctamente.`,
+      };
     } catch (error) {
       console.log('Error al eliminar producto', error);
     }
@@ -203,18 +255,18 @@ class Producto {
 }
 
 const productManager = new Producto();
-const test = async () => {
-  console.log('productos', await productManager.getProducts());
-  // await productManager.addProducts({
-  //   title: 'titulo 12',
-  //   description: 'desc12',
-  //   price: 400,
-  //   thumbnail: ['Sin foto'],
-  //   code: 'ASD1234',
-  //   stock: 10,
-  // });
-  // console.log(await productManager.updateProduct(20, 'titulo 1', 'desc1', 400, 'Sin foto', 'ASD123', true, 10));
-};
-test();
+//const test = async () => {
+//  console.log('productos', await productManager.getProducts());
+// await productManager.addProducts({
+//   title: 'titulo 12',
+//   description: 'desc12',
+//   price: 400,
+//   thumbnail: ['Sin foto'],
+//   code: 'ASD1234',
+//   stock: 10,
+// });
+// console.log(await productManager.updateProduct(20, 'titulo 1', 'desc1', 400, 'Sin foto', 'ASD123', true, 10));
+//};
+//test();
 
 export default productManager;
