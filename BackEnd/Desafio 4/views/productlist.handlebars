@@ -1,0 +1,20 @@
+<div class="product-list">
+    {{#if emptyList}}
+    <h2>No hay productos</h2>
+    {{else}}
+        {{#each products}}
+            {{#if this.status}}
+                <div class="product-item">
+                    <div class="product-item__content">
+                        <h3>{{this.title}}</h3>
+                        <p>{{this.description}}</p>
+                        <p class="product-item__stock">Stock: {{this.stock}}</p>
+                        <p class="product-item__price">$ {{this.price}}</p>
+                    </div>
+                </div>
+            {{/if}}
+        {{/each}}
+    {{/if}}
+
+        
+</div>

@@ -35,9 +35,9 @@ app.get('/api/users', (req, res) => {
 app.post('/api/users', (req, res) => {
   console.log(req.body);
   users.push(req.body);
-  res.status(201).send(users);
+  res.status(201).send(`<p>${JSON.stringify(users)}</p>`);
 });
 
-app.listen(8080, () => {
+app.listen(8081, () => {
   console.log('Server started on port 8080');
 });

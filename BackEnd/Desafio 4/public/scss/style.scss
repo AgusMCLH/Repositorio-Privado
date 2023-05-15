@@ -1,0 +1,35 @@
+.product-list{
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: auto;
+    justify-content: center ;
+    .product-item{
+        width: 200px;
+        background-color: #e8e8e8;
+        padding: 20px;
+        border-radius: 10px;
+    }
+}
+
+table{
+    .cart-table__thead{
+        background-color: rgb(2, 121, 2);
+        tr{
+            th{
+                color: white;
+            }
+        }
+    }
+    tbody{
+        .cart-table-tbody__id{
+            width: 10%;
+            background-color: greenyellow;
+        }
+        .cart-table-tbody__quantity{
+            
+            background-color: rgb(211, 211, 211);
+        }
+    }
+}
