@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { io } from './app.js';
 
 class Producto {
   //Declaro el constructor y el ID de la clase de forma privada
@@ -70,6 +71,7 @@ class Producto {
         `El producto de codigo: ${producto.code} fue agregado con el id: ${producto.id}`
       );
       await fs.promises.writeFile(this.path, JSON.stringify(this.productos));
+      io.emit('Products', await this.getProducts());
       return {
         code: 201,
         msg: `el producto fue agregado correctamente`,
@@ -203,6 +205,7 @@ class Producto {
         `El producto con el id ${idAEditar} fue actualizado correctamente a: `,
         this.productos[index]
       );
+      io.emit('Products', await this.getProducts());
       return {
         code: 200,
         msg: `El producto con el id ${idAEditar} fue actualizado correctamente a: \n${JSON.stringify(
@@ -234,6 +237,7 @@ class Producto {
       //Le avisa al usuario que se elimino correctamente
       console.info(`El producto con el id ${id} fue eliminado correctamente`);
       await fs.promises.writeFile(this.path, JSON.stringify(productosJSON));
+      io.emit('Products', await this.getProducts());
       return {
         code: 200,
         msg: `El producto con el id ${id} fue elminado correctamente.`,

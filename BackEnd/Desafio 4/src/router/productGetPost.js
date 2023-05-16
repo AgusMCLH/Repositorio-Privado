@@ -12,19 +12,7 @@ productGetPost.get('/', async (req, res) => {
   if (limite !== undefined) {
     products = products.slice(0, limite);
   }
-  res.render('productlist', { emptyList: false, products });
-  //Finalmente envia los productos
-  // res
-  //   .status(200)
-  //   .send(
-  //     `<p>${JSON.stringify(products)}</p><br> <p>cantidad: ${
-  //       products.length
-  //     }</p><br> ${
-  //       limite !== undefined
-  //         ? `<p>limite: ${limite}</p>`
-  //         : 'Mostrando todos los productos'
-  //     }`
-  //   );
+  res.render('home', { emptyList: false, products });
 });
 
 // Declaro el endpoint /api/get/:id en caso de que pasen un ID
