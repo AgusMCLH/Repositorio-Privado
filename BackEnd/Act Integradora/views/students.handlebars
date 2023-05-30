@@ -1,0 +1,31 @@
+<div style="margin: auto; width: fit-content;">
+<table>
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Dni</td>
+            <td>Año</td>
+        </tr>
+    </thead>
+    
+    {{#each students}}
+    <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.lastname}}</td>
+        <td>{{this.dni}}</td>
+        <td>{{this.year}}</td>
+    </tr>
+{{/each}}
+</table>
+</div>
+
+<div style="display: block; margin-top: 50px;">
+    <form action="/api/students" method="post">
+        <input type="text" name="name" id="FirstName" placeholder="Nombre" required>
+        <input type="text" name="lastname" id="LastName" placeholder="Apellido" required>
+        <input type="text" name="dni" id="DNI" placeholder="DNI" required>
+        <input type="number" name="year" id="AñoDeNacimiento" placeholder="Año De Nacimiento" required>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
