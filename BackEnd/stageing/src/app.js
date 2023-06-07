@@ -8,10 +8,12 @@ mongoose.connect(
 
 // const data = await studentModel.insertMany(dataStudents);
 
-const data = await studentModel.aggregate([
-  { $group: { _id: '$group', promedio: { $avg: '$grade' } } },
-  { $sort: { promedio: -1 } },
-]);
+// const data = await studentModel.aggregate([
+//   { $group: { _id: '$group', promedio: { $avg: '$grade' } } },
+//   { $sort: { promedio: -1 } },
+// ]);
+
+const data = await studentModel.count();
 
 console.log(data);
 
