@@ -4,6 +4,7 @@ import { cartRouting } from './router/cartRouting.js';
 import { realTimeProducts } from './router/realtimeproduct.js';
 import handlebars from 'express-handlebars';
 import { Server } from 'socket.io';
+import mongoose from 'mongoose';
 
 // Declaro una app de tipo express y la configuro para que use JSON's y urlencoded ademas de usar la carpeta public para los archivos estaticos
 const app = express();
@@ -11,6 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.engine('handlebars', handlebars.engine());
+
+mongoose.connect(
+  'mongodb+srv://agustindiaz980:Fecha1990@cluster0.otb4efz.mongodb.net/coderhouse-backend-ecommerce?retryWrites=true&w=majority'
+);
 
 app.set('views', './views');
 app.set('view engine', 'handlebars');

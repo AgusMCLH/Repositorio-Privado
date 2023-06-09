@@ -1,5 +1,5 @@
 {{#if exists}}
-    <h2>Viendo el carrito {{cart.id}}</h2>
+    <h2>Viendo el carrito {{cart._id}}</h2>
     <table style="margin: auto; width: 80vw;">
         <thead class="cart-table__thead">
             <tr>
@@ -12,7 +12,7 @@
             {{#if productsQuantity}}
                 {{#each cart.products}}
                     <tr>
-                        <td class="cart-table-tbody__id">{{this.id}}</td>
+                        <td class="cart-table-tbody__id">{{this._id}}</td>
                         <td class="cart-table-tbody__quantity">x{{this.quantity}}</td>
                     </tr>
                 {{/each}}
@@ -24,5 +24,5 @@
         </tbody>
     </table>
 {{else}}
-    <h1 style="border-bottom: 1px solid red; width: fit-content;">No existe un carrito con el id {{id}}</h1>
+    <h1 style="border-bottom: 1px solid red; width: fit-content;">{{cart.msg}}</h1>
 {{/if}}

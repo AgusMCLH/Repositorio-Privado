@@ -2,7 +2,7 @@ const socket = io();
 
 socket.on('Products', (Products) => {
   let html = Products.map((product) => {
-    if (product.status === true) {
+    if (product.visible === true) {
       return `
         <a href='/api/products/${product.id}'>
             <div class="product-item">
@@ -18,6 +18,4 @@ socket.on('Products', (Products) => {
     return;
   });
   document.getElementById('product-list').innerHTML = html;
-
-  console.log(Products);
 });

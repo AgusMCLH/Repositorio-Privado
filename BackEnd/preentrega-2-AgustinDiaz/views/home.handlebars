@@ -3,8 +3,8 @@
     <h2>No hay productos</h2>
     {{else}}
         {{#each products}}
-            {{#if this.status}}
-                <a href='/api/products/{{this.id}}'>
+            {{#if this.visible}}
+                <a href='/api/products/{{this._id}}'>
                     <div class="product-item">
                         <div class="product-item__content">
                             <h3>{{this.title}}</h3>
