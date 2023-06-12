@@ -1,19 +1,52 @@
 import { Router } from 'express';
 import productManager from './../MongoManagers/productManager.js';
+import { stat } from 'fs';
 
 const productGetPost = Router();
 
 productGetPost.get('/', async (req, res) => {
   //Consigue el limite de productos a mostrar
-  let limite = req.query.limit;
+  const { limit, page, sort, query } = req.query;
   //Llama a la funcion getProducts() de productManager para conseguir los productos
-  let products = await productManager.getProducts();
-  console.log(products);
-  //Si el limite es distinto de undefined entonces carga los productos hasta el limite
-  if (limite !== undefined) {
-    products = products.slice(0, limite);
-  }
-  res.render('home', { emptyList: false, products });
+  let products = await productManager.getProducts(limit, page, sort, query);
+  const prevLink = (limit) => {
+    if (products.prevPage == null) {
+      return null;
+    } else {
+      return `?limit=${limit}&page=${products.page - 1}`;
+    }
+  };
+  const nextLink = (limit) => {
+    if (products.nextPage == null) {
+      return null;
+    } else {
+      return `?limit=${limit}&page=${products.page + 1}`;
+    }
+  };
+  const status = () => {
+    if (products.docs === undefined) {
+      return 'Error';
+    } else {
+      return 'success';
+    }
+  };
+  let response = {
+    status: status(),
+    payload: products.docs,
+    totalPages: products.totalPages,
+    prevPage: products.prevPage,
+    nextPage: products.nextPage,
+    page: products.page,
+    hasPrevPage: products.hasPrevPage,
+    hasNextPage: products.hasNextPage,
+    prevLink: prevLink(products.limit),
+    nextLink: nextLink(products.limit),
+  };
+
+  console.log('response', response);
+  // console.log(response);
+
+  res.render('home', { response });
 });
 
 // Declaro el endpoint /api/get/:id en caso de que pasen un ID
@@ -27,7 +60,10 @@ productGetPost.get('/:pid', async (req, res) => {
     res.status(404).send(`No hay ningun producto con el ID: ${idBuscado}`);
   } else {
     //Si el producto es distinto a 'No existe ningun producto con el id NaN' entonces envia el producto
-    res.status(200).send(`<p>${JSON.stringify(product)}</p>`);
+    // res.status(200).send(`<p>${JSON.stringify(product)}</p>`);
+    const hasImages = product.thumbnail[0] !== 'Sin foto';
+    console.log(hasImages);
+    res.render('productPage', { product, hasImages });
   }
 });
 

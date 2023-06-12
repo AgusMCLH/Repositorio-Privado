@@ -8,8 +8,34 @@
     <title>Titulo</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="secondNav">TESTOS</div>
+            <div class="mainNav">
+                <div class="logoImage">
+                    <a href="/"><img src="https://themewagon.github.io/malefashion/img/logo.png" alt="LOGO"></a>
+                </div>
+                <div class="navRoutes">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/api/products">Products</a></li>
+                        <li><a href="#">Otro elemento</a></li>
+                        <li><a href="#">Otro elemento</a></li>
+                    </ul>
+                </div>
+                <div class="userIcons">
+                    <a href="#" id="heartIcon" class="userIcons_Icon"></a>
+                    <a href="#" id="searchIcon" class="userIcons_Icon"></a>
+                    <a href="#" id="cartIcon" class="userIcons_Icon"></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
     {{{body}}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/socket.io/socket.io.js"></script>
     
+<script src="/js/cartIdHandler.js"></script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+<div class="productPage">
+    <div class="w-50">
+        {{#if hasImages}}
+            <div class="productPage__image">
+                <img src="{{product.thumbnail.[0]}}" alt="{{product.title}}">
+            </div>
+        {{else}}
+            <div class="productPage__image">
+                <img src="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg" alt="{{title}}">
+            </div>
+        {{/if}}
+    </div>
+    <div class="w-50">
+        <h1>Producto {{product.title}}</h1>
+        <p>{{product.description}}</p>
+        <p>Precio: {{product.price}}</p>
+        <p>Stock: {{product.stock}}</p>
+        <p id="addToCartButton">Agregar al carrito</p>
+    </div>
+   
+</div>

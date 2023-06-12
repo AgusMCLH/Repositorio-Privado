@@ -60,10 +60,25 @@ class Product {
     }
   }
 
-  async getProducts() {
+  async getProducts(limit = 10, page = 1, sort = false, query) {
+    if (query === undefined) {
+      query = { visible: true };
+    } else {
+      query = JSON.parse(query);
+    }
+    query.visible = true;
     try {
-      const data = await productModel.find().lean();
-
+      let data;
+      if (sort === false) {
+        data = await productModel.paginate(query, { lean: true, limit, page });
+      } else {
+        data = await productModel.paginate(query, {
+          lean: true,
+          limit,
+          page,
+          sort: { price: sort },
+        });
+      }
       return data;
     } catch (error) {
       return {
@@ -74,7 +89,7 @@ class Product {
   }
   async getProductByID(id) {
     try {
-      const data = await productModel.findById(id);
+      const data = await productModel.findById(id).lean();
       if (data == null) {
         return {
           code: 400,
@@ -146,7 +161,6 @@ class Product {
   async deleteProduct(id) {
     try {
       const data = await productModel.findByIdAndDelete(id);
-      console.log(data);
       io.emit('Products', await this.getProducts());
       return {
         code: 200,

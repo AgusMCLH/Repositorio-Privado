@@ -9,6 +9,7 @@ class Cart {
       return {
         code: 201,
         msg: `El cart fue agregado con el id: ${cart._id}`,
+        cartId: cart._id,
       };
     } catch (error) {
       console.log('Error al agregar cart', error);
@@ -33,7 +34,6 @@ class Cart {
   }
 
   async addProductToCart(id, product) {
-    console.log(id.length);
     if (product.length === 24 || product.length === 12) {
       if (id === undefined || product === undefined) {
         return {
@@ -59,14 +59,11 @@ class Cart {
       }
 
       if (JSON.stringify(cart).includes(product)) {
-        console.log('cart:', cart);
         cart.products.forEach((_product) => {
           if (JSON.stringify(_product.product) == JSON.stringify(product)) {
             _product.quantity += 1;
           }
         });
-        console.log('cart2:', cart);
-        // await cartModel.updateOne(cart);
         await cart.save();
       } else {
         cart.products.push({ product });
@@ -108,7 +105,6 @@ class Cart {
     let index = { found: false, num: 0 };
     cart.products.forEach((_product) => {
       if (JSON.stringify(_product.product) == JSON.stringify(product)) {
-        console.log('encontrado', index.num);
         index.found = true;
         return;
       } else {
@@ -154,31 +150,6 @@ class Cart {
     };
   }
 
-  async updateCartProducts(id, products) {
-    if (id === undefined || products === undefined) {
-      return {
-        code: 400,
-        msg: `Error al actualizar productos del carrito: faltan datos`,
-      };
-    }
-    if ((await this.getCartByID(id)).code === 400) {
-      return { code: 400, msg: `No existe ningun carrito con el id ${id}` };
-    }
-    const cart = await cartModel.findById(id);
-    if (cart == null) {
-      return {
-        code: 400,
-        msg: `No existe ningun carrito con el id ${id}`,
-      };
-    }
-    cart.products = products;
-    await cart.save();
-    return {
-      code: 200,
-      msg: `Se actualizaron los productos del carrito ${id}`,
-    };
-  }
-
   async editProductQuantity(id, product, quantity) {
     if (id === undefined || product === undefined || quantity === undefined) {
       return {
@@ -205,7 +176,6 @@ class Cart {
     let index = { found: false, num: 0 };
     cart.products.forEach((_product) => {
       if (JSON.stringify(_product.product) == JSON.stringify(product)) {
-        console.log('encontrado', index.num);
         index.found = true;
         return;
       } else {
@@ -224,6 +194,52 @@ class Cart {
       code: 200,
       msg: `Se actualizo la cantidad del producto con id ${product} del carrito ${id}`,
     };
+  }
+
+  async updateCart(id, cart) {
+    try {
+      if (id === undefined || cart === undefined) {
+        return {
+          code: 400,
+          msg: `Error al actualizar carrito: faltan datos`,
+        };
+      }
+      if ((await this.getCartByID(id)).code === 400) {
+        return { code: 400, msg: `No existe ningun carrito con el id ${id}` };
+      }
+      const cartDB = await cartModel.findById(id);
+      if (cartDB == null) {
+        return {
+          code: 400,
+          msg: `No existe ningun carrito con el id ${id}`,
+        };
+      }
+      let lengthValidation = true;
+      await cart.forEach(async (product) => {
+        if (product.product.length === 24 || product.product.length === 12) {
+          return;
+        } else {
+          console.log(product.product);
+          lengthValidation = false;
+          return;
+        }
+      });
+
+      if (!lengthValidation) {
+        return {
+          code: 400,
+          msg: `Error al actualizar carrito: el id de algun producto no es valido`,
+        };
+      }
+      cartDB.products = cart;
+      await cartDB.save();
+      return {
+        code: 200,
+        msg: `Se actualizo el carrito ${id}`,
+      };
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 const CM = new Cart();

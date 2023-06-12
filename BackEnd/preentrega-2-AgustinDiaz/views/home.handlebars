@@ -1,8 +1,6 @@
 <div class="product-list">
-    {{#if emptyList}}
-    <h2>No hay productos</h2>
-    {{else}}
-        {{#each products}}
+
+        {{#each response.payload}}
             {{#if this.visible}}
                 <a href='/api/products/{{this._id}}'>
                     <div class="product-item">
@@ -14,10 +12,15 @@
                         </div>
                     </div>
                 </a>
-                
             {{/if}}
         {{/each}}
-    {{/if}}
 
-        
+
+        <div class="pageSwitcherContainer">
+            <div class="pageSwitcher">
+                <a href="{{response.prevLink}}">Anterior</a>
+                <a href="{{response.page}}">Pagina {{response.page}}</a>
+                <a href="{{response.nextLink}}">Siguiente</a>
+            </div>
+        </div>
 </div>
