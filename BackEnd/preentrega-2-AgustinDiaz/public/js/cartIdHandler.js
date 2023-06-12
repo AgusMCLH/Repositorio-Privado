@@ -24,10 +24,11 @@ if (document.getElementById('addToCartButton') !== null) {
         method: 'POST',
       }
     );
+    console.log(response);
     Swal.fire({
       position: 'top-end',
       icon: 'success',
-      title: 'El producto se agrego al carrito',
+      title: JSON.stringify(response),
       showConfirmButton: false,
       timer: 1500,
     });

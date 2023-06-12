@@ -8,7 +8,7 @@ cartRouting.get('/:cid', async (req, res) => {
   let productsQuantity = false;
   const idBuscado = req.params.cid;
   const cart = JSON.parse(await CM.getCartByID(idBuscado))[0];
-  console.log(cart);
+  console.log(JSON.stringify(cart));
   if (cart.code !== 400) {
     exists = true;
     productsQuantity = cart.products.length > 0;

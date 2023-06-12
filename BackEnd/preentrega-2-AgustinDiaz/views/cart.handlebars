@@ -4,15 +4,18 @@
         <thead class="cart-table__thead">
             <tr>
                 <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
                 <th>Cantidad</th>
-                
             </tr>
         </thead>
         <tbody>
             {{#if productsQuantity}}
                 {{#each cart.products}}
                     <tr>
-                        <td class="cart-table-tbody__id">{{this._id}}</td>
+                        <td class="cart-table-tbody__id">{{this.product._id}}</td>
+                        <td class="cart-table-tbody__name">{{this.product.title}}</td>
+                        <td class="cart-table-tbody__price">${{this.product.price}}</td>
                         <td class="cart-table-tbody__quantity">x{{this.quantity}}</td>
                     </tr>
                 {{/each}}
