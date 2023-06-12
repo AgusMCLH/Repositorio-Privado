@@ -10,6 +10,7 @@ class Product {
     code,
     stock,
     visible,
+    category,
   }) {
     try {
       if (
@@ -22,7 +23,9 @@ class Product {
         code === undefined ||
         typeof code !== 'string' ||
         stock === undefined ||
-        typeof stock !== 'number'
+        typeof stock !== 'number' ||
+        category === undefined ||
+        typeof category !== 'string'
       ) {
         //Si alguno de los campos esta vacio el sistema se lo hace saber al usuario
         return {
@@ -38,6 +41,7 @@ class Product {
         code,
         stock,
         visible,
+        category,
       });
       io.emit('Products', await this.getProducts());
       return {
@@ -88,7 +92,7 @@ class Product {
 
   async updateProduct(
     idAEditar,
-    { title, description, price, thumbnail, code, visible, stock }
+    { title, description, price, thumbnail, code, visible, stock, category }
   ) {
     if (
       visible === undefined ||
@@ -102,7 +106,9 @@ class Product {
       code === undefined ||
       typeof code !== 'string' ||
       stock === undefined ||
-      typeof stock !== 'number'
+      typeof stock !== 'number' ||
+      category === undefined ||
+      typeof category !== 'string'
     ) {
       //Si alguno de los campos esta vacio el sistema se lo hace saber al usuario
       return {
@@ -119,6 +125,7 @@ class Product {
         code,
         visible,
         stock,
+        category,
       });
       if (data == null) {
         return {
@@ -153,5 +160,6 @@ class Product {
     }
   }
 }
+
 const productManager = new Product();
 export default productManager;

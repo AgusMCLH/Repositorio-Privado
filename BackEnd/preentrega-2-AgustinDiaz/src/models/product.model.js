@@ -17,6 +17,7 @@ const productSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  category: String,
 });
 
 export const productModel = mongoose.model('products', productSchema);

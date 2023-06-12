@@ -2,6 +2,7 @@ import express from 'express';
 import { productGetPost } from './router/productGetPost.js';
 import { cartRouting } from './router/cartRouting.js';
 import { realTimeProducts } from './router/realtimeproduct.js';
+import { testRouter } from './router/test.router.js';
 import handlebars from 'express-handlebars';
 import { Server } from 'socket.io';
 import mongoose from 'mongoose';
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
   );
 });
 
+app.use('/api/test', testRouter);
 app.use('/api/products', productGetPost);
 app.use('/api/carts', cartRouting);
 app.use('/api/realtimeproducts', realTimeProducts);
