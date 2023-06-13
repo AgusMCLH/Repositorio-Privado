@@ -1,26 +1,62 @@
-<div class="product-list">
-
-        {{#each response.payload}}
-            {{#if this.visible}}
+    <div class="pageLabel_container">
+        <div class="pageLabel_wraper">
+            <h4>
+                Products
+            </h4>
+                <a href="/">Home</a><span>Products</span>
+        </div>
+    </div>
+    
+    
+    <div class="product-page">
+        <div class="filter-container"></div>
+        <div class="product-list">
+            {{#each response.payload}}
+           
                 <a href='/api/products/{{this._id}}'>
                     <div class="product-item">
                         <div class="product-item__content">
-                            <h3>{{this.title}}</h3>
-                            <p>{{this.description}}</p>
+                            <div class="imgContaiener">
+                                <div class="imgWrapper">
+                                    {{#each this.thumbnail}}
+                                    <img src="{{this}}" alt="Imagen Proporcionada">
+                                    {{/each}}
+                                </div>
+                            </div>
+                            <h3 class="product-item__title">{{this.title}}</h3>
                             <p class="product-item__stock">Stock: {{this.stock}}</p>
                             <p class="product-item__price">$ {{this.price}}</p>
                         </div>
                     </div>
                 </a>
-            {{/if}}
-        {{/each}}
-
-
-        <div class="pageSwitcherContainer">
-            <div class="pageSwitcher">
-                <a href="{{response.prevLink}}">Anterior</a>
-                <a href="{{response.page}}">Pagina {{response.page}}</a>
-                <a href="{{response.nextLink}}">Siguiente</a>
-            </div>
+          
+            {{/each}}
         </div>
+        
+
+
 </div>
+        <div class="pageSwitcherContainer">
+            <nav class="pageSwitcher">
+                <ul>
+                    {{#if response.hasPrevPage}} 
+                        <li><a href="{{response.firstLink}}"><img style=" scale:1.5;" src="/img/icon/doubleArrow.png" alt=""></a></li>
+                        <li><a href="{{response.prevLink}}"><img style="" src="/img/icon/singleArrow.png" alt=""></a></li>
+                    {{else}} 
+                        <li class="disabled"><p><img style=" scale:1.5;" src="/img/icon/doubleArrow.png" alt=""></p></li>
+                        <li class="disabled"><p ><img style="" src="/img/icon/singleArrow.png" alt=""></p></li>
+                    {{/if}}
+                    <li><p>{{response.page}}</p></li>
+                    {{#if response.hasNextPage}}
+                    <li><a href="{{response.nextLink}}"><img style="transform: rotate(180deg);" src="/img/icon/singleArrow.png" alt=""></a></li>
+                    <li><a href="{{response.lastLink}}"><img style="transform: rotate(180deg); scale:1.5;" src="/img/icon/doubleArrow.png" alt=""></a></li>
+                    {{else}}
+                    <li class="disabled"><p><img style="transform: rotate(180deg);" src="/img/icon/singleArrow.png" alt=""></p></li>
+                    <li class="disabled"><p><img style="transform: rotate(180deg); scale:1.5;" src="/img/icon/doubleArrow.png" alt=""></p></li>
+                    {{/if}}
+                </ul>
+                
+                
+                
+            </nav>
+        </div>

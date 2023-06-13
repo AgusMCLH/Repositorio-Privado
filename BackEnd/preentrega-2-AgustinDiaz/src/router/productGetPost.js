@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import productManager from './../MongoManagers/productManager.js';
-import { stat } from 'fs';
 
 const productGetPost = Router();
 
@@ -9,20 +8,7 @@ productGetPost.get('/', async (req, res) => {
   const { limit, page, sort, query } = req.query;
   //Llama a la funcion getProducts() de productManager para conseguir los productos
   let products = await productManager.getProducts(limit, page, sort, query);
-  const prevLink = (limit) => {
-    if (products.prevPage == null) {
-      return null;
-    } else {
-      return `?limit=${limit}&page=${products.page - 1}`;
-    }
-  };
-  const nextLink = (limit) => {
-    if (products.nextPage == null) {
-      return null;
-    } else {
-      return `?limit=${limit}&page=${products.page + 1}`;
-    }
-  };
+
   const status = () => {
     if (products.docs === undefined) {
       return 'Error';
@@ -30,6 +16,7 @@ productGetPost.get('/', async (req, res) => {
       return 'success';
     }
   };
+
   let response = {
     status: status(),
     payload: products.docs,
@@ -39,8 +26,10 @@ productGetPost.get('/', async (req, res) => {
     page: products.page,
     hasPrevPage: products.hasPrevPage,
     hasNextPage: products.hasNextPage,
-    prevLink: prevLink(products.limit),
-    nextLink: nextLink(products.limit),
+    prevLink: `?limit=${products.limit}&page=${products.page - 1}`,
+    nextLink: `?limit=${products.limit}&page=${products.page + 1}`,
+    firstLink: `?limit=${products.limit}&page=1`,
+    lastLink: `?limit=${products.limit}&page=${products.totalPages}`,
   };
 
   console.log('response', response);
