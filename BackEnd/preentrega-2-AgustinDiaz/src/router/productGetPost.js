@@ -3,6 +3,22 @@ import productManager from './../MongoManagers/productManager.js';
 
 const productGetPost = Router();
 
+const getStars = () => {
+  const getRandomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
+  let stars = [];
+  let punctuations = getRandomInt(0, 10);
+  while (punctuations > 1) {
+    stars.push(true);
+    punctuations -= 2;
+  }
+  if (punctuations === 1) {
+    stars.push(false);
+    punctuations -= 1;
+  }
+  return stars;
+};
 productGetPost.get('/', async (req, res) => {
   //Consigue el limite de productos a mostrar
   const { limit, page, sort, query } = req.query;
@@ -17,6 +33,10 @@ productGetPost.get('/', async (req, res) => {
     }
   };
 
+  products.docs.forEach((product) => {
+    product.rating = getStars();
+    console.log(product);
+  });
   let response = {
     status: status(),
     payload: products.docs,
@@ -32,10 +52,7 @@ productGetPost.get('/', async (req, res) => {
     lastLink: `?limit=${products.limit}&page=${products.totalPages}`,
   };
 
-  console.log('response', response);
-  // console.log(response);
-
-  res.render('home', { response });
+  res.render('home', { title: 'Products', response });
 });
 
 // Declaro el endpoint /api/get/:id en caso de que pasen un ID
@@ -44,6 +61,7 @@ productGetPost.get('/:pid', async (req, res) => {
   let idBuscado = req.params.pid;
   //Llama a la funcion getProductByID() de productManager para conseguir el producto
   const product = await productManager.getProductByID(idBuscado);
+
   //Si el producto es igual a 'No existe ningun producto con el id NaN' entonces envia un mensaje de error
   if (product === `No existe ningun producto con el id ${idBuscado}`) {
     res.status(404).send(`No hay ningun producto con el ID: ${idBuscado}`);
@@ -51,7 +69,7 @@ productGetPost.get('/:pid', async (req, res) => {
     //Si el producto es distinto a 'No existe ningun producto con el id NaN' entonces envia el producto
     // res.status(200).send(`<p>${JSON.stringify(product)}</p>`);
     const hasImages = product.thumbnail[0] !== 'Sin foto';
-    console.log(hasImages);
+    product.rating = getStars();
     res.render('productPage', { product, hasImages });
   }
 });

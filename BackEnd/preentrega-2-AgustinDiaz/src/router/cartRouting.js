@@ -14,6 +14,7 @@ cartRouting.get('/:cid', async (req, res) => {
     productsQuantity = cart.products.length > 0;
   }
   res.render('cart', {
+    title: 'cart',
     cart,
     exists,
     productsQuantity,

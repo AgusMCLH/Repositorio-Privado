@@ -12,7 +12,11 @@ realTimeProducts.get('/', async (req, res) => {
   if (limite !== undefined) {
     products = products.slice(0, limite);
   }
-  res.render('realtimeproducts', { emptyList: false, products });
+  res.render('realtimeproducts', {
+    title: 'RLProducts',
+    emptyList: false,
+    products,
+  });
 });
 
 export { realTimeProducts };

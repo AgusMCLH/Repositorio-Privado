@@ -24,8 +24,17 @@
                                 </div>
                             </div>
                             <h3 class="product-item__title">{{this.title}}</h3>
-                            <p class="product-item__stock">Stock: {{this.stock}}</p>
-                            <p class="product-item__price">$ {{this.price}}</p>
+                            <div class="product-item__rating">
+                                {{#each this.rating}}
+                                    {{#if this}}
+                                        <img src="/img/icon/fullstar.png" alt="">
+                                    {{else}}
+                                        <img src="/img/icon/halfstar.png" alt="">
+                                    {{/if}}
+                                    {{log 'Hola' this}}
+                                {{/each}}
+                            </div>
+                            <p class="product-item__price">${{this.price}}</p>
                         </div>
                     </div>
                 </a>
@@ -60,3 +69,5 @@
                 
             </nav>
         </div>
+
+        <script src="/js/productRating.js"></script>

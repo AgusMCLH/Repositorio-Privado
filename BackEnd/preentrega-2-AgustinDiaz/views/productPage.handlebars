@@ -1,8 +1,23 @@
+<div class="pageLabel_container">
+        <div class="pageLabel_wraper">
+            <h4>
+                Products
+            </h4>
+                <a href="/">Home</a><a href="/api/products">Products</a><span>{{product.title}}</span>
+        </div>
+    </div>
 <div class="productPage">
-    <div class="w-50">
+    <div class="productPage__image-container">
         {{#if hasImages}}
-            <div class="productPage__image">
-                <img src="{{product.thumbnail.[0]}}" alt="{{product.title}}">
+            <div class="productPage__images_wrapper">
+                <div class="productPage__images_aside">
+                    {{#each product.thumbnail}}
+                        <img src="{{this}}" alt="{{product.title}}">
+                    {{/each}}
+                </div>
+                <div class="productPage__images_main">
+                    <img src="{{product.thumbnail.[0]}}" alt="{{product.title}}">
+                </div>
             </div>
         {{else}}
             <div class="productPage__image">
@@ -10,13 +25,23 @@
             </div>
         {{/if}}
     </div>
-    <div class="w-50">
+    <div class="productPage__Details">
         <h1>Producto {{product.title}}</h1>
-        <p>{{product.description}}</p>
-        <p>Precio: {{product.price}}</p>
-        <p>Stock: {{product.stock}}</p>
-        <p>Categoria: {{product.category}}</p>
-        <p id="addToCartButton">Agregar al carrito</p>
+        <div class="product-item__rating">
+            {{#each product.rating}}
+                {{#if this}}
+                    <img src="/img/icon/fullstar.png" alt="Estrella completa">
+                {{else}}
+                    <img src="/img/icon/halfstar.png" alt="Media Estrella">
+                {{/if}}
+            {{/each}}
+        </div>  
+        <p class="productPage__Details-price">${{product.price}}</p>
+        <p class="productPage__Details-description">{{product.description}}</p>
+        <div class="product-item__buttons">
+        <p id="addToFavoritesButton"><img src="/img/icon/heart.png" alt=""></p><p id="addToCartButton">Agregar al carrito</p>
+        </div>
+        <p class="productPage__Details-category">Categoria: <span>{{product.category}}</span></p>
     </div>
    
 </div>
