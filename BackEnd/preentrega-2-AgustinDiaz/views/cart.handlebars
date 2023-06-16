@@ -1,19 +1,37 @@
 {{#if exists}}
+{{!-- {{log exists}}
+{{log cart}}
+{{log productsQuantity}} --}}
+    <div class="pageLabel_container">
+        <div class="pageLabel_wraper">
+            <h4>
+                Products
+            </h4>
+                <a href="/">Home</a><a href="/api/products">Products</a><span>Cart</span>
+        </div>
+    </div>
     <h2>Viendo el carrito {{cart._id}}</h2>
     <table style="margin: auto; width: 80vw;">
         <thead class="cart-table__thead">
             <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             {{#if productsQuantity}}
                 {{#each cart.products}}
                     <tr>
-                        <td class="cart-table-tbody__id">{{this.product._id}}</td>
+                        <td class="cart-table-tbody__product">
+                            <div class="cart-table-tbody__product-img">
+                                <img src="{{this.product.thumbnail.[0]}}" alt="Imagen del producto">
+                            </div>
+                            <div class="cart-table-tbody__product-title">
+                                {{this.product.title}}
+                            </div>
+                        </td>
                         <td class="cart-table-tbody__name">{{this.product.title}}</td>
                         <td class="cart-table-tbody__price">${{this.product.price}}</td>
                         <td class="cart-table-tbody__quantity">x{{this.quantity}}</td>
@@ -27,5 +45,6 @@
         </tbody>
     </table>
 {{else}}
+{{!-- INSERTAR SI NO EXISTE EL CARRITO --}}
     <h1 style="border-bottom: 1px solid red; width: fit-content;">{{cart.msg}}</h1>
 {{/if}}

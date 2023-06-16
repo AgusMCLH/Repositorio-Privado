@@ -8,22 +8,23 @@
     </div>
 <div class="productPage">
     <div class="productPage__image-container">
-        {{#if hasImages}}
-            <div class="productPage__images_wrapper">
+        <div class="productPage__images_wrapper">
+            {{#if hasImages}}
                 <div class="productPage__images_aside">
                     {{#each product.thumbnail}}
                         <img src="{{this}}" alt="{{product.title}}">
                     {{/each}}
                 </div>
+
                 <div class="productPage__images_main">
                     <img src="{{product.thumbnail.[0]}}" alt="{{product.title}}">
                 </div>
-            </div>
-        {{else}}
-            <div class="productPage__image">
-                <img src="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg" alt="{{title}}">
-            </div>
-        {{/if}}
+            {{else}}
+                    <div class="productPage__images_main">
+                        <img src="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg" alt="{{title}}">
+                    </div>
+            {{/if}}
+        </div>
     </div>
     <div class="productPage__Details">
         <h1>Producto {{product.title}}</h1>

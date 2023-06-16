@@ -4,21 +4,36 @@ import CM from '../MongoManagers/cartManager.js';
 const cartRouting = Router();
 
 cartRouting.get('/:cid', async (req, res) => {
-  let exists = false;
-  let productsQuantity = false;
-  const idBuscado = req.params.cid;
-  const cart = JSON.parse(await CM.getCartByID(idBuscado))[0];
-  console.log(JSON.stringify(cart));
-  if (cart.code !== 400) {
-    exists = true;
-    productsQuantity = cart.products.length > 0;
+  try {
+    let exists = false;
+    let productsQuantity = false;
+    const idBuscado = req.params.cid;
+    let cart = await CM.getCartByID(idBuscado);
+    if (cart !== undefined) {
+      if (cart.code === 400) {
+        return res.status(400).send(cart.msg);
+      } else {
+        exists = true;
+        productsQuantity = cart.products.length > 0;
+        cart.products.forEach((product) => {
+          if (product.product.thumbnail[0] === 'Sin foto') {
+            product.product.hasPhoto = false;
+          } else {
+            product.product.hasPhoto = true;
+          }
+          console.log(product);
+        });
+      }
+      res.render('cart', {
+        title: 'cart',
+        cart,
+        exists,
+        productsQuantity,
+      });
+    }
+  } catch (error) {
+    console.log(error);
   }
-  res.render('cart', {
-    title: 'cart',
-    cart,
-    exists,
-    productsQuantity,
-  });
 });
 
 cartRouting.post('/', async (req, res) => {

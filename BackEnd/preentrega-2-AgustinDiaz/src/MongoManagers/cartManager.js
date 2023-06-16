@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import { cartModel } from './../models/cart.model.js';
 import productManager from './productManager.js';
 
@@ -18,19 +17,32 @@ class Cart {
   }
 
   async getCartByID(id) {
-    try {
-      const cartJSON = await cartModel
-        .find({ _id: id })
-        .populate('products.product');
-      return JSON.stringify(cartJSON, null, '\t');
-    } catch (error) {
-      if (error.name === 'CastError') {
-        return {
-          code: 400,
-          msg: `No existe ningun carrito con el id ${id}`,
-        };
+    if (id.length === 24 || id.length === 12) {
+      try {
+        console.log('ID: ', id);
+        const cartJSON = await cartModel
+          .findById(id)
+          .populate('products.product')
+          .lean();
+        console.log('desde el service', cartJSON);
+        if (cartJSON.length === 0) {
+          return {
+            code: 400,
+            msg: `No existe ningun carrito con el id ${id}`,
+          };
+        }
+        return cartJSON;
+      } catch (error) {
+        console.log('Error al obtener cart', error);
+        if (error.name === 'CastError') {
+          return {
+            code: 400,
+            msg: `No existe ningun carrito con el id ${id}`,
+          };
+        }
       }
     }
+    console.log('El id no es valido', id);
   }
 
   async addProductToCart(id, product) {
