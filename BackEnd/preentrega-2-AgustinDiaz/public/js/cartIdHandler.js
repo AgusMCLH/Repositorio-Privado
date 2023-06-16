@@ -28,7 +28,7 @@ if (document.getElementById('addToCartButton') !== null) {
     Swal.fire({
       position: 'top-end',
       icon: 'success',
-      title: JSON.stringify(response),
+      title: 'El producto fue agregado al carrito',
       showConfirmButton: false,
       timer: 1500,
     });
