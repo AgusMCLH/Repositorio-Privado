@@ -1,4 +1,4 @@
-const productHTMLCollection = document.getElementsByClassName(
+let productHTMLCollection = document.getElementsByClassName(
   'product-item__rating'
 );
 

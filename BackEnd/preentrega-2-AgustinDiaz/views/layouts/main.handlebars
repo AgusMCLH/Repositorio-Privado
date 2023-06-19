@@ -16,12 +16,21 @@
                         <p>FREE SHIPPING ON ORDERS OVER $100</p>
                     </div>
                     <div class="secondNav_loginButtons">
-                        <div>
-                            <a href="/login">SIGN IN</a>
-                        </div>
-                        <div>
-                            <a href="/register">REGISTER</a>
-                        </div>
+                        {{#if user}}
+                            <div>
+                                <a href="/users/logout">LOGOUT</a>
+                            </div>
+                            <div>
+                                <a href="/users/profile">PROFILE</a>
+                            </div>
+                        {{else}}
+                            <div>
+                                <a href="/users/signin">SIGN IN</a>
+                            </div>
+                            <div>
+                                <a href="/users/signup">SIGN UP</a>
+                            </div>
+                        {{/if}}
                     </div>
                 </div>
             </div>

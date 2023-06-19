@@ -2,8 +2,9 @@ import { Router } from 'express';
 import CM from '../MongoManagers/cartManager.js';
 
 const cartRouting = Router();
+import { isAuth } from '../middleware/isAuth.middleware.js';
 
-cartRouting.get('/:cid', async (req, res) => {
+cartRouting.get('/:cid', isAuth, async (req, res) => {
   try {
     let exists = false;
     let productsQuantity = false;
@@ -41,7 +42,7 @@ cartRouting.post('/', async (req, res) => {
   res.status(response.code).send(response.cartId);
 });
 
-cartRouting.post('/:cid/product/:pid', async (req, res) => {
+cartRouting.post('/:cid/product/:pid', isAuth, async (req, res) => {
   let response = await CM.addProductToCart(req.params.cid, req.params.pid);
   res.status(response.code).send(response.msg);
 });
@@ -54,9 +55,8 @@ cartRouting.delete('/cart/:cid/product/:pid', async (req, res) => {
   res.send(data);
 });
 
-cartRouting.put('/carts/:cid', async (req, res) => {
+cartRouting.put('/carts/:cid', isAuth, async (req, res) => {
   const cartID = req.params.cid;
-
   const reqBody = req.body;
   console.log(reqBody);
   const data = await CM.updateCart(cartID, reqBody);

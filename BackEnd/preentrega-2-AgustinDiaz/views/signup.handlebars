@@ -1,0 +1,37 @@
+
+<section class="loginFormPage">
+  
+  
+    <form autocomplete="off" class="animated-fadeInDown" action="/users/signup" method="post">
+  <div class="login-form registerClassName">
+    <h1>sign up</h1>
+    <div class="form__image"><img src="/img/illustrations/Team building _Two Color.svg" alt=""></div>
+    
+    <div class="form_body">
+      <div class="form__inputDiv">
+        <label for="userFirstName">first name</label>
+        <input type="text" name="userFirstName" id="userFirstName" {{#if error}} value="{{userData.firstName}}" {{/if}} placeholder="Jhon" required />
+      </div>
+
+      <div class="form__inputDiv">
+        <label for="userLastName">last name</label>
+        <input type="text" name="userLastName" id="userLastName"{{#if error}} value="{{userData.lastName}}" {{/if}} placeholder="Doe" required />
+      </div>
+
+      <div class="form__inputDiv">
+        <label for="userEmail">email</label>
+        <input type="email" name="userEmail" id="userEmail" placeholder="email@email.com" {{#if error}} value="{{userData.email}}" {{/if}}required />
+      </div>
+
+      <div class="form__inputDiv">
+        <label for="userPassword">password</label>
+        <input type="password" name="userPassword" id="userPassword" placeholder="**********" required />
+      </div>
+    </div>
+    
+    
+    <input type="submit" id="submit" value="sign up" />
+  {{#if error}} <div class="error_window animated-fadeInDown"> <p>{{errorText}}</p></div> {{/if}}
+  </div>
+</form>
+</section>

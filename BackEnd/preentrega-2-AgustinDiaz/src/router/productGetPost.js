@@ -34,6 +34,11 @@ productGetPost.get('/', async (req, res) => {
   };
 
   products.docs.forEach((product) => {
+    if (product.thumbnail[0] === 'Sin foto') {
+      product.hasThumbnail = false;
+    } else {
+      product.hasThumbnail = true;
+    }
     product.rating = getStars();
   });
   let response = {
@@ -51,7 +56,8 @@ productGetPost.get('/', async (req, res) => {
     lastLink: `?limit=${products.limit}&page=${products.totalPages}`,
   };
 
-  res.render('home', { title: 'Products', response });
+  const user = req.session.user;
+  res.render('home', { title: 'Products', response, user });
 });
 
 // Declaro el endpoint /api/get/:id en caso de que pasen un ID
@@ -69,7 +75,8 @@ productGetPost.get('/:pid', async (req, res) => {
     // res.status(200).send(`<p>${JSON.stringify(product)}</p>`);
     const hasImages = product.thumbnail[0] !== 'Sin foto';
     product.rating = getStars();
-    res.render('productPage', { product, hasImages });
+    const user = req.session.user;
+    res.render('productPage', { product, hasImages, user });
   }
 });
 

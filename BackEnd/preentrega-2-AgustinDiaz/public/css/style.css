@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-p, a, li, ul, ol, span {
+p, a, li, ul, ol, span, label {
   font-family: "Nunito Sans", sans-serif;
 }
 
@@ -432,4 +432,167 @@ body .productPage .productPage__Details .productPage__Details-category {
 body .productPage .productPage__Details .productPage__Details-category span {
   font-weight: 700;
   color: #000000;
+}
+body .loginFormPage {
+  height: 73vh;
+}
+body .loginFormPage form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+body .loginFormPage .login-form {
+  width: 1000px;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 40px 50px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+  background: rgb(243, 242, 238);
+  border-radius: 7px;
+  display: flex;
+  flex-wrap: wrap;
+}
+body .loginFormPage .login-form h1 {
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: #767074;
+  margin-top: 3px;
+  margin-bottom: 25px;
+}
+body .loginFormPage .login-form .formBody {
+  width: 50%;
+}
+body .loginFormPage .login-form label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(99, 100, 103, 0.7);
+}
+body .loginFormPage .login-form label, body .loginFormPage .login-form h1, body .loginFormPage .login-form input[type=submit] {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+body .loginFormPage .login-form input {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 4px;
+  border: 1px solid rgba(154, 154, 155, 0.4);
+  text-indent: 15px;
+  color: rgb(105, 100, 103);
+}
+body .loginFormPage .login-form label[for=chkKeep], body .loginFormPage .login-form a {
+  font-size: 0.8rem;
+  text-transform: none;
+  color: #b1b1b1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+body .loginFormPage .login-form input[type=checkbox] {
+  margin: 0;
+  width: 15px;
+  height: 15px;
+}
+body .loginFormPage .login-form a {
+  float: right;
+  text-decoration: none;
+  color: rgb(58, 166, 242);
+  transition: color 200ms ease-in-out;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+body .loginFormPage .login-form a:hover {
+  color: #82c6f7;
+}
+body .loginFormPage .login-form input[type=submit] {
+  text-align: center;
+  text-indent: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  height: 68px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: white;
+  text-shadow: 1px 1px 0 rgba(140, 140, 140, 0.2), -1px -1px 1px rgba(0, 0, 0, 0.27);
+  background: rgb(233, 26, 26);
+  border: none;
+  border-radius: 5px;
+  border-bottom: 4px solid #b41111;
+}
+body .loginFormPage .login-form ::-webkit-input-placeholder {
+  color: rgb(154, 154, 155);
+}
+body .loginFormPage .login-form p {
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+}
+body .loginFormPage .login-form a {
+  float: none;
+  padding: 0.2em 1em;
+}
+body .loginFormPage .login-form a li {
+  display: inline-block;
+  margin-bottom: 6px;
+}
+body .loginFormPage .login-form .error_window {
+  animation-delay: 0.6s;
+  width: 100%;
+  background-color: rgba(233, 26, 26, 0.667);
+  height: 68px;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+}
+body .loginFormPage .login-form .error_window p {
+  color: white;
+}
+body .registerClassName {
+  width: 1000px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+body .registerClassName h1 {
+  width: 100%;
+}
+body .registerClassName .form_body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+  gap: 20px;
+}
+body .registerClassName .form_body .form__inputDiv {
+  width: 47%;
+}
+body .registerClassName .form__image {
+  width: 50%;
+}
+body .registerClassName .form__image img {
+  width: 100%;
+}
+
+.animated-fadeInDown {
+  animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+@keyframes fade-in-top {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }/*# sourceMappingURL=style.css.map */

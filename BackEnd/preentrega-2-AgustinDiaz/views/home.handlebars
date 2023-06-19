@@ -18,9 +18,11 @@
                         <div class="product-item__content">
                             <div class="imgContaiener">
                                 <div class="imgWrapper">
-                                    {{#each this.thumbnail}}
-                                    <img src="{{this}}" alt="Imagen Proporcionada">
-                                    {{/each}}
+                                    {{#if hasThumbnail}}
+                                        {{#each this.thumbnail}}
+                                            <img src="{{this}}" alt="Imagen Proporcionada">
+                                        {{/each}}
+                                    {{/if}}
                                 </div>
                             </div>
                             <h3 class="product-item__title">{{this.title}}</h3>
