@@ -35,7 +35,6 @@ productGetPost.get('/', async (req, res) => {
 
   products.docs.forEach((product) => {
     product.rating = getStars();
-    console.log(product);
   });
   let response = {
     status: status(),

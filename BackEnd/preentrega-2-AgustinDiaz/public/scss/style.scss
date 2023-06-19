@@ -3,6 +3,9 @@
     padding: 0px;
     box-sizing: border-box;
 }
+p,a,li,ul,ol,span{
+    font-family: "Nunito Sans", sans-serif;
+}
 h1,h2,h3,h4,h5,h6{
     font-family: "Nunito Sans", sans-serif;
 }
@@ -12,9 +15,36 @@ header{
 
         .secondNav{
             width: 100%;
-            height: 30px;
+            height: 45px;
             background-color: black;
             color: white;
+            .secondNav_header{
+                display: flex;
+                justify-content: space-between;
+                width: 60%;
+                margin: auto;
+                height: 100%;
+                align-items: center;
+                .secondNav_loginButtons{
+                    display: flex;
+                    gap: 20px;
+                    margin-right: 20px;
+                    a{
+                        color: white;
+                        font-family: "Nunito Sans", sans-serif;
+                        font-size: 15px;
+                        letter-spacing: 2px;
+                        text-decoration-color: wheat;
+                    }
+                }
+            }
+            .secondNav_message{
+                p{
+                    font-family: "Nunito Sans", sans-serif;
+                    font-size: 15px;
+
+                }
+            }
         }
         .mainNav{
             overflow: hidden;
@@ -35,7 +65,7 @@ header{
             .navRoutes{
                 ul{
                     display: flex;
-                    
+                    gap: 45px;
                     li{
                         padding: 5px;
                         list-style: none;
@@ -75,9 +105,9 @@ header{
                 }
             }
             .userIcons{
-                width: 25%;
+                width: fit-content;
                 display: flex;
-                justify-content: center;
+                justify-content: end;
                 gap: 20px;
                 .userIcons_Icon{
                     height: 20px;

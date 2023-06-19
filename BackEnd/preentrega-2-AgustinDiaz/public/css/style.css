@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+p, a, li, ul, ol, span {
+  font-family: "Nunito Sans", sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Nunito Sans", sans-serif;
 }
@@ -13,9 +17,33 @@ header nav {
 }
 header nav .secondNav {
   width: 100%;
-  height: 30px;
+  height: 45px;
   background-color: black;
   color: white;
+}
+header nav .secondNav .secondNav_header {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: auto;
+  height: 100%;
+  align-items: center;
+}
+header nav .secondNav .secondNav_header .secondNav_loginButtons {
+  display: flex;
+  gap: 20px;
+  margin-right: 20px;
+}
+header nav .secondNav .secondNav_header .secondNav_loginButtons a {
+  color: white;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-decoration-color: wheat;
+}
+header nav .secondNav .secondNav_message p {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 15px;
 }
 header nav .mainNav {
   overflow: hidden;
@@ -36,6 +64,7 @@ header nav .mainNav .logoImage img {
 }
 header nav .mainNav .navRoutes ul {
   display: flex;
+  gap: 45px;
 }
 header nav .mainNav .navRoutes ul li {
   padding: 5px;
@@ -66,9 +95,10 @@ header nav .mainNav .navRoutes ul li a:after {
   transform: scale(0);
 }
 header nav .mainNav .userIcons {
-  width: 25%;
+  width: -moz-fit-content;
+  width: fit-content;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   gap: 20px;
 }
 header nav .mainNav .userIcons .userIcons_Icon {
