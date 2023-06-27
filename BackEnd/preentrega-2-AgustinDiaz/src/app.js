@@ -51,6 +51,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+
 //Passport
 initializePassport();
 app.use(passport.initialize());
