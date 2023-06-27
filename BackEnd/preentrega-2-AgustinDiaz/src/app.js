@@ -1,15 +1,22 @@
 import express from 'express';
+
 import { productGetPost } from './router/productGetPost.js';
 import { cartRouting } from './router/cartRouting.js';
 import { realTimeProducts } from './router/realtimeproduct.js';
 import { testRouter } from './router/test.router.js';
+import { userRouter } from './router/users.router.js';
+
 import handlebars from 'express-handlebars';
-import { Server } from 'socket.io';
+
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import mongoStore from 'connect-mongo';
-import { userRouter } from './router/users.router.js';
+
+import passport from 'passport';
+import initializePassport from './utils/passport.config.js';
+
+import { Server } from 'socket.io';
 
 // Declaro una app de tipo express y la configuro para que use JSON's y urlencoded ademas de usar la carpeta public para los archivos estaticos
 const app = express();
@@ -44,6 +51,10 @@ app.use(
     saveUninitialized: true,
   })
 );
+//Passport
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Rutas
 app.get('/', (req, res) => {
