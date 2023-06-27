@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import userService from '../service/user.service.js';
-import { set } from 'mongoose';
+import { comparePassword } from '../../tools/encript.tool.js';
 
 const userRouter = Router();
 userRouter.get('/signin', async (req, res) => {
@@ -19,7 +19,7 @@ userRouter.post('/signup', async (req, res) => {
     password: userPassword,
   };
   const user = await userService.addUser(userData);
-  console.log('user', user);
+
   if (user.hasOwnProperty('code')) {
     if (user.code === 400) {
       res.render('signup', {
@@ -54,7 +54,8 @@ userRouter.post('/signin', async (req, res) => {
   } else {
     const user = await userService.getUserByEmail(userEmail);
     if (user) {
-      if (user.password === userPassword) {
+      //user.password === userPassword
+      if (comparePassword(userPassword, user.password)) {
         req.session.user = user;
         console.log(user);
         res.redirect('/users/saludo');
