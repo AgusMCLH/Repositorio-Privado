@@ -10,37 +10,37 @@ const initializePassport = () => {
     'register',
     new LocalStrategy(
       { usernameField: 'email', passReqToCallback: true },
-      async (req, userName, password, done) => {
+
+      async (req, username, password, done) => {
         console.log('req.body', req.body);
         const { firstName, lastName } = req.body;
         try {
-          const userValidation = await userService.getUserByEmail(userName);
+          const userValidation = await userService.getUserByEmail(username);
           if (userValidation) {
             return done(null, false, {
               message: 'Email already in use',
             });
           }
-
           const userData = {
             firstName,
             lastName,
-            email: userName,
+            email: username,
             password,
           };
-          const user = await userService.addUser(userData);
+          const newUser = await userService.addUser(userData);
 
-          if (user.hasOwnProperty('code')) {
-            if (user.code === 400) {
+          if (newUser.hasOwnProperty('code')) {
+            if (newUser.code === 400) {
               return done(null, false, {
-                message: user.message,
+                message: newUser.message,
               });
             } else {
               return done(null, false, {
-                message: user.message,
+                message: newUser.message,
               });
             }
           } else {
-            return done(null, user);
+            return done(null, newUser);
           }
         } catch (error) {
           console.log(error);
@@ -49,6 +49,7 @@ const initializePassport = () => {
       }
     )
   );
+
   passport.serializeUser((user, done) => {
     done(null, user._id);
   });
