@@ -8,7 +8,13 @@ userRouter.get('/signin', async (req, res) => {
   res.render('signin', { title: 'SignIn', error: false, errorText: '' });
 });
 userRouter.get('/signup', async (req, res) => {
-  res.render('signup', { title: 'SignUp', error: false, errorText: '' });
+  let error = false;
+  let errorText = req.session.messages[0];
+  if (errorText !== []) {
+    error = true;
+  }
+  req.session.messages = [];
+  res.render('signup', { title: 'SignUp', error, errorText });
 });
 
 // userRouter.post('/signup', async (req, res) => {
@@ -40,10 +46,11 @@ userRouter.get('/signup', async (req, res) => {
 userRouter.post(
   '/signup',
   passport.authenticate('register', {
-    failureRedirect: '/users/failedoperation',
+    failureRedirect: '/users/signup',
+    failureMessage: true,
   }),
   async (req, res) => {
-    res.status(201).json(user);
+    res.status(201).redirect('/users/signin');
   }
 );
 
@@ -90,6 +97,8 @@ userRouter.post('/signin', async (req, res) => {
 });
 
 userRouter.get('/failedoperation', async (req, res) => {
+  console.log('failed operation', req.session.messages);
+  req.session.messages = [];
   res.send('Failed Operation');
 });
 

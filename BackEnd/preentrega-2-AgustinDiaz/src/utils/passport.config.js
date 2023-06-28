@@ -12,10 +12,10 @@ const initializePassport = () => {
       { usernameField: 'email', passReqToCallback: true },
 
       async (req, username, password, done) => {
-        console.log('req.body', req.body);
         const { firstName, lastName } = req.body;
         try {
           const userValidation = await userService.getUserByEmail(username);
+
           if (userValidation) {
             return done(null, false, {
               message: 'Email already in use',
