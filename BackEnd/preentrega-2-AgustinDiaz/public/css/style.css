@@ -556,6 +556,14 @@ body .loginFormPage .login-form .error_window {
 body .loginFormPage .login-form .error_window p {
   color: white;
 }
+body .loginFormPage .login-form .thirdPartyLoginButtons {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
 body .registerClassName {
   width: 1000px !important;
   display: flex;

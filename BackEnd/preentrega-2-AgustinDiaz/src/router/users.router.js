@@ -1,47 +1,35 @@
 import { Router } from 'express';
-import userService from '../service/user.service.js';
-import { comparePassword } from '../../tools/encript.tool.js';
 import passport from 'passport';
 
 const userRouter = Router();
 userRouter.get('/signin', async (req, res) => {
-  res.render('signin', { title: 'SignIn', error: false, errorText: '' });
+  let error = false;
+  let errorText = [];
+  console.log('errortext1', errorText);
+
+  if (req.session.messages !== undefined) {
+    errorText = req.session.messages[0];
+  }
+  if (errorText !== undefined && errorText.length > 0) {
+    error = true;
+  }
+  req.session.messages = [];
+  res.render('signin', { title: 'SignIn', error, errorText });
 });
+
 userRouter.get('/signup', async (req, res) => {
   let error = false;
-  let errorText = req.session.messages[0];
-  if (errorText !== []) {
+  let errorText = [];
+  if (req.session.messages !== undefined) {
+    errorText = req.session.messages[0];
+  }
+  console.log('signup', errorText);
+  if (errorText !== undefined) {
     error = true;
   }
   req.session.messages = [];
   res.render('signup', { title: 'SignUp', error, errorText });
 });
-
-// userRouter.post('/signup', async (req, res) => {
-//   const { userFirstName, userLastName, userEmail, userPassword } = req.body;
-//   const userData = {
-//     firstName: userFirstName,
-//     lastName: userLastName,
-//     email: userEmail,
-//     password: userPassword,
-//   };
-//   const user = await userService.addUser(userData);
-
-//   if (user.hasOwnProperty('code')) {
-//     if (user.code === 400) {
-//       res.render('signup', {
-//         title: 'SignUp',
-//         error: true,
-//         errorText: user.message,
-//         userData,
-//       });
-//     } else {
-//       res.status(user.code).json(user.message);
-//     }
-//   } else {
-//     res.status(201).json(user);
-//   }
-// });
 
 userRouter.post(
   '/signup',
@@ -54,53 +42,34 @@ userRouter.post(
   }
 );
 
-userRouter.post('/signin', async (req, res) => {
-  const { userEmail, userPassword } = req.body;
-  if (
-    userEmail === 'adminCoder@coder.com' ||
-    userPassword === 'adminCod3r123'
-  ) {
-    const user = {
-      firstName: 'CODER',
-      lastName: 'ADMIN',
-      email: userEmail,
-      password: userPassword,
-      role: 'administrador',
-    };
+userRouter.get(
+  '/signin/github',
+  passport.authenticate('github', { scope: ['user:email'] }),
+  async (req, res) => {}
+);
+
+userRouter.get(
+  '/signin/githubcallback',
+  passport.authenticate('github', { failureRedirect: '/users/signin' }),
+  async (req, res) => {
+    req.session.user = req.user;
+    res.redirect('/users/saludo');
+  }
+);
+
+userRouter.post(
+  '/signin',
+  passport.authenticate('signin', {
+    failureRedirect: '/users/signin',
+    failureMessage: true,
+  }),
+  (req, res) => {
+    const user = req.user;
+    delete user.password;
     req.session.user = user;
     res.redirect('/users/saludo');
-  } else {
-    const user = await userService.getUserByEmail(userEmail);
-    if (user) {
-      //user.password === userPassword
-      if (comparePassword(userPassword, user.password)) {
-        req.session.user = user;
-        console.log(user);
-        res.redirect('/users/saludo');
-      } else {
-        res.render('signin', {
-          title: 'SignIn',
-          error: true,
-          errorText: 'Contraseña Incorrecta',
-          userData: { email: userEmail },
-        });
-      }
-    } else {
-      res.render('signin', {
-        title: 'SignIn',
-        error: true,
-        errorText: 'Usuario Inexistente',
-        userData: { email: userEmail },
-      });
-    }
   }
-});
-
-userRouter.get('/failedoperation', async (req, res) => {
-  console.log('failed operation', req.session.messages);
-  req.session.messages = [];
-  res.send('Failed Operation');
-});
+);
 
 userRouter.get('/logout', async (req, res) => {
   req.session.destroy();

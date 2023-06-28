@@ -8,14 +8,18 @@
     </div>
     <div class="formBody">
     <label for="userEmail">email</label>
-    <input type="email" name="userEmail" id="userEmail" placeholder="email@email.com" required />
+    <input type="email" name="email" id="userEmail" placeholder="email@email.com" required />
     <label for="userPassword">password</label>
-    <input type="password" name="userPassword" id="userPassword" placeholder="**********" required />
+    <input type="password" name="password" id="userPassword" placeholder="**********" required />
     <label for="chkKeep"> <input type="checkbox" id="chkKeep" name="chkKeep"  /> Remember me </label>
       
     </div>
     
     <input type="submit" id="submit" value="sign in" />
+    <div class="thirdPartyLoginButtons">
+      <a href="/users/signin/github"><img src="/img/icon/github.png" alt="Github logo"></a>
+    </div>
+   
    {{#if error}} <div class="error_window animated-fadeInDown"> <p>{{errorText}}</p></div> {{/if}}
   </div>
 </form>
