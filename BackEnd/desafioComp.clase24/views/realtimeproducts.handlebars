@@ -1,0 +1,24 @@
+<div class="product-list" id="product-list">
+    {{#if emptyList}}
+    <h2>No hay productos</h2>
+    {{else}}
+        
+        {{#each products}}
+            {{#if this.visible}}
+                <a href='/api/products/{{this._id}}'>
+                    <div class="product-item">
+                        <div class="product-item__content">
+                            <h3>{{this.title}}</h3>
+                            <p>{{this.description}}</p>
+                            <p class="product-item__stock">Stock: {{this.stock}}</p>
+                            <p class="product-item__price">$ {{this.price}}</p>
+                        </div>
+                    </div>
+                </a>
+            {{else}}
+            {{/if}}
+        {{/each}}
+    {{/if}}
+
+<script src="/js/main.js" defer></script>
+</div>

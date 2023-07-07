@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>{{title}}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="secondNav">
+                <div class="secondNav_header">
+                    <div class="secondNav_message">
+                        <p>FREE SHIPPING ON ORDERS OVER $100</p>
+                    </div>
+                    <div class="secondNav_loginButtons">
+                        {{#if user}}
+                            <div>
+                                <a href="/users/logout">LOGOUT</a>
+                            </div>
+                            <div>
+                                <a href="/users/profile">PROFILE</a>
+                            </div>
+                        {{else}}
+                            <div>
+                                <a href="/users/signin">SIGN IN</a>
+                            </div>
+                            <div>
+                                <a href="/users/signup">SIGN UP</a>
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="mainNav">
+                <div class="logoImage">
+                    <a href="/"><img src="https://themewagon.github.io/malefashion/img/logo.png" alt="LOGO"></a>
+                </div>
+                <div class="navRoutes">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/api/products">Products</a></li>
+                        <li><a href="#">LINK</a></li>
+                        <li><a href="#">LINK</a></li>
+                        <li><a href="#">LINK</a></li>
+                    </ul>
+                </div>
+                {{log user}}
+                <div class="userIcons">
+                    <a href="#" id="heartIcon" class="userIcons_Icon"></a>
+                    <a href="#" id="searchIcon" class="userIcons_Icon"></a>
+                    {{#if user}}
+                    <a href="/api/carts/{{user.cartId}}" id="cartIcon" class="userIcons_Icon"></a>
+                    {{else}}
+                    <a href="/users/signin"  id="cartIcon" class="userIcons_Icon"></a>
+                    {{/if}}
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    {{{body}}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/socket.io/socket.io.js"></script>
+     <script src="/js/productRating.js"></script>
+<script src="/js/cartIdHandler.js"></script>
+</body>
+</html>
