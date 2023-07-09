@@ -34,7 +34,6 @@ class UserService {
   async addUser(user) {
     try {
       const cartResponse = await CM.addCart();
-      console.log(cartResponse);
       user.cartId = cartResponse.cartId;
       user.password = encriptPassword(user.password);
       return await this.model.create(user);

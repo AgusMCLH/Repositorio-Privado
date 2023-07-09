@@ -114,7 +114,6 @@ const initializePassport = () => {
         try {
           let user = await userService.getUserByEmail(profile._json.email);
           if (!user) {
-            console.log(profile);
             const userData = {
               firstName: profile._json.name,
               lastName: '',

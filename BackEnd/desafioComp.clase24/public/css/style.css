@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-p, a, li, ul, ol, span, label {
+p, a, li, ul, ol, span, label, th {
   font-family: "Nunito Sans", sans-serif;
 }
 
@@ -311,10 +311,11 @@ body .pageSwitcherContainer .pageSwitcher ul .disabled {
   opacity: 70%;
 }
 body table .cart-table__thead {
-  background-color: rgb(2, 121, 2);
+  border-bottom: 1px solid #000000;
+  margin: 3px;
 }
 body table .cart-table__thead tr th {
-  color: white;
+  color: #111111;
 }
 body table tbody .cart-table-tbody__id {
   width: 10%;

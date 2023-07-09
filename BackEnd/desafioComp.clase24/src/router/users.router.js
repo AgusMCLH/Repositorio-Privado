@@ -76,7 +76,13 @@ userRouter.get('/logout', async (req, res) => {
 });
 
 userRouter.get('/saludo', async (req, res) => {
-  const user = req.session.user;
+  const user = await req.session.user;
+  if (user === undefined) {
+    setTimeout(() => {
+      res.redirect('/users/saludo');
+    }, 1000);
+  }
+  console.log(user);
   res
     .cookie('cartId', user.cartId, {
       maxAge: 10000000,

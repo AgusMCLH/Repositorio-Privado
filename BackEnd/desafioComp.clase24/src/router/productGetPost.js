@@ -66,7 +66,6 @@ productGetPost.get('/:pid', async (req, res) => {
   let AddtoCartURL = '';
   if (req.session.user) {
     const cartId = req.signedCookies.cartId;
-    console.log(cartId);
     AddtoCartURL = `/api/carts/${cartId}/product/${idBuscado}`;
   } else {
     AddtoCartURL = false;

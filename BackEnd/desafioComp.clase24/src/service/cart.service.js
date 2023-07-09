@@ -49,8 +49,6 @@ class Cart {
           msg: `Error al agregar producto al carrito: faltan datos`,
         };
       }
-      console.log('el ID del carrito es: ', id);
-      console.log('el ID del producto es: ', product);
       if ((await this.getCartByID(id)).code === 400) {
         return { code: 400, msg: `No existe ningun carrito con el id ${id}` };
       }
