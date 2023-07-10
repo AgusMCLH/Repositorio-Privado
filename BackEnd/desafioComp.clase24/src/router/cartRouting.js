@@ -1,10 +1,11 @@
 import { Router } from 'express';
+import { ownCart } from '../middleware/ownCart.middleware.js';
 import CM from '../service/cart.service.js';
 
 const cartRouting = Router();
 import { isAuth } from '../middleware/isAuth.middleware.js';
 
-cartRouting.get('/:cid', isAuth, async (req, res) => {
+cartRouting.get('/:cid', isAuth, ownCart, async (req, res) => {
   try {
     let productsQuantity = false;
     const idBuscado = req.params.cid;
