@@ -27,11 +27,13 @@
                         <tr>
                             <td class="cart-table-tbody__product">
                                 <div class="cart-table-tbody__product-img">
+                                    {{#if this.product.hasPhoto}}
                                     <img src="{{this.product.thumbnail.[0]}}" alt="Imagen del producto">
+                                    {{else}}
+                                    <img src="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg" alt="{{title}}">
+                                    {{/if}}
                                 </div>
-                                <div class="cart-table-tbody__product-title">
-                                    {{this.product.title}}
-                                </div>
+  
                             </td>
                             <td class="cart-table-tbody__name">{{this.product.title}}</td>
                             <td class="cart-table-tbody__price">${{this.product.price}}</td>
