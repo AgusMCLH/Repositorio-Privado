@@ -5,6 +5,7 @@ import { cartRouting } from './router/cartRouting.js';
 import { realTimeProducts } from './router/realtimeproduct.js';
 import { testRouter } from './router/test.router.js';
 import { userRouter } from './router/users.router.js';
+import { sessions } from './router/session.router.js';
 
 import handlebars from 'express-handlebars';
 
@@ -69,6 +70,7 @@ app.use('/api/products', productGetPost);
 app.use('/api/carts', cartRouting);
 app.use('/api/realtimeproducts', realTimeProducts);
 app.use('/users', userRouter);
+app.use('/api/sessions', sessions);
 
 // Configuro el puerto en el cual va a escuchar el servidor
 const webServer = app.listen(8080, () => {
