@@ -61,6 +61,7 @@ const initializePassport = () => {
           password === 'adminCod3r123'
         ) {
           const user = {
+            _id: 'adminCod3r123',
             firstName: 'CODER',
             lastName: 'ADMIN',
             email: username,
@@ -93,9 +94,22 @@ const initializePassport = () => {
   passport.serializeUser((user, done) => {
     done(null, user._id);
   });
+
   passport.deserializeUser(async (id, done) => {
     try {
-      const user = await userService.getById(id);
+      console.log(id);
+      let user = '';
+      if (id === 'adminCod3r123') {
+        user = {
+          _id: id,
+          firstName: 'CODER',
+          lastName: 'ADMIN',
+          email: 'adminCoder@coder.com',
+          password: '------------------',
+        };
+      } else {
+        user = await userService.getById(id);
+      }
       return done(null, user);
     } catch (error) {
       return done(error);
