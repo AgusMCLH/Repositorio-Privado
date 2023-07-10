@@ -609,8 +609,12 @@ body .notFoundPage .wraper {
   padding: 20px;
   border-radius: 10px;
 }
-body .notFoundPage .wraper button {
+body .notFoundPage .wraper a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 70%;
+  text-decoration: none;
   height: 50px;
   border-radius: 10px;
   background-color: #000000;
