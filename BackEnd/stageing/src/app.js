@@ -2,9 +2,7 @@ import mongoose from 'mongoose';
 import { studentModel } from './models/student.model.js';
 import dataStudents from './data/students.json' assert { type: 'json' };
 
-mongoose.connect(
-  'mongodb+srv://agustindiaz980:Fecha1990@cluster0.otb4efz.mongodb.net/?retryWrites=true&w=majority'
-);
+mongoose.connect();
 
 // const data = await studentModel.insertMany(dataStudents);
 

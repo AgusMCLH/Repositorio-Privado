@@ -20,9 +20,7 @@ app.use('/api/courses', courseRouter);
 app.use('/api/students', studentRouter);
 app.use('/', viewsRouter);
 
-mongoose.connect(
-  'mongodb+srv://agustindiaz980:Fecha1990@cluster0.otb4efz.mongodb.net/?retryWrites=true&w=majority'
-);
+mongoose.connect();
 
 app.use('/api/students', studentRouter);
 

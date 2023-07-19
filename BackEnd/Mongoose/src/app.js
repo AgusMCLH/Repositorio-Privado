@@ -12,6 +12,4 @@ app.listen(8080, () => {
 
 app.use('/api/users', usersRouter);
 
-mongoose.connect(
-  'mongodb+srv://agustindiaz980:Fecha1990@cluster0.otb4efz.mongodb.net/?retryWrites=true&w=majority'
-);
+mongoose.connect();

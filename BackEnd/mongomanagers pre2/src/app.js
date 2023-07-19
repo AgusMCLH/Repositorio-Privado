@@ -2,9 +2,7 @@ import mongoose from 'mongoose';
 import { productManager } from './mongo managers/productManager.js';
 import productsData from './data/products.json' assert { type: 'json' };
 import { cartManager } from './mongo managers/cartManager.js';
-mongoose.connect(
-  'mongodb+srv://agustindiaz980:Fecha1990@cluster0.otb4efz.mongodb.net/coderhouse-backend-ecommerce?retryWrites=true&w=majority'
-);
+mongoose.connect();
 
 const main = async () => {
   // const data = await productManager.addProduct({

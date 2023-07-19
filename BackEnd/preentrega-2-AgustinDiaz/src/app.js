@@ -33,16 +33,13 @@ app.set('view engine', 'handlebars');
 app.use(cookieParser('G876HF%Nunv$#nmce2t2g25'));
 
 // Conecto Mongo
-mongoose.connect(
-  'mongodb+srv://agustindiaz980:Fecha1990@cluster0.otb4efz.mongodb.net/coderhouse-backend-ecommerce?retryWrites=true&w=majority'
-);
+mongoose.connect();
 
 // Configuro la session
 app.use(
   session({
     store: mongoStore.create({
-      mongoUrl:
-        'mongodb+srv://agustindiaz980:Fecha1990@cluster0.otb4efz.mongodb.net/coderhouse-backend-ecommerce?retryWrites=true&w=majority',
+      mongoUrl: '',
       mongoOptions: { useNewUrlParser: true },
       ttl: 6000,
     }),
