@@ -1,0 +1,55 @@
+<div class="pageLabel_container">
+        <div class="pageLabel_wraper">
+            <h4>
+                Products
+            </h4>
+                <a href="/">Home</a><a href="/api/products">Products</a><span>{{product.title}}</span>
+        </div>
+    </div>
+<div class="productPage">
+    <div class="productPage__image-container">
+        <div class="productPage__images_wrapper">
+            {{#if hasImages}}
+                <div class="productPage__images_aside">
+                    {{#each product.thumbnail}}
+                        <img src="{{this}}" alt="{{product.title}}">
+                    {{/each}}
+                </div>
+
+                <div class="productPage__images_main">
+                    <img src="{{product.thumbnail.[0]}}" alt="{{product.title}}">
+                </div>
+            {{else}}
+                    <div class="productPage__images_main">
+                        <img src="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg" alt="{{title}}">
+                    </div>
+            {{/if}}
+        </div>
+    </div>
+    <div class="productPage__Details">
+        <h1>Producto {{product.title}}</h1>
+        <div class="product-item__rating">
+            {{#each product.rating}}
+                {{#if this}}
+                    <img src="/img/icon/fullstar.png" alt="Estrella completa">
+                {{else}}
+                    <img src="/img/icon/halfstar.png" alt="Media Estrella">
+                {{/if}}
+            {{/each}}
+        </div>  
+        <p class="productPage__Details-price">${{product.price}}</p>
+        <p class="productPage__Details-description">{{product.description}}</p>
+        <div class="product-item__buttons">
+        <p id="addToFavoritesButton"><img src="/img/icon/heart.png" alt="heart"></p>
+        {{#if AddtoCartURL}}
+        <form action="{{AddtoCartURL}}" method="post">
+        <input type="submit" value="Agregar al carrito" id="addToCartButton"></input>
+        </form>
+        {{else}}
+            <a id="addToCartButton" href="/users/signin">Agregar al carrito</a>
+        {{/if}}
+        </div>
+        <p class="productPage__Details-category">Categoria: <span>{{product.category}}</span></p>
+    </div>
+   
+</div>

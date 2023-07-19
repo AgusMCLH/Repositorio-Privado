@@ -1,0 +1,10 @@
+<p>Hola {{user.firstName}}</p>
+
+<script>
+    let explodedUrl = window.location.href.split('/')
+    let productsURL = `http://${explodedUrl[2]}/api/products`
+    console.log(productsURL)
+    setTimeout(() => {
+        window.location.href = productsURL;
+    }, 5000);
+</script>

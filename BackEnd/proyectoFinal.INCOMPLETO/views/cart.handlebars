@@ -1,0 +1,52 @@
+
+    <div class="pageLabel_container">
+        <div class="pageLabel_wraper">
+            <h4>
+                Products
+            </h4>
+                <a href="/">Home</a><a href="/api/products">Products</a><span>Cart</span>
+        </div>
+    </div>
+    <h2>Viendo el carrito {{cart._id}}</h2>
+
+
+<main class="cartPage-container">
+    <section class="cartPage-table_container">
+        <table>
+            <thead class="cart-table__thead">
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if productsQuantity}}
+                    {{#each cart.products}}
+                        <tr>
+                            <td class="cart-table-tbody__product">
+                                <div class="cart-table-tbody__product-img">
+                                    {{#if this.product.hasPhoto}}
+                                    <img src="{{this.product.thumbnail.[0]}}" alt="Imagen del producto">
+                                    {{else}}
+                                    <img src="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg" alt="{{title}}">
+                                    {{/if}}
+                                </div>
+  
+                            </td>
+                            <td class="cart-table-tbody__name">{{this.product.title}}</td>
+                            <td class="cart-table-tbody__price">${{this.product.price}}</td>
+                            <td class="cart-table-tbody__quantity">x{{this.quantity}}</td>
+                        </tr>
+                    {{/each}}
+                {{else}}
+                    <tr>
+                        <td colspan="2" style="border: 5px dotted red;"><p style="width: fit-content; margin: auto;">No hay productos en el carrito</p></td>
+                    </tr>
+                {{/if}}
+            </tbody>
+        </table>
+    </section>
+</main>
+
