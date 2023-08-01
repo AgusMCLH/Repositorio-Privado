@@ -45,6 +45,7 @@ const renderMessages = (messages) => {
     .join(' ');
   document.getElementById('history').innerHTML = html;
 };
+
 socket.on('newUser', (user) => {
   Swal.fire({
     title: `${user}`,
