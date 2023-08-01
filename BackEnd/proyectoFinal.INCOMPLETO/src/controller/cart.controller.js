@@ -1,4 +1,3 @@
-import mongoose, { mongo } from 'mongoose';
 import CM from '../service/cart.service.js';
 import productController from './products.controller.js';
 
@@ -48,18 +47,13 @@ class CartController {
   }
 
   async deleteProductFromCart(id, product, req) {
-    // if ((await productController.getProductByID(product, req)).code === 400) {
-    //   return {
-    //     code: 400,
-    //     msg: `No existe ningun producto con el id ${product}`,
-    //   };
-    // }
+    console.log('ID:', id);
     const cart = await this.getCartByID(id);
+    console.log('CART:', cart);
 
     let realIndex = cart.products.findIndex(
       (_product) => _product.product._id == product
     );
-    console.log(realIndex);
 
     if (realIndex === -1) {
       return {

@@ -116,7 +116,6 @@ class ProductController {
   async getProductByID(id, req) {
     let product = {};
     product.product = await productManager.getProductByID(id);
-    console.log('product code err', product.product.code);
     if (product.product.msg !== undefined) {
       return {
         code: 400,
@@ -163,7 +162,12 @@ class ProductController {
     const allProducts = await productManager.getAllProducts();
     allProducts.forEach((product) => {
       if (product.code === code) {
-        duplicated = true;
+        if (JSON.stringify(product._id) !== JSON.stringify(idAEditar)) {
+          console.log('ID:', JSON.stringify(idAEditar));
+          console.log('ID:', JSON.stringify(product._id));
+          console.log('Duplicated');
+          duplicated = true;
+        }
       }
     });
     if (duplicated === true) {

@@ -1,9 +1,9 @@
 import dotenv from 'dotenv';
 import program from './commander.js';
 
-dotenv.config({ path: './config/.env' });
+dotenv.config({ path: './src/config/.env' });
 
-console.log('thx ', process.env.MongoURL);
+console.log('<<MongoURL>>: ', process.env.MongoURL);
 
 export default {
   PORT: program.opts().port,
