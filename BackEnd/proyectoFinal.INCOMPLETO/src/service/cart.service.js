@@ -1,5 +1,4 @@
 import { cartModel } from './../models/cart.model.js';
-import productManager from './products.service.js';
 
 class Cart {
   async addCart() {

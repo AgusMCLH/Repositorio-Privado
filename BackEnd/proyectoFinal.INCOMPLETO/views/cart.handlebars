@@ -7,22 +7,23 @@
                 <a href="/">Home</a><a href="/api/products">Products</a><span>Cart</span>
         </div>
     </div>
-    <h2>Viendo el carrito {{cart._id}}</h2>
+
 
 
 <main class="cartPage-container">
+    {{#if productsQuantity}}
     <section class="cartPage-table_container">
         <table>
             <thead class="cart-table__thead">
                 <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
+                    <th>PRODUCT</th>
+                    <th>PRICE</th>
+                    <th>QUANTITY</th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                {{#if productsQuantity}}
+            <tbody class="cart-table-tbody">
+                
                     {{#each cart.products}}
                         <tr>
                             <td class="cart-table-tbody__product">
@@ -33,20 +34,57 @@
                                     <img src="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg" alt="{{title}}">
                                     {{/if}}
                                 </div>
-  
+                                <div class="cart-table-tbody__name">{{this.product.title}}</div>
                             </td>
-                            <td class="cart-table-tbody__name">{{this.product.title}}</td>
                             <td class="cart-table-tbody__price">${{this.product.price}}</td>
                             <td class="cart-table-tbody__quantity">x{{this.quantity}}</td>
+                            <td class="cart-table-tbody__delete">
+                                <div class="cart-table-tbody__delete-button button-background" productID="{{this.product._id}}"></div>
+                                {{!-- cart {{../cart._id}} and {{this.product._id}} --}}
+                            </td>
                         </tr>
                     {{/each}}
-                {{else}}
-                    <tr>
-                        <td colspan="2" style="border: 5px dotted red;"><p style="width: fit-content; margin: auto;">No hay productos en el carrito</p></td>
-                    </tr>
-                {{/if}}
+                
             </tbody>
         </table>
     </section>
+    <section class="cartPage-aside_container">
+        <div class="aside-discount_container">
+            <p>DISCOUNT CODES</p>
+            <div class="discount-input_wrapper">
+                <input type="text" class="cuponCode-Input"><div class="cuponCode-apply">APPLY</div>
+            </div>
+        </div>
+        <div class="cart__total">
+            <p>CART TOTAL</p>
+                <div class="total-body">
+                    <div class="total-body-split">
+                        <div>Subtotal</div>
+                        <div><span>$22222</span></div>
+                    </div>
+                    <div class="total-body-split">
+                        <div>Shipping</div>
+                        <div><span>FREE SHIPPING</span></div>
+                    </div>
+                    <div class="total-body-split">
+                        <div>Total</div>
+                        <div><span>$22222</span></div>
+                    </div>
+                </div>
+            <a class="cart__total-button" href="/api/carts/{{cart._id}}/purchase">PROCEED TO PURCHASE</a>
+        </div>
+    </section>
+    {{else}}
+                    <div class="noProducts-container">
+                        <div class="noProducts_wrapper">
+                            <img src="/img/illustrations/Shopping cart_Two Color.svg" alt="">
+                            <h2>Oh no! You have no products on your cart!</h2>
+                           
+                            <a href="/api/products">Fill it before buying!</a>
+                        </div>
+                    </div>
+                {{/if}}
 </main>
 
+
+<script src="/js/cartHandler.js"></script>
