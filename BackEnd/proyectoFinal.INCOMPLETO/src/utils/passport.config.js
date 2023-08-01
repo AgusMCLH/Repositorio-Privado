@@ -1,11 +1,10 @@
-import config from '../../config/config.js';
+import config from './../config/config.js';
 
 import passport from 'passport';
 import local from 'passport-local';
 import userService from '../service/user.service.js';
 import GitHubStrategy from 'passport-github2';
 import { comparePassword } from '../../tools/encript.tool.js';
-import { log } from 'console';
 
 const LocalStrategy = local.Strategy;
 
@@ -59,7 +58,6 @@ const initializePassport = () => {
     new LocalStrategy(
       { usernameField: 'email', passReqToCallback: true },
       async (req, username, password, done) => {
-        console.log(config.ADMIN_EMAIL);
         if (
           username === config.ADMIN_EMAIL &&
           password === config.ADMIN_PASSWORD
@@ -101,7 +99,6 @@ const initializePassport = () => {
 
   passport.deserializeUser(async (id, done) => {
     try {
-      console.log(id);
       let user = '';
       if (id === config.ADMIN_PASSWORD) {
         user = {
