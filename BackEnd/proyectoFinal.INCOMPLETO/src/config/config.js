@@ -13,4 +13,5 @@ export default {
   ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
   GitHSSecret: process.env.GHSSecret,
   GitHSID: process.env.GHSID,
+  PERSISTANCEMODULE: process.env.persistenceModule,
 };

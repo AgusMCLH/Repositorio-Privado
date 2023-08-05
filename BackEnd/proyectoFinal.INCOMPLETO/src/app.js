@@ -11,6 +11,7 @@ import CartRouting from './router/carts.Router.js';
 import UserRouter from './router/users.Router.js';
 import ChatRouter from './router/chat.Router.js';
 import HomeRouter from './router/home.Router.js';
+import MockingRouter from './router/moking.Router.js';
 
 import handlebars from 'express-handlebars';
 
@@ -22,11 +23,20 @@ import mongoStore from 'connect-mongo';
 import passport from 'passport';
 import initializePassport from './utils/passport.config.js';
 
+import compression from 'express-compression';
 import { Server } from 'socket.io';
 let messages = [];
 
 // Declaro una app de tipo express y la configuro para que use JSON's y urlencoded ademas de usar la carpeta public para los archivos estaticos
 const app = express();
+app.use(
+  compression({
+    brotli: {
+      enabled: true,
+      zlib: {},
+    },
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -38,9 +48,6 @@ app.set('view engine', 'handlebars');
 
 // Configuro las cookies
 app.use(cookieParser(config.SECRET));
-
-// Conecto Mongo
-mongoose.connect(config.MONGOURL);
 
 // Configuro la session
 app.use(
@@ -70,6 +77,7 @@ app.use('/api/carts', new CartRouting().getRouter());
 app.use('/api/realtimeproducts', realTimeProducts);
 app.use('/users', new UserRouter().getRouter());
 app.use('/api/sessions', new SessionRouter().getRouter());
+app.use('/mockingproducts', new MockingRouter().getRouter());
 app.use('*', notFoundPage);
 
 // Configuro el puerto en el cual va a escuchar el servidor
