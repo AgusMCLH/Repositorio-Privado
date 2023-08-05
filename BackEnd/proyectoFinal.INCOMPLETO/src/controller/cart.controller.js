@@ -21,49 +21,58 @@ class CartController {
       return { code: 400, msg: `Formato de id erroneo` };
     }
   }
-  async addProductToCart(cartID, productID, req) {
-    if ((await productController.getProductByID(productID, req)).code === 400) {
+  async addProductToCart({ c_id, p_id, req }) {
+    if ((await productController.getProductByID(p_id, req)).code === 400) {
       return {
         code: 400,
-        msg: `No existe ningun producto con el id ${productID}`,
+        msg: `No existe ningun producto con el id ${p_id}`,
       };
     }
-    const cart = await this.getCartByID(cartID);
-    if (JSON.stringify(cart).includes(productID)) {
+    const cart = await this.getCartByID(c_id);
+    if (JSON.stringify(cart).includes(p_id)) {
       cart.products.forEach((_product) => {
-        if (_product.product._id == productID) {
+        if (_product.product._id == p_id) {
           _product.quantity += 1;
         }
       });
-      await this.updateCart(cartID, cart);
+      await this.updateCart(c_id, cart);
     } else {
-      cart.products.push({ product: productID });
-      await this.updateCart(cartID, cart);
+      cart.products.push({ product: p_id });
+      await this.updateCart(c_id, cart);
     }
     return {
       code: 200,
-      msg: `El producto con id ${productID} se agrego al carrito ${cartID}`,
+      msg: `El producto con id ${p_id} se agrego al carrito ${c_id}`,
     };
   }
 
-  async deleteProductFromCart(id, product, req) {
-    console.log('ID:', id);
+  async deleteProductFromCart(id, product) {
+    console.log('\n\nproduct', product);
+    //Consigo el carrito
     const cart = await this.getCartByID(id);
-    console.log('CART:', cart);
+    console.log('\n\npre cart:', JSON.stringify(cart));
 
+    //Busco el producto en el carrito por su id y me quedo con su index
     let realIndex = cart.products.findIndex(
       (_product) => _product.product._id == product
     );
-
+    //si el producto no esta en el carrito, devuelvo un error
     if (realIndex === -1) {
       return {
         code: 400,
         msg: `El producto con id ${product} no se encuentra en el carrito ${id}`,
       };
     }
+
+    //si el producto esta en el carrito, lo borro
     cart.products.splice(realIndex, 1);
-    return await this.updateCart(id, cart);
+
+    //actualizo el carrito
+    let response = await this.updateCart(id, cart);
+    console.log('esta es la response', response);
+    return response;
   }
+
   async deleteAllProductsFromCart(id) {
     const cart = await this.getCartByID(id);
     cart.products = [];
