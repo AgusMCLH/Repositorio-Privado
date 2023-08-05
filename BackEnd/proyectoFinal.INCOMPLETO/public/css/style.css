@@ -164,6 +164,7 @@ body .Home-Page .hero-container .hero-wrapper .prev-hero_button {
   background-size: cover;
 }
 body .Home-Page .hero-container .hero-wrapper .hero-text {
+  overflow: hidden;
   position: absolute;
   transition: opacity 2s;
   z-index: 10;
@@ -172,31 +173,42 @@ body .Home-Page .hero-container .hero-wrapper .hero-text {
   left: 390px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
-body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-collection {
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-collection, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-collection-active, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-collection-unactive {
   color: #e53637;
   font-size: 14px;
   margin-bottom: 28px;
   letter-spacing: 2px;
 }
-body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-title h2 {
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-collection-active {
+  animation: slide-in-fwd-bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-title h2, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-title-active h2, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-title-unactive h2 {
   font-size: 50px;
   margin-bottom: 30px;
 }
-body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-body p {
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-title-active {
+  animation: slide-in-fwd-bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-body p, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-body-unactive p, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-body-active p {
   font-size: 16px;
   margin-bottom: 35px;
 }
-body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button {
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-body-active {
+  animation: slide-in-fwd-bottom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button-active, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button-unactive {
   padding: 12px 30px;
   background-color: #111111;
   color: #fff;
   text-decoration: none;
   font-weight: 600;
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
 }
-body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button span {
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button span, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button-active span, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button-unactive span {
   filter: invert(1);
   transform: translate(0px, 25%);
   width: 30px;
@@ -206,6 +218,9 @@ body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-b
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button-active {
+  animation: slide-in-fwd-bottom 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 body .Home-Page .hero-container .hero-wrapper .hero-img {
   position: absolute;
@@ -935,5 +950,15 @@ body .notFoundPage .wraper a {
   }
   80% {
     transform: scale(1.2);
+  }
+}
+@keyframes slide-in-fwd-bottom {
+  0% {
+    transform: translateZ(-1400px) translateY(800px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0) translateY(0);
+    opacity: 1;
   }
 }/*# sourceMappingURL=style.css.map */
