@@ -15,16 +15,16 @@ import MockingRouter from './router/moking.Router.js';
 
 import handlebars from 'express-handlebars';
 
-import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import mongoStore from 'connect-mongo';
 
 import passport from 'passport';
-import initializePassport from './utils/passport.config.js';
+import initializePassport from './config/passport.config.js';
 
 import compression from 'express-compression';
 import { Server } from 'socket.io';
+import errorManagerMiddleware from './middleware/errorManager.middleware.js';
 let messages = [];
 
 // Declaro una app de tipo express y la configuro para que use JSON's y urlencoded ademas de usar la carpeta public para los archivos estaticos
@@ -87,7 +87,6 @@ const webServer = app.listen(config.PORT, () => {
 
 // Configuro socket.io
 const io = new Server(webServer);
-export { io };
 
 io.on('connection', (socket) => {
   io.emit('ShowMessages', messages);
@@ -99,3 +98,6 @@ io.on('connection', (socket) => {
     io.emit('ShowMessages', messages);
   });
 });
+export { io };
+
+app.use(errorManagerMiddleware);

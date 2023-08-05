@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import CustomErrors from '../../utils/tools/CustomErrors.js';
+import EErrors from '../../utils/tools/EErrors.js';
 
 export default class CustomRouter {
   constructor() {
@@ -70,6 +72,12 @@ export default class CustomRouter {
     const user = req.session.user;
 
     if (!user) {
+      CustomErrors.createError(
+        'User not logged',
+        "User isn't logged in",
+        'Error in user authentication',
+        EErrors.AUTHENTICATION_ERROR
+      );
       return res.redirect('/users/signin');
     }
 
@@ -83,7 +91,12 @@ export default class CustomRouter {
 
     valid
       ? next()
-      : res.status(403).send({ status: 'Auth Error', error: 'Forbidden' });
+      : CustomErrors.createError(
+          'Authorization Error',
+          "User isn't authorized to access this route",
+          'Error in user authorization',
+          EErrors.AUTHORIZATION_ERROR
+        );
 
     return;
   };
