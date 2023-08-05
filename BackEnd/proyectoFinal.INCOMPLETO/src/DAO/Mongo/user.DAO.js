@@ -1,8 +1,8 @@
-import { userModel } from '../models/users.model.js';
-import { encriptPassword } from '../../tools/encript.tool.js';
-import CM from './cart.service.js';
+import { userModel } from '../../models/users.model.js';
 
-class UserService {
+import userDTO from '../../DTOs/user.DTO.js';
+
+class UserDAO {
   constructor() {
     this.model = userModel;
   }
@@ -33,14 +33,12 @@ class UserService {
 
   async addUser(user) {
     try {
-      const cartResponse = await CM.addCart();
-      user.cartId = cartResponse.cartId;
-      user.password = encriptPassword(user.password);
+      user = new userDTO(user);
       return await this.model.create(user);
     } catch (error) {
       console.log(error);
     }
   }
 }
-const userService = new UserService();
-export default userService;
+
+export const userDAO = new UserDAO();

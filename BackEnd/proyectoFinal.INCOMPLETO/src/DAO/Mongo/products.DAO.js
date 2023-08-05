@@ -1,28 +1,13 @@
-import { productModel } from './../models/product.model.js';
-import { io } from './../app.js';
+import { productModel } from './../../models/product.model.js';
+import { io } from './../../app.js';
 
-class Product {
-  async addProducts({
-    title,
-    description,
-    price,
-    thumbnail,
-    code,
-    stock,
-    visible,
-    category,
-  }) {
+class ProductDAO {
+  constructor() {
+    this.model = productModel;
+  }
+  async addProducts(product) {
     try {
-      const data = await productModel.create({
-        title,
-        description,
-        price,
-        thumbnail,
-        code,
-        stock,
-        visible,
-        category,
-      });
+      const data = await this.model.create(product);
       io.emit('Products', await this.getProducts());
       return {
         code: 201,
@@ -40,9 +25,9 @@ class Product {
     try {
       let data;
       if (sort === false) {
-        data = await productModel.paginate(query, { lean: true, limit, page });
+        data = await this.model.paginate(query, { lean: true, limit, page });
       } else {
-        data = await productModel.paginate(query, {
+        data = await this.model.paginate(query, {
           lean: true,
           limit,
           page,
@@ -60,7 +45,7 @@ class Product {
 
   async getAllProducts() {
     try {
-      const data = await productModel.find().lean();
+      const data = await this.model.find().lean();
       return data;
     } catch (error) {
       return {
@@ -72,7 +57,7 @@ class Product {
 
   async getProductByID(id) {
     try {
-      const data = await productModel.findById(id).lean();
+      const data = await this.model.findById(id).lean();
       if (data == null) {
         return {
           code: 400,
@@ -88,21 +73,9 @@ class Product {
     }
   }
 
-  async updateProduct(
-    idAEditar,
-    { title, description, price, thumbnail, code, visible, stock, category }
-  ) {
+  async updateProduct(idAEditar, product) {
     try {
-      const data = await productModel.findByIdAndUpdate(idAEditar, {
-        title,
-        description,
-        price,
-        thumbnail,
-        code,
-        visible,
-        stock,
-        category,
-      });
+      const data = await this.model.findByIdAndUpdate(idAEditar, product);
       if (data == null) {
         return {
           code: 400,
@@ -121,7 +94,7 @@ class Product {
 
   async deleteProduct(id) {
     try {
-      const data = await productModel.findByIdAndDelete(id);
+      const data = await this.model.findByIdAndDelete(id);
       io.emit('Products', await this.getProducts());
       return {
         code: 200,
@@ -136,5 +109,4 @@ class Product {
   }
 }
 
-const productManager = new Product();
-export default productManager;
+export const productDAO = new ProductDAO();

@@ -2,13 +2,14 @@ import config from './../config/config.js';
 
 import passport from 'passport';
 import local from 'passport-local';
-import userService from '../service/user.service.js';
+import { userService } from '../repository/users/instance.js';
+import { cartService } from '../repository/cart/instance.js';
 import GitHubStrategy from 'passport-github2';
 import { comparePassword } from '../../tools/encript.tool.js';
 
 const LocalStrategy = local.Strategy;
 
-const initializePassport = () => {
+const initializePassport = async () => {
   passport.use(
     'register',
     new LocalStrategy(
@@ -30,6 +31,7 @@ const initializePassport = () => {
             email: username,
             password,
           };
+          userData.cartId = (await cartService.addCart()).cartId;
           const newUser = await userService.addUser(userData);
 
           if (newUser.hasOwnProperty('code')) {
@@ -136,6 +138,7 @@ const initializePassport = () => {
               password: '',
             };
             user = await userService.addUser(userData);
+
             done(null, user);
           } else {
             done(null, user);

@@ -1,9 +1,13 @@
-import { purchaseModel } from '../models/purchase.model.js';
+import { purchaseModel } from '../../models/purchase.model.js';
 
-class Purchases {
+class PurchasesDAO {
+  constructor() {
+    this.model = purchaseModel;
+  }
   async addPurchase({ code, amount, purchaser }) {
+    console.log('Estoy en el add de purchase');
     try {
-      const response = await purchaseModel.create({
+      const response = await this.model.create({
         code,
         amount,
         purchaser,
@@ -21,7 +25,7 @@ class Purchases {
   }
   async getAllPurchases() {
     try {
-      return await purchaseModel.find();
+      return await this.model.find();
     } catch (error) {
       return { code: 500, msg: `Error de servidor - ${error}` };
     }
@@ -29,11 +33,11 @@ class Purchases {
 
   async getByCode(code) {
     try {
-      return await purchaseModel.find({ code: code });
+      return await this.model.find({ code: code });
     } catch (error) {
       console.log(error);
     }
   }
 }
 
-export const purchasesService = new Purchases();
+export const purchasesDAO = new PurchasesDAO();

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import CM from '../service/cart.service.js';
+import { cartService } from '../repository/cart/instance.js';
 
 const testRouter = Router();
 
@@ -8,7 +8,7 @@ testRouter.put('/carts/:cid', async (req, res) => {
 
   const reqBody = req.body;
   console.log(reqBody);
-  const data = await CM.updateCart(cartID, reqBody);
+  const data = await cartService.updateCart(cartID, reqBody);
   console.log(data);
   res.send(data);
 });

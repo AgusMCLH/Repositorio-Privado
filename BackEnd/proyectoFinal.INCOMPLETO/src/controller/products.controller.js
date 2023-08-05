@@ -1,4 +1,4 @@
-import productManager from '../service/products.service.js';
+import { productService } from '../repository/products/instance.js';
 
 class ProductController {
   async addProduct({
@@ -32,7 +32,7 @@ class ProductController {
       };
     }
     let duplicated = false;
-    const allProducts = await productManager.getAllProducts();
+    const allProducts = await productService.getAllProducts();
     allProducts.forEach((product) => {
       if (product.code === code) {
         duplicated = true;
@@ -44,7 +44,7 @@ class ProductController {
         msg: `El producto no fue ingresado - El codigo es duplicado`,
       };
     }
-    return await productManager.addProducts({
+    return await productService.addProducts({
       title,
       description,
       price,
@@ -80,7 +80,7 @@ class ProductController {
       query = JSON.parse(query);
     }
     query.visible = true;
-    let products = await productManager.getProducts(limit, page, sort, query);
+    let products = await productService.getProducts(limit, page, sort, query);
     const status = () => {
       if (products.docs === undefined) {
         return 'Error';
@@ -115,7 +115,7 @@ class ProductController {
 
   async getProductByID(id, req) {
     let product = {};
-    product.product = await productManager.getProductByID(id);
+    product.product = await productService.getProductByID(id);
     if (product.product.msg !== undefined) {
       return {
         code: 400,
@@ -159,7 +159,7 @@ class ProductController {
       };
     }
     let duplicated = false;
-    const allProducts = await productManager.getAllProducts();
+    const allProducts = await productService.getAllProducts();
     allProducts.forEach((product) => {
       if (product.code === code) {
         if (JSON.stringify(product._id) !== JSON.stringify(idAEditar)) {
@@ -176,7 +176,7 @@ class ProductController {
         msg: `El producto no fue actualizado - El codigo es duplicado`,
       };
     }
-    return await productManager.updateProduct(idAEditar, {
+    return await productService.updateProduct(idAEditar, {
       title,
       description,
       price,
@@ -188,7 +188,7 @@ class ProductController {
     });
   }
   async deleteProduct(id) {
-    return await productManager.deleteProduct(id);
+    return await productService.deleteProduct(id);
   }
 }
 

@@ -1,13 +1,13 @@
-import CM from '../service/cart.service.js';
+import { cartService } from '../repository/cart/instance.js';
 import productController from './products.controller.js';
 
 class CartController {
   async addCart() {
-    return await CM.addCart();
+    return await cartService.addCart();
   }
   async getCartByID(id) {
     if (id.length === 24 || id.length === 12) {
-      let cart = await CM.getCartByID(id);
+      let cart = await cartService.getCartByID(id);
       cart.products.forEach((product) => {
         if (product.product.thumbnail[0] === 'Sin foto') {
           product.product.hasPhoto = false;
@@ -94,7 +94,7 @@ class CartController {
     }
 
     if (id.length === 24 || id.length === 12) {
-      return await CM.updateCart(id, cart);
+      return await cartService.updateCart(id, cart);
     } else {
       return { code: 400, msg: `Formato de id erroneo` };
     }

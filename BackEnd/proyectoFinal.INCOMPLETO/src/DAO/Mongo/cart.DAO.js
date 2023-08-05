@@ -1,9 +1,12 @@
-import { cartModel } from './../models/cart.model.js';
+import { cartModel } from './../../models/cart.model.js';
 
-class Cart {
+class CartDAO {
+  constructor() {
+    this.model = cartModel;
+  }
   async addCart() {
     try {
-      const cart = await cartModel.create({});
+      const cart = await this.model.create({});
       return {
         code: 201,
         msg: `El cart fue agregado con el id: ${cart._id}`,
@@ -17,7 +20,7 @@ class Cart {
 
   async getCartByID(id) {
     try {
-      const cartJSON = await cartModel
+      const cartJSON = await this.model
         .findById(id)
         .populate('products.product')
         .lean();
@@ -40,7 +43,7 @@ class Cart {
 
   async updateCart(id, cart) {
     try {
-      const cartDB = await cartModel.findById(id);
+      const cartDB = await this.model.findById(id);
 
       cartDB.products = cart.products;
       await cartDB.save();
@@ -53,5 +56,5 @@ class Cart {
     }
   }
 }
-const CM = new Cart();
-export default CM;
+
+export const cartDAO = new CartDAO();

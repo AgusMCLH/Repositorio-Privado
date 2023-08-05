@@ -1,6 +1,6 @@
 import CustomRouter from './customRouter/customRouter.js';
 import { ownCart } from '../middleware/ownCart.middleware.js';
-import CM from '../service/cart.service.js';
+import { cartService } from '../repository/cart/instance.js';
 import cartController from '../controller/cart.controller.js';
 import { purchasesController } from '../controller/purchase.controller.js';
 
@@ -36,7 +36,6 @@ export default class CartRouting extends CustomRouter {
     });
 
     this.delete('/:cid/product/:pid', ['USUARIO'], [], async (req, res) => {
-      console.log('Holaa');
       const productID = req.params.pid;
       const cartID = req.params.cid;
       await cartController.deleteProductFromCart(cartID, productID);
@@ -52,7 +51,6 @@ export default class CartRouting extends CustomRouter {
 
     this.get('/:cid/purchase', ['PUBLIC'], [], async (req, res) => {
       const cartID = req.params.cid;
-      // const user = req.session.user;
       const user = req.session.user;
       const cart = await cartController.getCartByID(cartID);
       const response = await purchasesController.addPurchase(cart, user);

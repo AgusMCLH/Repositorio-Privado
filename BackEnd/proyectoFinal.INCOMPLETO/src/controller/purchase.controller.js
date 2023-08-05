@@ -1,4 +1,4 @@
-import { purchasesService } from '../service/purchases.service.js';
+import { purchasesService } from '../repository/purchases/instance.js';
 import cartController from './cart.controller.js';
 import productController from './products.controller.js';
 
@@ -18,15 +18,15 @@ class PurchasesController {
           JSON.stringify(product.product._id).split('"')[1]
         );
 
-        let response = await productController.updateProduct(
+        await productController.updateProduct(
           product.product._id,
           product.product
         );
-        console.log('Update producto response: ', response);
       }
     });
 
     const code = await this.createRandomStringCode();
+
     return await purchasesService.addPurchase({
       code,
       amount,
