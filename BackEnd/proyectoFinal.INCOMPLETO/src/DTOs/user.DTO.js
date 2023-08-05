@@ -1,4 +1,4 @@
-import { encriptPassword } from '../../tools/encript.tool.js';
+import { encriptPassword } from '../utils/tools/encript.tool.js';
 
 export default class UserDTO {
   constructor({

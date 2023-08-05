@@ -25,7 +25,6 @@ class ProductController {
       category === undefined ||
       typeof category !== 'string'
     ) {
-      //Si alguno de los campos esta vacio el sistema se lo hace saber al usuario
       return {
         code: 400,
         msg: `El producto no fue ingresado - Algun campo esta vacio`,
@@ -163,9 +162,6 @@ class ProductController {
     allProducts.forEach((product) => {
       if (product.code === code) {
         if (JSON.stringify(product._id) !== JSON.stringify(idAEditar)) {
-          console.log('ID:', JSON.stringify(idAEditar));
-          console.log('ID:', JSON.stringify(product._id));
-          console.log('Duplicated');
           duplicated = true;
         }
       }

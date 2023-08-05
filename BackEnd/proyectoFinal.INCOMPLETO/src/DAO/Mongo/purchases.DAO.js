@@ -5,7 +5,6 @@ class PurchasesDAO {
     this.model = purchaseModel;
   }
   async addPurchase({ code, amount, purchaser }) {
-    console.log('Estoy en el add de purchase');
     try {
       const response = await this.model.create({
         code,

@@ -1,4 +1,4 @@
-import generateProduct from '../../tools/generateProduct.js';
+import generateProduct from '../utils/tools/generateProduct.js';
 
 class MockingController {
   async generateProducts(quantity) {

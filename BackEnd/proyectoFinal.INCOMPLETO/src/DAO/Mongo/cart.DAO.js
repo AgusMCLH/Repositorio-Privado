@@ -43,15 +43,19 @@ class CartDAO {
 
   async updateCart(id, cart) {
     try {
+      console.log('\n\npost cart:', JSON.stringify(cart));
+      //consigo el cart desde la Base de Datos
       const cartDB = await this.model.findById(id);
-
+      //Igualo los productos de la base de datos con los productos del carrito que me pasaron
       cartDB.products = cart.products;
+      //actualizo el carrito en la base de datos
       await cartDB.save();
       return {
         code: 200,
         msg: `Se actualizo el carrito ${id}`,
       };
     } catch (error) {
+      console.log('\n\nderiva pa aca');
       console.log(error);
     }
   }

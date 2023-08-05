@@ -1,8 +1,8 @@
 import CustomRouter from './customRouter/customRouter.js';
 import { ownCart } from '../middleware/ownCart.middleware.js';
-import { cartService } from '../repository/cart/instance.js';
 import cartController from '../controller/cart.controller.js';
 import { purchasesController } from '../controller/purchase.controller.js';
+import ProductToAddToCartDTO from '../DTOs/productToAddToCart.DTO.js';
 
 export default class CartRouting extends CustomRouter {
   init() {
@@ -26,12 +26,9 @@ export default class CartRouting extends CustomRouter {
     });
 
     this.post('/:cid/product/:pid', ['USUARIO'], [], async (req, res) => {
-      await cartController.addProductToCart(
-        req.params.cid,
-        req.params.pid,
-        req
-      );
-
+      const productToAddToCart = new ProductToAddToCartDTO(req);
+      console.log(productToAddToCart.c_id, productToAddToCart.p_id);
+      await cartController.addProductToCart(productToAddToCart);
       res.redirect(`/api/carts/${req.params.cid}`);
     });
 
@@ -45,7 +42,7 @@ export default class CartRouting extends CustomRouter {
     this.put('/:cid', ['USUARIO'], [], async (req, res) => {
       const cartID = req.params.cid;
       const reqBody = req.body;
-      const data = await CM.updateCart(cartID, reqBody);
+      const data = await cartController.updateCart(cartID, reqBody);
       res.send(data);
     });
 
