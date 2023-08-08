@@ -14,4 +14,6 @@ export default {
   GitHSSecret: process.env.GHSSecret,
   GitHSID: process.env.GHSID,
   PERSISTANCEMODULE: process.env.persistenceModule,
+  Mail_USR: process.env.MAIL_USER,
+  Mail_PWD: process.env.MAIL_PASSWORD,
 };
