@@ -2,10 +2,16 @@ import dotenv from 'dotenv';
 import program from './commander.js';
 
 dotenv.config({ path: './src/config/.env' });
-
-console.log('<<MongoURL>>: ', process.env.MongoURL);
+console.log(
+  '<<MongoURL>>: ',
+  process.env.MongoURL,
+  '\n',
+  '<<Options>>: ',
+  program.opts()
+);
 
 export default {
+  DevMode: program.opts().dev,
   PORT: program.opts().port,
   MONGOURL: process.env.MongoURL,
   SECRET: process.env.SECRET,
