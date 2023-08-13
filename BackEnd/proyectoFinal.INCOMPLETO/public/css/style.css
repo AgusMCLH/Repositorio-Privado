@@ -181,22 +181,31 @@ body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-c
   margin-bottom: 28px;
   letter-spacing: 2px;
 }
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-collection-unactive {
+  animation: slide-out-bck-top 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
 body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-collection-active {
-  animation: slide-in-fwd-bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-fwd-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-title h2, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-title-active h2, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-title-unactive h2 {
   font-size: 50px;
   margin-bottom: 30px;
 }
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-title-unactive {
+  animation: slide-out-bck-top 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
 body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-title-active {
-  animation: slide-in-fwd-bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-fwd-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-body p, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-body-unactive p, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-body-active p {
   font-size: 16px;
   margin-bottom: 35px;
 }
 body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-body-active {
-  animation: slide-in-fwd-bottom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-fwd-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-body-unactive {
+  animation: slide-out-bck-top 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button-active, body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button-unactive {
   padding: 12px 30px;
@@ -219,8 +228,11 @@ body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-b
   background-position: center;
   background-size: cover;
 }
+body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button-unactive {
+  animation: slide-out-bck-top 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
 body .Home-Page .hero-container .hero-wrapper .hero-text .hero-text_main .main-button-active {
-  animation: slide-in-fwd-bottom 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-fwd-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 body .Home-Page .hero-container .hero-wrapper .hero-img {
   position: absolute;
@@ -960,5 +972,15 @@ body .notFoundPage .wraper a {
   100% {
     transform: translateZ(0) translateY(0);
     opacity: 1;
+  }
+}
+@keyframes slide-out-bck-top {
+  0% {
+    transform: translateZ(1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(-1100px) translateY(-1000px);
+    opacity: 0;
   }
 }/*# sourceMappingURL=style.css.map */

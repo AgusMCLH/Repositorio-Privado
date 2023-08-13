@@ -140,6 +140,7 @@ body{
     background-color: #f8f9fa;
     .Home-Page{
         $duration:2s;
+        $innerDuration: 1s;
         .hero-container{
             width: 1920px;
             height: 805px;
@@ -196,11 +197,13 @@ body{
                             letter-spacing: 2px;
                             &-unactive{
                                 @extend .main-collection;
+                                -webkit-animation: slide-out-bck-top $innerDuration cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	                            animation: slide-out-bck-top $innerDuration cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
                             }
                             &-active{
                                 @extend .main-collection;
-                                -webkit-animation: slide-in-fwd-bottom 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-                                animation: slide-in-fwd-bottom 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                                -webkit-animation: slide-in-fwd-bottom $innerDuration cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                                animation: slide-in-fwd-bottom $innerDuration cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
                             }
                         }
                         .main-title{
@@ -211,11 +214,13 @@ body{
                             }
                             &-unactive{
                                 @extend .main-title;
+                                -webkit-animation: slide-out-bck-top $innerDuration cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	                            animation: slide-out-bck-top $innerDuration cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
                             }
                             &-active{
                                 @extend .main-title;
-                                -webkit-animation: slide-in-fwd-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-                                animation: slide-in-fwd-bottom 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                                -webkit-animation: slide-in-fwd-bottom $innerDuration cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                                animation: slide-in-fwd-bottom $innerDuration cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
                             }
                         }
                         .main-body{
@@ -225,11 +230,13 @@ body{
                             }
                             &-active{
                                 @extend .main-body;
-                                -webkit-animation: slide-in-fwd-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-                                animation: slide-in-fwd-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                                -webkit-animation: slide-in-fwd-bottom $innerDuration cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                                animation: slide-in-fwd-bottom $innerDuration cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
                             }
                             &-unactive{
                                 @extend .main-body;
+                                -webkit-animation: slide-out-bck-top $innerDuration cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	                            animation: slide-out-bck-top $innerDuration cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
                             }
                         }
                         .main-button{
@@ -254,12 +261,14 @@ body{
                             &-unactive{
                                 
                                 @extend .main-button;
+                                -webkit-animation: slide-out-bck-top $innerDuration cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	                            animation: slide-out-bck-top $innerDuration cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
                             }
                             &-active{
                                 
                                 @extend .main-button;
-                                -webkit-animation: slide-in-fwd-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-                                animation: slide-in-fwd-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                                -webkit-animation: slide-in-fwd-bottom $innerDuration cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                                animation: slide-in-fwd-bottom $innerDuration cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
                             }
                         }
                         
@@ -1077,6 +1086,30 @@ body{
       -webkit-transform: translateZ(0) translateY(0);
               transform: translateZ(0) translateY(0);
       opacity: 1;
+    }
+  }
+  @-webkit-keyframes slide-out-bck-top {
+    0% {
+      -webkit-transform: translateZ(1) translateY(0);
+              transform: translateZ(1) translateY(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(-1100px) translateY(-1000px);
+              transform: translateZ(-1100px) translateY(-1000px);
+      opacity: 0;
+    }
+  }
+  @keyframes slide-out-bck-top {
+    0% {
+      -webkit-transform: translateZ(1) translateY(0);
+              transform: translateZ(1) translateY(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(-1100px) translateY(-1000px);
+              transform: translateZ(-1100px) translateY(-1000px);
+      opacity: 0;
     }
   }
   

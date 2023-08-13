@@ -40,10 +40,12 @@ document.getElementById('next-hero_button').addEventListener('click', () => {
   banners[index].classList.add(states[1]);
   texts[index].classList.remove(textStates[0]);
   texts[index].classList.add(textStates[1]);
+  unactiveTexts(texts[index].children);
   index++;
   if (index > banners.length - 1) {
     index = 0;
   }
+  activeTexts(texts[index].children);
   texts[index].classList.remove(textStates[1]);
   texts[index].classList.add(textStates[0]);
   banners[index].classList.remove(states[1]);
