@@ -6,6 +6,7 @@ import { userService } from '../repository/users/instance.js';
 import { cartService } from '../repository/cart/instance.js';
 import GitHubStrategy from 'passport-github2';
 import { comparePassword } from '../utils/tools/encript.tool.js';
+import { logger } from './../middleware/logger.middleware.js';
 
 const LocalStrategy = local.Strategy;
 
@@ -48,7 +49,7 @@ const initializePassport = async () => {
             return done(null, newUser);
           }
         } catch (error) {
-          console.log(error);
+          logger.error(error);
           return done(error);
         }
       }

@@ -1,4 +1,5 @@
 import { purchaseModel } from '../../models/purchase.model.js';
+import { logger } from './../../middleware/logger.middleware.js';
 
 class PurchasesDAO {
   constructor() {
@@ -34,7 +35,7 @@ class PurchasesDAO {
     try {
       return await this.model.find({ code: code });
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 }

@@ -47,10 +47,8 @@ class CartController {
   }
 
   async deleteProductFromCart(id, product) {
-    console.log('\n\nproduct', product);
     //Consigo el carrito
     const cart = await this.getCartByID(id);
-    console.log('\n\npre cart:', JSON.stringify(cart));
 
     //Busco el producto en el carrito por su id y me quedo con su index
     let realIndex = cart.products.findIndex(
@@ -69,7 +67,6 @@ class CartController {
 
     //actualizo el carrito
     let response = await this.updateCart(id, cart);
-    console.log('esta es la response', response);
     return response;
   }
 

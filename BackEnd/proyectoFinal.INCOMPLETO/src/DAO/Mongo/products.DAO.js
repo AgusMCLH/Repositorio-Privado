@@ -1,5 +1,6 @@
 import { productModel } from './../../models/product.model.js';
 import { io } from './../../app.js';
+import { logger } from './../../middleware/logger.middleware.js';
 
 class ProductDAO {
   constructor() {
@@ -88,7 +89,7 @@ class ProductDAO {
         msg: `El producto con el id ${idAEditar} fue actualizado correctamente`,
       };
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 

@@ -3,6 +3,7 @@ import cartController from './cart.controller.js';
 import productController from './products.controller.js';
 import config from '../config/config.js';
 import nodemailer from 'nodemailer';
+import { logger } from './../middleware/logger.middleware.js';
 
 class PurchasesController {
   async addPurchase(cart, user) {
@@ -55,7 +56,7 @@ class PurchasesController {
     let mailOptions = {
       from: `Male Fashion <${config.USER}>`,
       subject: 'Male Fashion - Thanks for your purchase ',
-      to: `vaninalaureiro@gmail.com`,
+      to: `${email}`,
     };
     mailOptions.html = this.#createHtml(
       hoy.toLocaleDateString(),
@@ -66,9 +67,9 @@ class PurchasesController {
     );
     transporter.sendMail(mailOptions, (err, info) => {
       if (err) {
-        console.log(err);
+        logger.error(err);
       }
-      console.log('enviado');
+      logger.info('Enviado!');
     });
   }
 
@@ -84,7 +85,7 @@ class PurchasesController {
   }
 
   #createHtml(date, amount, code, products, Total) {
-    console.log(
+    logger.debug(
       'date: ' +
         date +
         '\namount: ' +
@@ -96,6 +97,7 @@ class PurchasesController {
         '\nTotal: ' +
         Total
     );
+
     return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html
       xmlns="http://www.w3.org/1999/xhtml"

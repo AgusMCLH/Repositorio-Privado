@@ -12,6 +12,7 @@ import UserRouter from './router/users.Router.js';
 import ChatRouter from './router/chat.Router.js';
 import HomeRouter from './router/home.Router.js';
 import MockingRouter from './router/moking.Router.js';
+import LoggerRouter from './router/loggerTest.Router.js';
 
 import handlebars from 'express-handlebars';
 
@@ -24,6 +25,8 @@ import initializePassport from './config/passport.config.js';
 
 import compression from 'express-compression';
 import { Server } from 'socket.io';
+import { loggerMiddleware } from './middleware/logger.middleware.js';
+import { logger } from './middleware/logger.middleware.js';
 import errorManagerMiddleware from './middleware/errorManager.middleware.js';
 let messages = [];
 
@@ -37,6 +40,7 @@ app.use(
     },
   })
 );
+app.use(loggerMiddleware);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -78,11 +82,12 @@ app.use('/api/realtimeproducts', realTimeProducts);
 app.use('/users', new UserRouter().getRouter());
 app.use('/api/sessions', new SessionRouter().getRouter());
 app.use('/mockingproducts', new MockingRouter().getRouter());
+app.use('/loggerTest', new LoggerRouter().getRouter());
 app.use('*', notFoundPage);
 
 // Configuro el puerto en el cual va a escuchar el servidor
 const webServer = app.listen(config.PORT, () => {
-  console.log(`Server started on port ${config.PORT} `);
+  logger.info(`Server started on port ${config.PORT} `);
 });
 
 // Configuro socket.io
@@ -91,7 +96,7 @@ const io = new Server(webServer);
 io.on('connection', (socket) => {
   io.emit('ShowMessages', messages);
   socket.on('NewMessage', (message) => {
-    console.log(message);
+    logger.info(message);
     // Agrego el mensaje al array de mensajes
     messages.push(message);
     // Propago el evento a todos los clientes conectados

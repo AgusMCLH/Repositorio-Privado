@@ -1,4 +1,5 @@
 import { userModel } from '../../models/users.model.js';
+import { logger } from './../../middleware/logger.middleware.js';
 
 import userDTO from '../../DTOs/user.DTO.js';
 
@@ -11,7 +12,7 @@ class UserDAO {
     try {
       return await this.model.findById(id);
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -19,7 +20,7 @@ class UserDAO {
     try {
       return await this.model.find({});
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -27,7 +28,7 @@ class UserDAO {
     try {
       return await this.model.findOne({ email: email });
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -36,7 +37,7 @@ class UserDAO {
       user = new userDTO(user);
       return await this.model.create(user);
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 }

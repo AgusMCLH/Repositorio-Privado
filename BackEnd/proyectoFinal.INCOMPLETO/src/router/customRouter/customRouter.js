@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import CustomErrors from '../../utils/tools/CustomErrors.js';
 import EErrors from '../../utils/tools/EErrors.js';
+import { logger } from '../../middleware/logger.middleware.js';
 
 export default class CustomRouter {
   constructor() {
@@ -58,7 +59,7 @@ export default class CustomRouter {
       try {
         await callback.apply(this, params);
       } catch (error) {
-        console.log(error);
+        logger.error(error);
         params[1].status(500).send({ status: 'Internal Server Error', error });
       }
     });

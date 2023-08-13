@@ -27,7 +27,7 @@ export default class CartRouting extends CustomRouter {
 
     this.post('/:cid/product/:pid', ['USUARIO'], [], async (req, res) => {
       const productToAddToCart = new ProductToAddToCartDTO(req);
-      console.log(productToAddToCart.c_id, productToAddToCart.p_id);
+
       await cartController.addProductToCart(productToAddToCart);
       res.redirect(`/api/carts/${req.params.cid}`);
     });

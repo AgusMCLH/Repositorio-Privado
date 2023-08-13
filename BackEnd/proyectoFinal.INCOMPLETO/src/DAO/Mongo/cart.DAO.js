@@ -1,4 +1,5 @@
 import { cartModel } from './../../models/cart.model.js';
+import { logger } from './../../middleware/logger.middleware.js';
 
 class CartDAO {
   constructor() {
@@ -13,7 +14,7 @@ class CartDAO {
         cartId: cart._id,
       };
     } catch (error) {
-      console.log('Error al agregar cart', error);
+      logger.error('Error al agregar cart', error);
       return { code: 500, msg: `Error al agregar cart: ${error}` };
     }
   }
@@ -43,7 +44,6 @@ class CartDAO {
 
   async updateCart(id, cart) {
     try {
-      console.log('\n\npost cart:', JSON.stringify(cart));
       //consigo el cart desde la Base de Datos
       const cartDB = await this.model.findById(id);
       //Igualo los productos de la base de datos con los productos del carrito que me pasaron
@@ -55,8 +55,7 @@ class CartDAO {
         msg: `Se actualizo el carrito ${id}`,
       };
     } catch (error) {
-      console.log('\n\nderiva pa aca');
-      console.log(error);
+      logger.error(error);
     }
   }
 }
