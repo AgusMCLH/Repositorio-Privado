@@ -54,8 +54,12 @@ if (config.DevMode) {
 export { logger };
 export const loggerMiddleware = (req, res, next) => {
   req.logger = logger;
-  logger.html(
-    `${req.method} - ${req.url} - [${req.ip}] -  ${new Date().toLocaleString()}`
-  );
+  if (req.method !== 'GET') {
+    logger.html(
+      `${req.method} - ${req.url} - [${
+        req.ip
+      }] -  ${new Date().toLocaleString()}`
+    );
+  }
   next();
 };

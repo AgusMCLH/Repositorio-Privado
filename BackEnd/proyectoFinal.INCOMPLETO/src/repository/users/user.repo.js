@@ -18,4 +18,7 @@ export default class UserRepository {
   async addUser(user) {
     return await this.dao.addUser(user);
   }
+  updatePassword(id, password) {
+    return this.dao.updatePassword(id, password);
+  }
 }

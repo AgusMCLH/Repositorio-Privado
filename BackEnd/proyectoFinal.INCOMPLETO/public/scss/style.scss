@@ -856,6 +856,7 @@ body{
                 margin-top: 3px;
                 margin-bottom: 25px;
             }
+           
             .formBody{
                 width: 50%;
             }
@@ -880,6 +881,23 @@ body{
                 border: 1px solid rgba(154,154,155,0.4);
                 text-indent: 15px;
                 color: $h1;
+                
+            }
+            input[type=password]{
+                margin-bottom: 0px;
+            }
+            .forgetPassword{
+                display: flex;
+                flex-direction: row-reverse;
+                a{
+                    padding-top: 5px;
+                    font-size: 13px;
+                    color: lighten(rgb(104, 102, 102),15%);
+                    &:hover{
+                        color: lighten(rgb(64, 64, 64),15%); 
+                    }
+                }
+                margin-bottom: 20px;
             }
             label[for=chkKeep], a {
                 font-size: .8rem;
@@ -889,7 +907,7 @@ body{
                 align-items: center;
                 gap: 10px;
             }
-            input[type="checkbox"] {
+            input[type=checkbox] {
                 margin: 0;
                 width: 15px;
                 height: 15px;

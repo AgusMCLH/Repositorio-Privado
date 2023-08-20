@@ -1,5 +1,6 @@
 import { userModel } from '../../models/users.model.js';
 import { logger } from './../../middleware/logger.middleware.js';
+import { encriptPassword } from '../../utils/tools/encript.tool.js';
 
 import userDTO from '../../DTOs/user.DTO.js';
 
@@ -36,6 +37,18 @@ class UserDAO {
     try {
       user = new userDTO(user);
       return await this.model.create(user);
+    } catch (error) {
+      logger.error(error);
+    }
+  }
+
+  async updatePassword(id, password) {
+    try {
+      logger.debug(`Id recibido ${id} y password ${password}`);
+      const user = await this.getById(id);
+      password = encriptPassword(password);
+      user.password = password;
+      return await user.save();
     } catch (error) {
       logger.error(error);
     }

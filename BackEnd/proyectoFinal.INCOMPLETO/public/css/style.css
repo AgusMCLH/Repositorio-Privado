@@ -798,6 +798,22 @@ body .loginFormPage .login-form input {
   text-indent: 15px;
   color: rgb(105, 100, 103);
 }
+body .loginFormPage .login-form input[type=password] {
+  margin-bottom: 0px;
+}
+body .loginFormPage .login-form .forgetPassword {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 20px;
+}
+body .loginFormPage .login-form .forgetPassword a {
+  padding-top: 5px;
+  font-size: 13px;
+  color: #8e8c8c;
+}
+body .loginFormPage .login-form .forgetPassword a:hover {
+  color: #666666;
+}
 body .loginFormPage .login-form label[for=chkKeep], body .loginFormPage .login-form a {
   font-size: 0.8rem;
   text-transform: none;

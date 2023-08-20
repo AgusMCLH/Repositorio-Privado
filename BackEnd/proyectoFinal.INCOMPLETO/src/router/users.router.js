@@ -1,6 +1,9 @@
 import passport from 'passport';
 import { isGuest } from '../middleware/isGuest.middleware.js';
 import CustomRouter from './customRouter/customRouter.js';
+import { recoveryController } from '../controller/recoveryPassSis.controller.js';
+import { logger } from '../middleware/logger.middleware.js';
+import { userService } from '../repository/users/instance.js';
 
 export default class UserRouter extends CustomRouter {
   init() {
@@ -102,6 +105,52 @@ export default class UserRouter extends CustomRouter {
     this.get('/profile', ['USUARIO', 'ADMINISTRADOR'], [], async (req, res) => {
       const user = req.session.user;
       res.render('profile', { title: 'Profile', user });
+    });
+
+    this.get('/forgottenPassword', ['PUBLIC'], [], async (req, res) => {
+      res.render('forgottenPassword', { title: 'Forgotten Password' });
+    });
+    this.post('/forgottenPassword', ['PUBLIC'], [], async (req, res) => {
+      logger.debug(`Email recibido ${req.body.email}`);
+      recoveryController.sendRecoveryLink(req.body.email);
+      res.send('Klak');
+    });
+    this.get('/passwordrecovery/:id', ['PUBLIC'], [], async (req, res) => {
+      let code = req.params.id;
+      const codeFound = await recoveryController.getById(code);
+      const user = await userService.getById(codeFound.user);
+      if (codeFound) {
+        res.render('forgottenPassword2', {
+          title: 'Password Recovery',
+          code,
+          firstName: user.firstName,
+          email: user.email,
+        });
+      } else {
+        res.render('forgottenPasswordError', {
+          title: 'Password Recovery',
+          code,
+        });
+      }
+    });
+    this.post('/passwordrecovery/2p2', ['PUBLIC'], [], async (req, res) => {
+      const { Password, code } = req.body;
+      const codeFound = await recoveryController.getById(code);
+      const user = await userService.getById(codeFound.user);
+      const result = await recoveryController.updatePassword(code, Password);
+      logger.debug(`Codigo recibido ${code} y password ${Password}`);
+      if (result === 'AUTH_PASS') {
+        res.render('forgottenPassword2', {
+          title: 'Password Recovery',
+          code,
+          firstName: user.firstName,
+          email: user.email,
+          errorBool: true,
+          error: 'La contraseña no puede ser igual a la anterior',
+        });
+      } else {
+        res.send('La contra se actualizoooo');
+      }
     });
   }
 }
