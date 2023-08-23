@@ -1,0 +1,60 @@
+OwnerHandlebars
+
+<form autocomplete="off" class="animated-fadeInDown" action="/ownermenu/insertproduct" method="post">
+    <div class="login-form">
+        <h1>Insert Product</h1>
+        <div>
+        <img src="/img/illustrations/Handshake_Two Color.svg" alt="">
+        </div>
+        <div class="formBody">
+        <label for="productName">Product Name</label>
+        <input type="text" name="productName" id="productName" placeholder="Product Name" required />
+        <label for="productDescription">Product Description</label>
+        <input type="text" name="productDescription" id="productDescription" placeholder="Product Description" required />
+        <label for="productPrice">Product Price</label>
+        <input type="number" name="productPrice" id="productPrice" min="1" placeholder="Product Price" required />
+        <label for="productImage">Product Image</label>
+        <input type="text" name="productImage" id="productImage" placeholder="Product Image" required />
+        <label for="productCategory">Product Category</label>
+        <input type="text" name="productCategory" id="productCategory" placeholder="Product Category" required />
+        <label for="productStock">Product Stock</label>
+        <input type="number" name="productStock" id="productStock" placeholder="Product Stock" required />
+        <label for="productCode">Product Code</label>
+        <input type="text" name="productCode" id="productCode" placeholder="Product Code" required />
+        <label for="productVisibility">Product Visibility</label>
+        <input name="productVisibility" type="checkbox" id="productVisible" checked/>
+        <input type="submit" value="enviar" id="sentAddProductButton">
+    </div>
+</form>
+<div id="errorpanel"> <p id="errortext">{{message}}</p></div>
+
+<div class="products">
+    {{log products}}
+    {{#if products}}
+        {{#each products}}
+        <a href='/api/products/{{this._id}}'>
+                        <div class="product-item">
+                            <div class="product-item__content">
+                                <div class="imgContaiener">
+                                    <div class="imgWrapper">
+                                        {{#if hasThumbnail}}
+                                            {{#each this.thumbnail}}
+                                                <img src="{{this}}" alt="Imagen Proporcionada">
+                                            {{/each}}
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <h3 class="product-item__title">{{this.title}}</h3>
+
+                                <p class="product-item__price">${{this.price}}</p>
+                            </div>
+                        </div>
+                    </a>
+        {{/each}}
+    {{/if}}
+    <div class="productsentity"></div>
+</div>
+{{! Path: BackEnd\proyectoFinal.INCOMPLETO\views\ownerprofile.handlebars }}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/OwnerController.js"></script>

@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  premium: { type: Boolean, default: false },
 });
 
 export const userModel = mongoose.model('users', userSchema);

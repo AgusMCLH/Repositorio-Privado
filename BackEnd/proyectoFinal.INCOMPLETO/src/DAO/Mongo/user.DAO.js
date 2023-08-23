@@ -1,6 +1,5 @@
 import { userModel } from '../../models/users.model.js';
 import { logger } from './../../middleware/logger.middleware.js';
-import { encriptPassword } from '../../utils/tools/encript.tool.js';
 
 import userDTO from '../../DTOs/user.DTO.js';
 
@@ -44,11 +43,29 @@ class UserDAO {
 
   async updatePassword(id, password) {
     try {
-      logger.debug(`Id recibido ${id} y password ${password}`);
       const user = await this.getById(id);
-      password = encriptPassword(password);
       user.password = password;
       return await user.save();
+    } catch (error) {
+      logger.error(error);
+    }
+  }
+
+  async switchPremium(id) {
+    try {
+      const user = await this.getById(id);
+      logger.debug(`user: ${user}`);
+      if (user) {
+        if (user.premium) {
+          user.premium = false;
+        } else {
+          user.premium = true;
+        }
+        await user.save();
+        logger.debug('user premium', user.premium);
+        return user.premium;
+      }
+      return 'Usuario no encontrado';
     } catch (error) {
       logger.error(error);
     }

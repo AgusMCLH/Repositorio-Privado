@@ -13,6 +13,7 @@ import ChatRouter from './router/chat.Router.js';
 import HomeRouter from './router/home.Router.js';
 import MockingRouter from './router/moking.Router.js';
 import LoggerRouter from './router/loggerTest.Router.js';
+import OwnerMenuRouter from './router/ownerMenu.js';
 
 import handlebars from 'express-handlebars';
 
@@ -83,6 +84,7 @@ app.use('/users', new UserRouter().getRouter());
 app.use('/api/sessions', new SessionRouter().getRouter());
 app.use('/mockingproducts', new MockingRouter().getRouter());
 app.use('/loggerTest', new LoggerRouter().getRouter());
+app.use('/ownermenu', new OwnerMenuRouter().getRouter());
 app.use('*', notFoundPage);
 
 // Configuro el puerto en el cual va a escuchar el servidor

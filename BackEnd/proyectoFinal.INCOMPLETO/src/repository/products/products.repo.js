@@ -24,4 +24,7 @@ export default class ProductRepository {
   async deleteProduct(id) {
     return await this.dao.deleteProduct(id);
   }
+  async getProductByOwner(owner) {
+    return await this.dao.getProductsByOwner(owner);
+  }
 }

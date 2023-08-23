@@ -41,12 +41,16 @@
         <p class="productPage__Details-description">{{product.description}}</p>
         <div class="product-item__buttons">
         <p id="addToFavoritesButton"><img src="/img/icon/heart.png" alt="heart"></p>
-        {{#if AddtoCartURL}}
-        <form action="{{AddtoCartURL}}" method="post">
-        <input type="submit" value="Agregar al carrito" id="addToCartButton"></input>
-        </form>
+        {{#if product.visible}}
+            {{#if AddtoCartURL}}
+            <form action="{{AddtoCartURL}}" method="post">
+            <input type="submit" value="Agregar al carrito" id="addToCartButton"></input>
+            </form>
+            {{else}}
+                <a id="addToCartButton" href="/users/signin">Agregar al carrito</a>
+            {{/if}}
         {{else}}
-            <a id="addToCartButton" href="/users/signin">Agregar al carrito</a>
+            <a id="addToCartButton" href="#">NOT ALLOWED FOR SELLING</a>
         {{/if}}
         </div>
         <p class="productPage__Details-category">Categoria: <span>{{product.category}}</span></p>

@@ -108,6 +108,14 @@ class ProductDAO {
       };
     }
   }
+  async getProductsByOwner(owner) {
+    try {
+      const products = await this.model.find({ owner: owner }).lean();
+      return products;
+    } catch (error) {
+      logger.error(error);
+    }
+  }
 }
 
 export const productDAO = new ProductDAO();

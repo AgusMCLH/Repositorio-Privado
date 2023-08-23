@@ -72,6 +72,7 @@ const initializePassport = async () => {
             email: username,
             password: password,
             role: 'administrador',
+            premium: true,
           };
           req.session.user = user;
           done(null, user);
@@ -110,6 +111,7 @@ const initializePassport = async () => {
           lastName: 'ADMIN',
           email: config.ADMIN_EMAIL,
           password: '------------------',
+          premium: true,
         };
       } else {
         user = await userService.getById(id);

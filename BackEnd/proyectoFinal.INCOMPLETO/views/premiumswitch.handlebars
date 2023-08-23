@@ -1,0 +1,10 @@
+
+<h1>{{messagge}}</h1>
+
+<script>
+    let explodedUrl = window.location.href.split('/')
+    let productsURL = `http://${explodedUrl[2]}/api/products`
+    setTimeout(() => {
+        window.location.href = productsURL;
+    }, 5000);
+</script>

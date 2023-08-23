@@ -3,7 +3,10 @@ import { userService } from '../repository/users/instance.js';
 import { logger } from './../middleware/logger.middleware.js';
 import config from '../config/config.js';
 import nodemailer from 'nodemailer';
-import { comparePassword } from '../utils/tools/encript.tool.js';
+import {
+  comparePassword,
+  encriptPassword,
+} from '../utils/tools/encript.tool.js';
 
 class RecoveryController {
   async sendRecoveryLink(email) {
@@ -69,6 +72,7 @@ class RecoveryController {
         return 'AUTH_PASS';
       }
       logger.debug(`Aqui se actualiza la pass ${compareResult}`);
+      password = encriptPassword(password);
       let actualizationR = await userService.updatePassword(user._id, password);
       logger.debug(`Resultado de la actualizacion ${actualizationR}`);
       await recoveryService.deleteById(codeFound._id);

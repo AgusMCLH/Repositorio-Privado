@@ -10,6 +10,7 @@ class ProductController {
     stock,
     visible,
     category,
+    owner,
   }) {
     if (
       title === undefined ||
@@ -25,6 +26,15 @@ class ProductController {
       category === undefined ||
       typeof category !== 'string'
     ) {
+      console.log(
+        'desde controller',
+        title,
+        description,
+        price,
+        code,
+        stock,
+        category
+      );
       return {
         code: 400,
         msg: `El producto no fue ingresado - Algun campo esta vacio`,
@@ -52,6 +62,7 @@ class ProductController {
       stock,
       visible,
       category,
+      owner,
     });
   }
 
@@ -185,6 +196,10 @@ class ProductController {
   }
   async deleteProduct(id) {
     return await productService.deleteProduct(id);
+  }
+
+  async getProductByOwner(owner) {
+    return await productService.getProductByOwner(owner);
   }
 }
 

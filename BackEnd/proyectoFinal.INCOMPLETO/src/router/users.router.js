@@ -4,6 +4,7 @@ import CustomRouter from './customRouter/customRouter.js';
 import { recoveryController } from '../controller/recoveryPassSis.controller.js';
 import { logger } from '../middleware/logger.middleware.js';
 import { userService } from '../repository/users/instance.js';
+import { userController } from '../controller/user.controller.js';
 
 export default class UserRouter extends CustomRouter {
   init() {
@@ -151,6 +152,15 @@ export default class UserRouter extends CustomRouter {
       } else {
         res.send('La contra se actualizoooo');
       }
+    });
+
+    this.get('/premium/:uid', ['USUARIO'], [], async (req, res) => {
+      const { uid } = req.params;
+      const user = req.session.user;
+      const messagge = await userController.switchPremium(uid);
+      req.session.user = await userService.getById(uid);
+      console.log(messagge);
+      res.render('premiumswitch', { title: 'Premium', messagge, user });
     });
   }
 }
