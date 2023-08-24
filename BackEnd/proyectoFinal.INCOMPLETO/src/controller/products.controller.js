@@ -26,15 +26,6 @@ class ProductController {
       category === undefined ||
       typeof category !== 'string'
     ) {
-      console.log(
-        'desde controller',
-        title,
-        description,
-        price,
-        code,
-        stock,
-        category
-      );
       return {
         code: 400,
         msg: `El producto no fue ingresado - Algun campo esta vacio`,

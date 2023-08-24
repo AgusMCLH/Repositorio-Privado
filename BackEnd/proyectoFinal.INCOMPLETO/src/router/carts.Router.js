@@ -10,7 +10,6 @@ export default class CartRouting extends CustomRouter {
       const idBuscado = req.params.cid;
       let cart = await cartController.getCartByID(idBuscado);
       const productsQuantity = cart.productsQuantity;
-
       const user = req.session.user;
       res.render('cart', {
         title: 'cart',
@@ -27,7 +26,9 @@ export default class CartRouting extends CustomRouter {
 
     this.post('/:cid/product/:pid', ['USUARIO'], [], async (req, res) => {
       const productToAddToCart = new ProductToAddToCartDTO(req);
-
+      if (productToAddToCart.owner === req.session.user.email) {
+        return;
+      }
       await cartController.addProductToCart(productToAddToCart);
       res.redirect(`/api/carts/${req.params.cid}`);
     });

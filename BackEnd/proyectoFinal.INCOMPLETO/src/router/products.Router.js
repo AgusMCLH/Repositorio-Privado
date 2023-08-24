@@ -31,8 +31,10 @@ export default class ProductsRouter extends CustomRouter {
         res.status(404).send(`No hay ningun producto con el ID: ${idBuscado}`);
       } else {
         const { product, hasImages, AddtoCartURL } = productObj;
-
         const user = req.session.user;
+        if (product.owner === user.email) {
+          product.visible = false;
+        }
         res.render('productPage', { product, hasImages, user, AddtoCartURL });
       }
     });
