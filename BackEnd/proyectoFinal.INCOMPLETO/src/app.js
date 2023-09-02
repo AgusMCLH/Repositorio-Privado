@@ -1,7 +1,5 @@
 import express from 'express';
-
 import config from './config/config.js';
-
 import { realTimeProducts } from './router/realtimeproduct.js';
 import { testRouter } from './router/test.router.js';
 import { notFoundPage } from './router/404.router.js';
@@ -14,16 +12,14 @@ import HomeRouter from './router/home.Router.js';
 import MockingRouter from './router/moking.Router.js';
 import LoggerRouter from './router/loggerTest.Router.js';
 import OwnerMenuRouter from './router/ownerMenu.js';
-
+import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 import handlebars from 'express-handlebars';
-
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import mongoStore from 'connect-mongo';
-
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
-
 import compression from 'express-compression';
 import { Server } from 'socket.io';
 import { loggerMiddleware } from './middleware/logger.middleware.js';
@@ -72,6 +68,19 @@ app.use(
 initializePassport();
 app.use(passport.initialize());
 app.use(passport.session());
+
+//Swagger
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.1',
+    info: {
+      title: 'Delilah Resto',
+      version: '0.7.3',
+      description: 'Delilah Resto API Information',
+    },
+  },
+  apis: ['./docs/**/*.yaml'],
+};
 
 // Rutas
 app.use('/', new HomeRouter().getRouter());
