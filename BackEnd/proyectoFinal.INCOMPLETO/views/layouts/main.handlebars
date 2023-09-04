@@ -45,7 +45,6 @@
                         <li><a href="/api/products">Products</a></li>
                         <li><a href="/api/chat">Chat</a></li>
                         {{#if user}}
-                        {{log user}}
                             <li><a href="/users/premium/{{user._id}}">{{#if user.premium}}Exit Premium{{else}}Enter Premium{{/if}}</a></li>
                             {{#if user.premium}}
                                 <li><a href="/ownermenu">Owner Menu</a></li>

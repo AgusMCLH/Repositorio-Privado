@@ -1,0 +1,205 @@
+paths:
+  /api/products:
+    get:
+      summary: Get all products
+      description: Get all products
+      operationId: getAllProducts
+      tags:
+        - Products
+      responses:
+        200:
+          description: Get all products
+        500:
+          description: Internal Server Error
+  /api/products/{pid}:
+    get:
+      summary: Get product by id
+      description: Get product by id
+      operationId: getProductById
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: Product id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Shows a detailed view of the product, if any product is found
+        500:
+          description: Internal Server Error
+  /ownermenu/insertproduct:
+    post:
+      summary: Insert a product
+      security:
+        - sessionAuth: []
+      description: Insert a product
+      operationId: insertProduct
+      tags:
+        - Products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/insertProduct'
+      responses:
+        200:
+          description: Insert a product
+        500:
+          description: Internal Server Error
+  /ownermenu/updateproduct:
+    put:
+      summary: Update a product, if exists
+      security:
+        - sessionAuth: []
+      description: Update a product
+      operationId: updateProduct
+      tags:
+        - Products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateProduct'
+      responses:
+        200:
+          description: Update a product
+        500:
+          description: Internal Server Error
+  /ownermenu/deleteproduct:
+    delete:
+      summary: Delete a product
+      security:
+        - sessionAuth: []
+      description: Delete a product
+      operationId: deleteProduct
+      tags:
+        - Products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Id of the product
+              example:
+                id: '64e1ac017094a03ffb709e54'
+
+      responses:
+        200:
+          description: Delete a product, if exists
+        500:
+          description: Internal Server Error
+
+components:
+  schemas:
+    insertProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the product
+        description:
+          type: string
+          description: Description of the product
+        price:
+          type: number
+          description: Price of the product
+        thumbnail:
+          type: array
+          description: Thumbnail of the product
+        code:
+          type: string
+          description: Code of the product
+        stock:
+          type: number
+          description: Number theof products in stock
+        visible:
+          type: boolean
+          description: Visibility of the product
+        category:
+          type: string
+          description: Category of the product
+        owner:
+          type: string
+          description: Publisher of the product
+      required:
+        - title
+        - description
+        - price
+        - thumbnail
+        - code
+        - stock
+        - visible
+        - category
+      example:
+        title: 'Product 1'
+        description: 'Description 1'
+        price: 100
+        thumbnail:
+          [
+            'https://cdn3.iconfinder.com/data/icons/education-209/64/bus-vehicle-transport-school-128.png',
+          ]
+        code: '452Gg2'
+        stock: 10
+        visible: true
+        category: 'Category 1'
+        owner: 'JhonDoe@email.com'
+
+    updateProduct:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the product
+        title:
+          type: string
+          description: Title of the product
+        description:
+          type: string
+          description: Description of the product
+        price:
+          type: number
+          description: Price of the product
+        thumbnail:
+          type: array
+          description: Thumbnail of the product
+        code:
+          type: string
+          description: Code of the product
+        stock:
+          type: number
+          description: Number theof products in stock
+        visible:
+          type: boolean
+          description: Visibility of the product
+        category:
+          type: string
+          description: Category of the product
+      required:
+        - id
+        - title
+        - description
+        - price
+        - thumbnail
+        - code
+        - stock
+        - visible
+        - category
+      example:
+        id: '64e1ac017094a03ffb709e54'
+        title: 'Product 1'
+        description: 'Description 1'
+        price: 100
+        thumbnail:
+          [
+            'https://cdn3.iconfinder.com/data/icons/education-209/64/bus-vehicle-transport-school-128.png',
+          ]
+        code: '452Gg2'
+        stock: 10
+        visible: true
+        category: 'Category 1'

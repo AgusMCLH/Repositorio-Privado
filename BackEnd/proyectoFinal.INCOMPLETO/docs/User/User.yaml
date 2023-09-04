@@ -1,0 +1,279 @@
+paths:
+  /users/signin/:
+    get:
+      summary: Sign in Page
+      description: Shows the sign in page
+      operationId: signInPage
+      tags:
+        - Login
+      responses:
+        200:
+          description: Shows the sign in page
+        500:
+          description: Internal Server Error
+    post:
+      summary: Sign in
+      description: Signs in a user
+      operationId: signIn
+      tags:
+        - Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/signinUserForm'
+      responses:
+        200:
+          description: Signs in a user and redirects to the welcome page, if the email or password are incorrect shows an error message
+        500:
+          description: Internal Server Error
+  /users/signup/:
+    get:
+      summary: Sign up Page
+      description: Shows the sign up page
+      operationId: signUpPage
+      tags:
+        - Login
+      responses:
+        200:
+          description: Shows the sign up page
+        500:
+          description: Internal Server Error
+    post:
+      summary: Sign up
+      description: Signs up a user
+      operationId: signUp
+      tags:
+        - Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/signupUserForm'
+      responses:
+        200:
+          description: Signs up a user and redirects to the login page, if the email is in use shows an error message
+        500:
+          description: Internal Server Error
+  /users/profile/:
+    get:
+      summary: Profile Page
+      security:
+        - sessionAuth: []
+      description: Shows the Profile Page
+      operationId: profilePage
+      tags:
+        - User
+      responses:
+        200:
+          description: Shows the profile page, if the user is logged in, if not, redirects to the login page
+        500:
+          description: Internal Server Error
+  /users/logout/:
+    get:
+      summary: Logout
+      security:
+        - sessionAuth: []
+      description: Logs out the user
+      operationId: logout
+      tags:
+        - Login
+      responses:
+        200:
+          description: Logs out the user and redirects to the login page
+        500:
+          description: Internal Server Error
+  /users/saludo/:
+    get:
+      summary: Welcome
+      security:
+        - sessionAuth: []
+      description: Welcomes the user
+      operationId: saludo
+      tags:
+        - User
+      responses:
+        200:
+          description: Welcomes the user, if the user is logged in, if not, redirects to the login page
+        500:
+          description: Internal Server Error
+  /users/forgottenpassword/:
+    get:
+      summary: Forgotten Password Page
+      description: Shows the forgotten password page
+      operationId: forgottenPasswordPage
+      tags:
+        - Login
+      responses:
+        200:
+          description: Shows the forgotten password page
+        500:
+          description: Internal Server Error
+  /users/passwordrecovery/{id}:
+    get:
+      summary: Password Recovery Page
+      description: Shows the password recovery page
+      operationId: passwordRecoveryPage
+      tags:
+        - Login
+      parameters:
+        - name: id
+          in: path
+          description: The recovery id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Shows the password recovery page
+        400:
+          description: The recovery id is invalid
+        500:
+          description: Internal Server Error
+  /users/premium/{uid}:
+    get:
+      summary: Premium Page
+      security:
+        - sessionAuth: []
+      description: Shows the premium page
+      operationId: premiumPage
+      tags:
+        - User
+      parameters:
+        - name: uid
+          in: path
+          description: The user id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Shows the premium page, if the user is logged in, if not, redirects to the login page
+        500:
+          description: Internal Server Error
+  /users/forgottenpassword:
+    post:
+      summary: Forgotten Password
+      description: Sends an email to the user with a link to recover the password
+      operationId: forgottenPassword
+      tags:
+        - Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The user's email
+              example:
+                email: 'JhonDoe@email.com'
+      responses:
+        200:
+          description: Renders a succes page and sends if exists an email to the user with a link to recover the password
+        500:
+          description: Internal Server Error
+  /users/forgottenpassword/2p2:
+    post:
+      summary: Password Recovery
+      description: Changes the user's password
+      operationId: passwordRecovery
+      tags:
+        - Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: The rocovery request id
+              example:
+                code: '64e1ac017094a03ffb709e54'
+                password: 'Password123'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: The user ID (Autogenerated by Mongo)
+        firstName:
+          type: string
+          description: The user's first name
+        lastName:
+          type: string
+          description: The user's last name
+        email:
+          type: string
+          unique: true
+          description: The user's email
+        password:
+          type: string
+          description: The user's hashed password
+        role:
+          type: string
+          description: The user's role
+        cartId:
+          type: ObjectId
+          description: The user's cart ID
+        premium:
+          type: boolean
+          description: The user's premium status
+        __v:
+          type: integer
+          description: The user's version
+      example:
+        _id: ObjectId("64ce605d5530f74f1687749b")
+        firstName: 'John'
+        lastName: 'Doe'
+        email: 'JhonDoe@email.com'
+        password: '$2b$10$cgMbdLqPE5OnGQ1975dKP.5ro3vq0DQCF1dLeCaGUgwuvAMU2hseG'
+        role: 'usuario'
+        cartId: ObjectId("64e1ac017094a03ffb709e54")
+        premium: false
+        __v: 0
+    signupUserForm:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: The user's first name
+        lastName:
+          type: string
+          description: The user's last name
+        email:
+          type: string
+          description: The user's email
+        password:
+          type: string
+          description: The user's password
+      required:
+        - firstName
+        - lastName
+        - email
+        - password
+      example:
+        firstName: 'John'
+        lastName: 'Doe'
+        email: 'JhonDoe@email.com'
+        password: 'JhonDoe1234'
+    signinUserForm:
+      type: object
+      properties:
+        email:
+          type: string
+          description: The user's email
+        password:
+          type: string
+          description: The user's password
+      required:
+        - email
+        - password
+      example:
+        email: 'JhonDoe@email.com'
+        password: 'JhonDoe1234'

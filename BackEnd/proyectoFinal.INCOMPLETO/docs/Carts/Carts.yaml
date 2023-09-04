@@ -1,0 +1,96 @@
+paths:
+  /api/carts/{cid}:
+    get:
+      summary: Get cart by id
+      security:
+        - sessionAuth: []
+      description: Get cart by id
+      operationId: getCartById
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: Cart id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Shows a detailed view of the cart
+        500:
+          description: Internal Server Error
+  /api/carts/{cid}/purchase:
+    get:
+      summary: Purchase cart
+      security:
+        - sessionAuth: []
+      description: Purchase cart
+      operationId: purchaseCart
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: Cart id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Makes the purchase of the cart, if any product is not in stock, it will be keep in the cart
+        500:
+          description: Internal Server Error
+  /api/carts/{cid}/product/{pid}:
+    post:
+      summary: Add product to cart
+      security:
+        - sessionAuth: []
+      description: Add product to cart
+      operationId: addProductToCart
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: Cart id
+          required: true
+          schema:
+            type: string
+        - name: pid
+          in: path
+          description: Product id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Add product to cart, and then redirects to the cart page, if the product is already in the cart, it will be updated
+        500:
+          description: Internal Server Error
+    delete:
+      summary: Delete product from cart
+      security:
+        - sessionAuth: []
+      description: Delete product from cart
+      operationId: deleteProductFromCart
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: Cart id
+          required: true
+          schema:
+            type: string
+        - name: pid
+          in: path
+          description: Product id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Delete product from cart
+        500:
+          description: Internal Server Error

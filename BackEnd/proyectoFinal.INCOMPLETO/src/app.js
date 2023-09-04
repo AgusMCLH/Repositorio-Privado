@@ -81,6 +81,8 @@ const swaggerOptions = {
   },
   apis: ['./docs/**/*.yaml'],
 };
+const specs = swaggerJsDoc(swaggerOptions);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 // Rutas
 app.use('/', new HomeRouter().getRouter());
