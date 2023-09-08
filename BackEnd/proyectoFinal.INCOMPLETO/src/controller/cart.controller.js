@@ -1,3 +1,4 @@
+import { logger } from '../middleware/logger.middleware.js';
 import { cartService } from '../repository/cart/instance.js';
 import productController from './products.controller.js';
 
@@ -48,6 +49,7 @@ class CartController {
 
   async deleteProductFromCart(id, product) {
     //Consigo el carrito
+    logger.debug(`Buscando carrito con id ${id} desde el controlador`);
     const cart = await this.getCartByID(id);
 
     //Busco el producto en el carrito por su id y me quedo con su index

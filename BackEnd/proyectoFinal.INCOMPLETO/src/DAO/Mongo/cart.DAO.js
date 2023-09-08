@@ -21,6 +21,7 @@ class CartDAO {
 
   async getCartByID(id) {
     try {
+      logger.debug(`Buscando carrito con id ${id} desde el DAO`);
       const cartJSON = await this.model
         .findById(id)
         .populate('products.product')
@@ -31,6 +32,7 @@ class CartDAO {
           msg: `No existe ningun carrito con el id ${id}`,
         };
       }
+      logger.debug(`Carrito encontrado: ${cartJSON}`);
       return cartJSON;
     } catch (error) {
       if (error.name === 'CastError') {
@@ -38,6 +40,8 @@ class CartDAO {
           code: 400,
           msg: `No existe ningun carrito con el id ${id}`,
         };
+      } else {
+        logger.error(error);
       }
     }
   }

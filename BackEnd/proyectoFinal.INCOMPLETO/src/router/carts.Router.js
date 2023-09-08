@@ -3,6 +3,7 @@ import { ownCart } from '../middleware/ownCart.middleware.js';
 import cartController from '../controller/cart.controller.js';
 import { purchasesController } from '../controller/purchase.controller.js';
 import ProductToAddToCartDTO from '../DTOs/productToAddToCart.DTO.js';
+import { logger } from '../middleware/logger.middleware.js';
 
 export default class CartRouting extends CustomRouter {
   init() {
@@ -36,8 +37,12 @@ export default class CartRouting extends CustomRouter {
     this.delete('/:cid/product/:pid', ['USUARIO'], [], async (req, res) => {
       const productID = req.params.pid;
       const cartID = req.params.cid;
-      await cartController.deleteProductFromCart(cartID, productID);
-      res.redirect(`/api/carts/${req.params.cid}`);
+      const response = await cartController.deleteProductFromCart(
+        cartID,
+        productID
+      );
+      logger.debug(JSON.stringify(response));
+      res.status(response.code).send(response.msg);
     });
 
     this.put('/:cid', ['USUARIO'], [], async (req, res) => {

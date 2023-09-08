@@ -1,9 +1,10 @@
 let deleteButtons = document.getElementsByClassName(
   'cart-table-tbody__delete-button'
 );
-let cartID = '64c74251b3d0e13a9ac5da21';
+let cartID = window.location.href.split('/').pop();
+
+console.log(cartID);
 for (let i = 0; i < deleteButtons.length; i++) {
-  console.log(deleteButtons[i].getAttribute('productid'));
   deleteButtons[i].onclick = async () => {
     deleteButtons[i].classList.remove('button-background');
     deleteButtons[i].classList.add('loader');
