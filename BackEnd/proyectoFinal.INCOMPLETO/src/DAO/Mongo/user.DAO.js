@@ -70,6 +70,14 @@ class UserDAO {
       logger.error(error);
     }
   }
+
+  async updateUser(id, user) {
+    try {
+      return await this.model.findByIdAndUpdate(id, user);
+    } catch (error) {
+      logger.error(error);
+    }
+  }
 }
 
 export const userDAO = new UserDAO();
