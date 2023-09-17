@@ -19,6 +19,11 @@ class UserController {
     }
     return;
   }
+  async updateLastConnection(id) {
+    const user = await userService.getById(id);
+    user.lastConnection = Date.now();
+    const response = await userService.updateUser(user);
+  }
 }
 
 export const userController = new UserController();

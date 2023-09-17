@@ -62,6 +62,7 @@ export default class UserRouter extends CustomRouter {
         const user = req.user;
         delete user.password;
         req.session.user = user;
+        await userController.updateLastConnection(user._id);
         res.redirect('/users/saludo');
       }
     );
@@ -78,12 +79,16 @@ export default class UserRouter extends CustomRouter {
       ['PUBLIC'],
       [passport.authenticate('github', { failureRedirect: '/users/signin' })],
       async (req, res) => {
-        req.session.user = req.user;
+        const user = req.user;
+        delete user.password;
+        req.session.user = user;
+        await userController.updateLastConnection(user._id);
         res.redirect('/users/saludo');
       }
     );
 
     this.get('/logout', ['PUBLIC'], [], async (req, res) => {
+      await userController.updateLastConnection(req.session.user._id);
       req.session.destroy();
       res.clearCookie('cartId').redirect('/users/signin');
     });
