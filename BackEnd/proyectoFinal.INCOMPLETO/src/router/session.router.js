@@ -11,7 +11,6 @@ export default class SessionRouter extends CustomRouter {
       }
       const userToSend = new SessionsDTO(user);
       res.send(userToSend);
-      // req.session.user ? res.send(req.session.user) : res.send('Hola Debo 👋(?');
     });
   }
 }

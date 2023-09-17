@@ -25,4 +25,9 @@ export default class UserRepository {
   async switchPremium(id) {
     return await this.dao.switchPremium(id);
   }
+
+  async updateUser(user) {
+    const id = user._id;
+    return await this.dao.updateUser(id, user);
+  }
 }

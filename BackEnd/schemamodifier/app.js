@@ -20,17 +20,24 @@ const main = async () => {
       unique: true,
     },
     premium: { type: Boolean, default: false },
+    documents: [{ name: { type: String }, reference: { type: String } }],
+    lastConnection: { type: Date, default: Date.now() },
   });
 
   const userModel = mongoose.model('users', userSchema);
 
   let users = await userModel.find({});
 
-  //   users.forEach((user) => {
-  //     user.save();
-  //   });
+  // users.documents.push({ name: 'DNI', reference: '12345678' });
+  // users.save();
 
-  //   users = await userModel.find({});
+  users.forEach((user) => {
+    user.save();
+  });
+
+  users = await userModel.findById('64f522ed43ae91496a859214');
+  console.log(users);
+  users = await userModel.find({});
   console.log(users);
 };
 

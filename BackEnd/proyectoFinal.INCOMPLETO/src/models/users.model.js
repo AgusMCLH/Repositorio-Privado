@@ -18,6 +18,8 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   premium: { type: Boolean, default: false },
+  documents: [{ name: { type: String }, reference: { type: String } }],
+  lastConnection: { type: Date, default: Date.now() },
 });
 
 export const userModel = mongoose.model('users', userSchema);
