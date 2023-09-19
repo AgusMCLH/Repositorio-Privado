@@ -1,3 +1,26 @@
 <p>{{user.firstName}}</p>
 <p>{{user.lastName}}</p>
 <p>{{user.email}}</p>
+{{log user}}
+
+<h1>Identificacion</h1>
+<form action="" method="post" enctype="multipart/form-data" id="IdentificationForm" user="{{user._id}}">
+<input type="file" id="IdFrontField" accept='.png'>
+<input type="file" id="IdBackField" accept='.png'>
+<button type="submit" id="IdentificationSendButton">Enviar</button>
+</form>
+
+<h1>Comprobante de domicilio</h1>
+<form action="" method="post" enctype="multipart/form-data" id="ResidenceForm" user="{{user._id}}">
+<input type="file" id="ResidenceField" accept='.pdf'>
+<button type="submit" id="ResidenceSendButton">Enviar</button>
+</form>
+
+<h1>Comprobante de estado de cuenta</h1>
+<form action="" method="post" enctype="multipart/form-data" id="AccStatusForm" user="{{user._id}}">
+<input type="file" id="AccStatusField" accept='.pdf'>
+<button type="submit" id="AccStatusSendButton">Enviar</button>
+</form>
+
+
+<script src="/js/documentsHandler.js"></script>

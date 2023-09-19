@@ -5,6 +5,7 @@ import { recoveryController } from '../controller/recoveryPassSis.controller.js'
 import { logger } from '../middleware/logger.middleware.js';
 import { userService } from '../repository/users/instance.js';
 import { userController } from '../controller/user.controller.js';
+import { uploadFiles } from '../middleware/uploadfile.middleware.js';
 
 export default class UserRouter extends CustomRouter {
   init() {
@@ -158,6 +159,21 @@ export default class UserRouter extends CustomRouter {
         res.send('La contra se actualizoooo');
       }
     });
+
+    this.post(
+      '/:uid/documents',
+      ['USUARIO', 'ADMINISTRADOR'],
+      [uploadFiles('public/documents', 'pdf', 'user', 'document').any()],
+      async (req, res) => {
+        const { uid } = req.params;
+        const { files } = req;
+        logger.debug(`Files recibidos ${files}`);
+        console.log(files);
+        logger.debug(`Uid recibido ${uid}`);
+
+        res.status(200).json({ message: 'Documentos subidos' });
+      }
+    );
 
     this.get('/premium/:uid', ['USUARIO'], [], async (req, res) => {
       const { uid } = req.params;
