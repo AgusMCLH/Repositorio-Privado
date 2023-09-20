@@ -53,7 +53,7 @@ async function sendResidenceEvent(event) {
     alert('El elemento seleccionado no es un pdf');
     return;
   }
-  let extension = AccStatusField.files[0].type.split('/')[1];
+  let extension = ResidenceField.files[0].type.split('/')[1];
   let NewResidenceFile = new File(
     [ResidenceField.files[0]],
     'Residence.' + extension,

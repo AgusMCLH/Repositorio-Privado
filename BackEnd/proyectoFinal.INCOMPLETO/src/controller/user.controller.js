@@ -24,6 +24,31 @@ class UserController {
     user.lastConnection = Date.now();
     const response = await userService.updateUser(user);
   }
+
+  async uploadDocument(id, files) {
+    const user = await userService.getById(id);
+
+    files.forEach((file) => {
+      let duplicated = false;
+      user.documents.forEach((document) => {
+        if (document.name === file.originalname.split('.')[0]) {
+          duplicated = true;
+          return;
+        }
+      });
+      if (duplicated) {
+        return;
+      } else {
+        user.documents.push({
+          name: file.originalname.split('.')[0],
+          reference: file.path,
+        });
+      }
+    });
+
+    await userService.updateUser(user);
+    return user;
+  }
 }
 
 export const userController = new UserController();

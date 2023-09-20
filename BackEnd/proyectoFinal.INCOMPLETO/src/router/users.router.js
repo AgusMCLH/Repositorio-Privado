@@ -88,7 +88,7 @@ export default class UserRouter extends CustomRouter {
       }
     );
 
-    this.get('/logout', ['PUBLIC'], [], async (req, res) => {
+    this.get('/logout', ['USUARIO', 'ADMINISTRADOR'], [], async (req, res) => {
       await userController.updateLastConnection(req.session.user._id);
       req.session.destroy();
       res.clearCookie('cartId').redirect('/users/signin');
@@ -167,21 +167,45 @@ export default class UserRouter extends CustomRouter {
       async (req, res) => {
         const { uid } = req.params;
         const { files } = req;
-        logger.debug(`Files recibidos ${files}`);
-        console.log(files);
         logger.debug(`Uid recibido ${uid}`);
-
+        const user = await userController.uploadDocument(uid, files);
+        req.session.user = user;
         res.status(200).json({ message: 'Documentos subidos' });
       }
     );
 
     this.get('/premium/:uid', ['USUARIO'], [], async (req, res) => {
+      let documents = [
+        { name: 'BackIdImage', value: false },
+        { name: 'FrontIdImage', value: false },
+        { name: 'Residence', value: false },
+        { name: 'AccStatus', value: false },
+      ];
       const { uid } = req.params;
       const user = req.session.user;
-      const messagge = await userController.switchPremium(uid);
-      req.session.user = await userService.getById(uid);
-      console.log(messagge);
-      res.render('premiumswitch', { title: 'Premium', messagge, user });
+      user.documents.forEach((document) => {
+        documents.forEach((doc) => {
+          if (document.name === doc.name) {
+            doc.value = true;
+          }
+        });
+      });
+      console.log(documents);
+      let valid = true;
+      documents.forEach((doc) => {
+        if (doc.value === false) {
+          valid = false;
+        }
+      });
+      console.log('valid', valid);
+      if (valid) {
+        const messagge = await userController.switchPremium(uid);
+        req.session.user = await userService.getById(uid);
+        console.log(messagge);
+        res.render('premiumswitch', { title: 'Premium', messagge, user });
+      } else {
+        res.send('Usted no tiene todos los documentos necesarios');
+      }
     });
   }
 }

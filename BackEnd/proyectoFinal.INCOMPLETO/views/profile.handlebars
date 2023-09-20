@@ -1,7 +1,6 @@
 <p>{{user.firstName}}</p>
 <p>{{user.lastName}}</p>
 <p>{{user.email}}</p>
-{{log user}}
 
 <h1>Identificacion</h1>
 <form action="" method="post" enctype="multipart/form-data" id="IdentificationForm" user="{{user._id}}">
@@ -21,6 +20,8 @@
 <input type="file" id="AccStatusField" accept='.pdf'>
 <button type="submit" id="AccStatusSendButton">Enviar</button>
 </form>
+
+<p>{{log user}}</p>
 
 
 <script src="/js/documentsHandler.js"></script>
