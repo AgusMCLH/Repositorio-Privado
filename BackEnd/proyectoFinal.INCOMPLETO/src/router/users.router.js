@@ -63,7 +63,9 @@ export default class UserRouter extends CustomRouter {
         const user = req.user;
         delete user.password;
         req.session.user = user;
-        await userController.updateLastConnection(user._id);
+        if (user.role !== 'administrador') {
+          await userController.updateLastConnection(req.session.user._id);
+        }
         res.redirect('/users/saludo');
       }
     );
@@ -89,7 +91,11 @@ export default class UserRouter extends CustomRouter {
     );
 
     this.get('/logout', ['USUARIO', 'ADMINISTRADOR'], [], async (req, res) => {
-      await userController.updateLastConnection(req.session.user._id);
+      const user = req.session.user;
+      console.log(user);
+      if (user.role !== 'administrador') {
+        await userController.updateLastConnection(req.session.user._id);
+      }
       req.session.destroy();
       res.clearCookie('cartId').redirect('/users/signin');
     });
@@ -162,7 +168,7 @@ export default class UserRouter extends CustomRouter {
 
     this.post(
       '/:uid/documents',
-      ['USUARIO', 'ADMINISTRADOR'],
+      ['USUARIO'],
       [uploadFiles('public/documents', 'pdf', 'user', 'document').any()],
       async (req, res) => {
         const { uid } = req.params;
@@ -175,6 +181,8 @@ export default class UserRouter extends CustomRouter {
     );
 
     this.get('/premium/:uid', ['USUARIO'], [], async (req, res) => {
+      let valid = true;
+
       let documents = [
         { name: 'BackIdImage', value: false },
         { name: 'FrontIdImage', value: false },
@@ -190,13 +198,14 @@ export default class UserRouter extends CustomRouter {
           }
         });
       });
-      console.log(documents);
-      let valid = true;
-      documents.forEach((doc) => {
-        if (doc.value === false) {
-          valid = false;
-        }
-      });
+      if (user.premium === false) {
+        documents.forEach((doc) => {
+          if (doc.value === false) {
+            valid = false;
+          }
+        });
+      }
+
       console.log('valid', valid);
       if (valid) {
         const messagge = await userController.switchPremium(uid);

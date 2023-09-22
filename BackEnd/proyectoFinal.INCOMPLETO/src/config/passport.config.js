@@ -73,6 +73,7 @@ const initializePassport = async () => {
             password: password,
             role: 'administrador',
             premium: true,
+            documents: [],
           };
           req.session.user = user;
           done(null, user);
