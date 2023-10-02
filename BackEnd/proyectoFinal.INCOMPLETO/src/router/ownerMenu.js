@@ -8,7 +8,10 @@ export default class OwnerMenuRouter extends CustomRouter {
   init() {
     this.get('/', ['PUBLIC'], [isPremium], async (req, res) => {
       let user = req.session.user;
-      const products = await productController.getProductByOwner(user.email);
+      let products = await productController.getProductByOwner(user.email);
+      if (req.session.user.role === 'administrador') {
+        products = await productController.getAllProducts();
+      }
       res.render('ownerMenu', { title: 'Owner Menu', user, products });
     });
     this.post('/insertproduct', ['PUBLIC'], [isPremium], async (req, res) => {
