@@ -1,3 +1,4 @@
+import { logger } from '../middleware/logger.middleware.js';
 import { productService } from '../repository/products/instance.js';
 
 class ProductController {
@@ -191,6 +192,10 @@ class ProductController {
 
   async getProductByOwner(owner) {
     return await productService.getProductByOwner(owner);
+  }
+
+  async getAllProducts() {
+    return await productService.getAllProducts();
   }
 }
 

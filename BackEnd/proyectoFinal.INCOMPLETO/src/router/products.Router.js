@@ -1,11 +1,11 @@
 import CustomRouter from './customRouter/customRouter.js';
 import productController from './../controller/products.controller.js';
+import { logger } from '../middleware/logger.middleware.js';
 
 export default class ProductsRouter extends CustomRouter {
   init() {
     this.get('/', ['PUBLIC'], [], async (req, res) => {
       const { limit, page, sort, query } = req.query;
-
       let response = await productController.getProducts(
         limit,
         page,
@@ -18,7 +18,6 @@ export default class ProductsRouter extends CustomRouter {
 
     this.get('/:pid', ['PUBLIC'], [], async (req, res) => {
       const idBuscado = req.params.pid;
-
       const productObj = await productController.getProductByID(idBuscado, req);
       if (productObj.msg !== undefined) {
         res.redirect('/404-page-not-found');
@@ -56,6 +55,20 @@ export default class ProductsRouter extends CustomRouter {
       let id = req.params.pid;
       let response = await productController.deleteProduct(id);
       res.status(response.code).send(response.msg);
+    });
+
+    this.get('/:pid/json', ['PUBLIC'], [], async (req, res) => {
+      const idBuscado = req.params.pid;
+      const productObj = await productController.getProductByID(idBuscado, req);
+      if (
+        productObj.product ===
+        `No existe ningun producto con el id ${idBuscado}`
+      ) {
+        res.status(404).json({ error: productObj.product });
+      } else {
+        logger.debug(`Product ${idBuscado} found: ${productObj.product}`);
+        res.status(200).json(productObj.product);
+      }
     });
   }
 }

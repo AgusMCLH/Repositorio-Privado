@@ -1,70 +1,67 @@
-const sentButton = document.getElementById('sentAddProductButton');
-const productCode = document.getElementById('productCode');
-const productName = document.getElementById('productName');
-const productPrice = document.getElementById('productPrice');
-const productDescription = document.getElementById('productDescription');
-const productCategory = document.getElementById('productCategory');
-const productImage = document.getElementById('productImage');
-const productStock = document.getElementById('productStock');
-const productVisible = document.getElementById('productVisible');
+// const sentButton = document.getElementById('sentAddProductButton');
+// const productCode = document.getElementById('productCode');
+// const productName = document.getElementById('productName');
+// const productPrice = document.getElementById('productPrice');
+// const productDescription = document.getElementById('productDescription');
+// const productCategory = document.getElementById('productCategory');
+// const productImage = document.getElementById('productImage');
+// const productStock = document.getElementById('productStock');
+// const productVisible = document.getElementById('productVisible');
 
-sentButton.addEventListener('click', sendProductEvent, false);
+// sentButton.addEventListener('click', sendProductEvent, false);
 
-async function sendProductEvent(event) {
-  event.preventDefault();
-  let warn = '';
-  if (
-    productCode.value.trim().length <= 0 ||
-    productName.value.trim().length <= 0 ||
-    productPrice.value.trim().length <= 0 ||
-    productDescription.value.trim().length <= 0 ||
-    productCategory.value.trim().length <= 0 ||
-    productImage.value.trim().length <= 0 ||
-    productStock.value.trim().length <= 0
-  ) {
-    warn = 'algun campo esta vacio';
-    return;
-  }
-  let product = {
-    code: productCode.value,
-    name: productName.value,
-    price: productPrice.value,
-    description: productDescription.value,
-    category: productCategory.value,
-    image: productImage.value,
-    stock: productStock.value,
-    visible: productVisible.checked,
-  };
-  let response = '';
-  await fetch(`http://localhost:8080/ownermenu/insertproduct`, {
-    method: 'POST',
-    body: JSON.stringify(product),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  }).then(async (res) => {
-    response = await res.json();
-  });
-  let icon = '';
-  response.code === 400 ? (icon = 'error') : (icon = 'success');
-  Swal.fire({
-    position: 'top-end',
-    icon: icon,
-    title: response.msg,
-    showConfirmButton: false,
-    timer: 1500,
-  }).then(
-    setTimeout(() => {
-      location.reload();
-    }, 1000)
-  );
-}
+// async function sendProductEvent(event) {
+//   event.preventDefault();
+//   let warn = '';
+//   if (
+//     productCode.value.trim().length <= 0 ||
+//     productName.value.trim().length <= 0 ||
+//     productPrice.value.trim().length <= 0 ||
+//     productDescription.value.trim().length <= 0 ||
+//     productCategory.value.trim().length <= 0 ||
+//     productImage.value.trim().length <= 0 ||
+//     productStock.value.trim().length <= 0
+//   ) {
+//     warn = 'algun campo esta vacio';
+//     return;
+//   }
+//   let product = {
+//     code: productCode.value,
+//     name: productName.value,
+//     price: productPrice.value,
+//     description: productDescription.value,
+//     category: productCategory.value,
+//     image: productImage.value,
+//     stock: productStock.value,
+//     visible: productVisible.checked,
+//   };
+//   let response = '';
+//   await fetch(`http://localhost:8080/ownermenu/insertproduct`, {
+//     method: 'POST',
+//     body: JSON.stringify(product),
+//     headers: {
+//       'Content-type': 'application/json; charset=UTF-8',
+//     },
+//   }).then(async (res) => {
+//     response = await res.json();
+//   });
+//   let icon = '';
+//   response.code === 400 ? (icon = 'error') : (icon = 'success');
+//   Swal.fire({
+//     position: 'top-end',
+//     icon: icon,
+//     title: response.msg,
+//     showConfirmButton: false,
+//     timer: 1500,
+//   }).then(
+//     setTimeout(() => {
+//       location.reload();
+//     }, 1000)
+//   );
+// }
 
 ////////////////////////////////////
 
-const sentUpdateProductButton = document.getElementById(
-  'sentUpdateProductButton'
-);
 const UpdateProductId = document.getElementById('Update-productID');
 const UpdateProductCode = document.getElementById('Update-productCode');
 const UpdateProductName = document.getElementById('Update-productName');
@@ -90,6 +87,7 @@ for (let i = 0; i < modalButtons.length; i++) {
 let cancelButtons = document.getElementsByClassName('cancel_update');
 
 for (let j = 0; j < cancelButtons.length; j++) {
+  console.log(cancelButtons[j]);
   cancelButtons[j].addEventListener('click', (e) => {
     for (let k = 0; k < modalButtons.length; k++) {
       modalButtons[k].nextElementSibling.classList.remove('active');
@@ -97,10 +95,7 @@ for (let j = 0; j < cancelButtons.length; j++) {
   });
 }
 
-sentUpdateProductButton.addEventListener('click', updateProductEvent, false);
-
-async function updateProductEvent(event) {
-  event.preventDefault();
+async function updateProductEvent() {
   let warn = '';
   if (
     UpdateProductId.value.trim().length <= 0 ||
@@ -113,6 +108,13 @@ async function updateProductEvent(event) {
     UpdateProductStock.value.trim().length <= 0
   ) {
     warn = 'algun campo esta vacio';
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: warn,
+      showConfirmButton: false,
+      timer: 1500,
+    });
     return;
   }
   let product = {
@@ -190,3 +192,64 @@ async function deletefunction(id) {
     }
   });
 }
+
+const closemodal = () => {
+  document.getElementById('modal').classList.remove('active');
+};
+const showmodal = async (type, id) => {
+  console.log(type);
+  let modal_title = document.getElementById('modal_title');
+  if (type === 'insert') {
+    modal_title.innerHTML = 'Agregar Producto';
+    UpdateProductId.value = '';
+    UpdateProductCode.value = '';
+    UpdateProductName.value = '';
+    UpdateProductPrice.value = '';
+    UpdateProductDescription.value = '';
+    UpdateProductCategory.value = '';
+    UpdateProductImage.value = '';
+    UpdateProductStock.value = '';
+    UpdateProductVisible.checked = false;
+    document.getElementById('modal').classList.add('active');
+  } else if (type === 'update') {
+    modal_title.innerHTML = 'Editar Producto';
+    let product = await fetch(`http://localhost:8080/api/products/${id}/json`, {
+      method: 'get',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then(async (res) => {
+        let product = await res.json();
+        console.log('response', product);
+        UpdateProductId.value = product._id;
+        UpdateProductCode.value = product.code;
+        UpdateProductName.value = product.title;
+        UpdateProductPrice.value = product.price;
+        UpdateProductDescription.value = product.description;
+        UpdateProductCategory.value = product.category;
+        UpdateProductImage.value = product.thumbnail[0];
+        UpdateProductStock.value = product.stock;
+        UpdateProductVisible.checked = product.visible;
+
+        return product;
+      })
+      .then((product) => {
+        document.getElementById('modal').classList.add('active');
+      });
+    console.log(product);
+  } else {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'OCURRIO UN ERROR',
+      showConfirmButton: false,
+      timer: 1500,
+    }).then(
+      setTimeout(() => {
+        location.reload();
+      }, 1000)
+    );
+    return;
+  }
+};
