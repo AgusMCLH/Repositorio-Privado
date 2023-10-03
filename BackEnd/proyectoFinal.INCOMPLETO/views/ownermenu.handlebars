@@ -34,31 +34,6 @@
             <img src="/img/icon/plus.png" alt="Plus ICON"><p>ADD PRODUCT</p>
         </div>
 
-        <div class="product_list_item">
-            <div class="product_item_img">
-                IMG
-            </div>
-            <div class="product_item_title">
-                TITLE
-            </div>
-            <div class="product_item_price">
-                PRICE
-            </div>
-            <div class="product_item_stock">
-                STOCK
-            </div>
-            <div class="product_item_visible">
-                VISIBLE
-            </div>
-            <div class="product_item_buttons">
-                <div class="product_item_edit">
-                    EDIT
-                </div>
-                <div class="product_item_delete">
-                    DELETE
-                </div>
-            </div>
-        </div>
         {{#each products}}
                 <div class="product_list_item">
                     <div class="product_item_img">
@@ -145,7 +120,7 @@
                     </div>
                     <div class="modal_footer">
                         <div class="buttons">
-                            <div class="accept" onclick="updateProductEvent()"><p>ACCEPT</p></div>
+                            <div class="accept" onclick="sendEvent()"><p>ACCEPT</p></div>
                             <div class="cancel_update" onclick="closemodal()"><p>CANCEL</p></div>
                         </div>
                     </div>

@@ -1,67 +1,3 @@
-// const sentButton = document.getElementById('sentAddProductButton');
-// const productCode = document.getElementById('productCode');
-// const productName = document.getElementById('productName');
-// const productPrice = document.getElementById('productPrice');
-// const productDescription = document.getElementById('productDescription');
-// const productCategory = document.getElementById('productCategory');
-// const productImage = document.getElementById('productImage');
-// const productStock = document.getElementById('productStock');
-// const productVisible = document.getElementById('productVisible');
-
-// sentButton.addEventListener('click', sendProductEvent, false);
-
-// async function sendProductEvent(event) {
-//   event.preventDefault();
-//   let warn = '';
-//   if (
-//     productCode.value.trim().length <= 0 ||
-//     productName.value.trim().length <= 0 ||
-//     productPrice.value.trim().length <= 0 ||
-//     productDescription.value.trim().length <= 0 ||
-//     productCategory.value.trim().length <= 0 ||
-//     productImage.value.trim().length <= 0 ||
-//     productStock.value.trim().length <= 0
-//   ) {
-//     warn = 'algun campo esta vacio';
-//     return;
-//   }
-//   let product = {
-//     code: productCode.value,
-//     name: productName.value,
-//     price: productPrice.value,
-//     description: productDescription.value,
-//     category: productCategory.value,
-//     image: productImage.value,
-//     stock: productStock.value,
-//     visible: productVisible.checked,
-//   };
-//   let response = '';
-//   await fetch(`http://localhost:8080/ownermenu/insertproduct`, {
-//     method: 'POST',
-//     body: JSON.stringify(product),
-//     headers: {
-//       'Content-type': 'application/json; charset=UTF-8',
-//     },
-//   }).then(async (res) => {
-//     response = await res.json();
-//   });
-//   let icon = '';
-//   response.code === 400 ? (icon = 'error') : (icon = 'success');
-//   Swal.fire({
-//     position: 'top-end',
-//     icon: icon,
-//     title: response.msg,
-//     showConfirmButton: false,
-//     timer: 1500,
-//   }).then(
-//     setTimeout(() => {
-//       location.reload();
-//     }, 1000)
-//   );
-// }
-
-////////////////////////////////////
-
 const UpdateProductId = document.getElementById('Update-productID');
 const UpdateProductCode = document.getElementById('Update-productCode');
 const UpdateProductName = document.getElementById('Update-productName');
@@ -95,6 +31,60 @@ for (let j = 0; j < cancelButtons.length; j++) {
   });
 }
 
+////////////////////////////////////
+
+async function sendProductEvent() {
+  let warn = '';
+  if (
+    UpdateProductCode.value.trim().length <= 0 ||
+    UpdateProductName.value.trim().length <= 0 ||
+    UpdateProductPrice.value.trim().length <= 0 ||
+    UpdateProductDescription.value.trim().length <= 0 ||
+    UpdateProductCategory.value.trim().length <= 0 ||
+    UpdateProductImage.value.trim().length <= 0 ||
+    UpdateProductVisible.value.trim().length <= 0 ||
+    UpdateProductStock.value.trim().length <= 0
+  ) {
+    warn = 'algun campo esta vacio';
+    return;
+  }
+  let product = {
+    code: UpdateProductCode.value,
+    name: UpdateProductName.value,
+    price: UpdateProductPrice.value,
+    description: UpdateProductDescription.value,
+    category: UpdateProductCategory.value,
+    image: UpdateProductImage.value,
+    stock: UpdateProductStock.value,
+    visible: UpdateProductVisible.checked,
+  };
+  let response = '';
+  await fetch(`http://localhost:8080/ownermenu/insertproduct`, {
+    method: 'POST',
+    body: JSON.stringify(product),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then(async (res) => {
+    response = await res.json();
+  });
+  let icon = '';
+  response.code === 400 ? (icon = 'error') : (icon = 'success');
+  Swal.fire({
+    position: 'top-end',
+    icon: icon,
+    title: response.msg,
+    showConfirmButton: false,
+    timer: 1500,
+  }).then(
+    setTimeout(() => {
+      location.reload();
+    }, 1000)
+  );
+}
+
+////////////////////////////////////
+
 async function updateProductEvent() {
   let warn = '';
   if (
@@ -109,7 +99,7 @@ async function updateProductEvent() {
   ) {
     warn = 'algun campo esta vacio';
     Swal.fire({
-      position: 'top-end',
+      position: 'center',
       icon: 'error',
       title: warn,
       showConfirmButton: false,
@@ -142,7 +132,7 @@ async function updateProductEvent() {
   let icon = '';
   response.code === 400 ? (icon = 'error') : (icon = 'success');
   Swal.fire({
-    position: 'top-end',
+    position: 'center',
     icon: icon,
     title: response.msg,
     showConfirmButton: false,
@@ -158,13 +148,14 @@ async function updateProductEvent() {
 async function deletefunction(id) {
   console.log(id);
   Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
+    title: 'Estas seguro?',
+    text: 'No podras revertir esta accion!',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!',
+    confirmButtonText: 'Si, borrarlo!',
+    cancelButtonText: 'Volver',
   }).then(async (result) => {
     if (result.isConfirmed) {
       await fetch(`http://localhost:8080/ownermenu/deleteproduct`, {
@@ -178,7 +169,7 @@ async function deletefunction(id) {
         let icon = '';
         response.code === 400 ? (icon = 'error') : (icon = 'success');
         Swal.fire({
-          position: 'top-end',
+          position: 'center',
           icon: icon,
           title: response.msg,
           showConfirmButton: false,
@@ -238,6 +229,28 @@ const showmodal = async (type, id) => {
         document.getElementById('modal').classList.add('active');
       });
     console.log(product);
+  } else {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'OCURRIO UN ERROR',
+      showConfirmButton: false,
+      timer: 1500,
+    }).then(
+      setTimeout(() => {
+        location.reload();
+      }, 1000)
+    );
+    return;
+  }
+};
+
+const sendEvent = () => {
+  let text = document.getElementById('modal_title').innerText.split(' ')[0];
+  if (text === 'Agregar') {
+    sendProductEvent();
+  } else if (text === 'Editar') {
+    updateProductEvent();
   } else {
     Swal.fire({
       position: 'center',
