@@ -1,8 +1,39 @@
-<p>{{user.firstName}}</p>
-<p>{{user.lastName}}</p>
-<p>{{user.email}}</p>
+<div class="pageLabel_container">
+        <div class="pageLabel_wraper">
+            <h1>
+                User Profile
+            </h1>
+                <a href="/">Home</a><span>Profile</span>
+        </div>
+    </div>
 
-<h1>Identificacion</h1>
+<div class="profilePageWrap">
+    <div class="mainInfo_container">
+        <div class="avatarContainer">
+            <div class="avatarDiv">
+                <img src="/img/placeholder/avatar-placeholder.png" class="avatar" alt="avatar Placeholder">
+                <div class="hoverEffect">
+                    <div class="innerDiv">
+                        <img src="/img/icon/subir.png" class="innerDiv_Image" alt="Upload Image">
+                        <p>Subir imagen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="userCredential_container">
+            <div class="credential userID"><h3>User ID:</h3><p>{{user._id}}</p></div>
+            <div class="credential"><h3>Nombre</h3><p>{{user.firstName}} {{user.lastName}}</p></div>
+            <div class="credential"><h3>Correo</h3><p>{{user.email}}</p></div>
+            <div class="credential"><h3>Rol</h3><p>{{user.role}}</p></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 <form action="" method="post" enctype="multipart/form-data" id="IdentificationForm" user="{{user._id}}">
 <input type="file" id="IdFrontField" accept='.png'>
 <input type="file" id="IdBackField" accept='.png'>

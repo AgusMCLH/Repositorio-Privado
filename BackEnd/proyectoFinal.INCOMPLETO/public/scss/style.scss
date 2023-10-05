@@ -305,7 +305,7 @@ body{
             padding: 40px 0px;
             width: 60vw;
             margin: auto;
-            h4{
+            h1,h4{
                 font-size: 30px;
                 color: #111111;
                 font-weight: 700;
@@ -1306,243 +1306,109 @@ body{
         .active{
             display: block;
         }
-            // .product_list{
-            //     width: 80%;
-            //     margin: auto;
-            //     display: flex;
-            //     flex-direction: column;
-            //     gap: 5px;
-            //     .productsentity{
-            //         color: #000000;
-            //         text-decoration: none;
-            //         border: 1px solid blue;
-            //         width: 100%;
-            //         display: flex;
-            //         flex-direction: row;
-            //         a,.productsentity_header{
-            //             width: 100%;
-            //             display: flex;
-            //             flex-direction: row;
-            //             justify-content: space-between;
-            //             align-items: center;
-            //             justify-content: center;
-            //             align-items: center;
-            //             div{
-            //                 width: 15%;
-            //                 display: flex;
-            //                 justify-content: center;
-            //             }
-            //             .product_image{
-            //                 display: flex;
-            //                 align-items: center;
-            //                 justify-content: center;
-            //                 border: 1px solid black;
-            //                 width: 10%;
-            //                 height: 50px;
-            //                 img{
-            //                     max-height: 100%;
-            //                     max-width: 100%;
-            //                 }
-            //             }
-            //             .product_visible{
-            //                 width: 15%;
-                            
-            //             }
-            //             .product_stock{
-            //                 width: 15%;
-            //             }
-            //             .product_price{
-            //                 width: 15%;
-            //                 justify-content: start;
-            //             }
-            //             .product_title{
-            //                 justify-content: start;
-            //                 width: 15%;
-            //             }
-            //         }
-            //             .deletebutton{
-            //                 width: 20px;
-            //                 height: 20px;
-            //                 background-color: #e53636cd;
-            //             }
-            //             .modal_switch{
-            //                 justify-content: end;
-            //                 margin-right: 3%;
-            //                 width: 20px;
-            //                 height: 20px;
-            //                 background-color: #00000049;
-            //             }
-            //             .modal_wrapper{
-            //                 display: none;
-            //                 top: 0px;
-            //                 left: 0px;
-            //                 position: absolute;
-            //                 width: 100%;
-            //                 height: 100%;
-            //                 background-color: #1111113f;
-            //                 .modal_wrapper2{
-            //                     width: 100%;
-            //                     height: 100%;
-            //                     position: relative;
-            //                     display: flex;
-            //                     justify-content: center;
-            //                     align-items: center;
-            //                     .modal_container{
-            //                         border-radius: 15px;
-            //                         position: relative;
-            //                         width: 70%;
-            //                         max-width: 755px;
-            //                         height: fit-content;
-            //                         max-height: 755px;
-            //                         overflow: auto;
-            //                         background-color: #fff;
-            //                         .modal_body{
-            //                             height: 100%;
-            //                             width: 100%;
-            //                             display: flex;
-            //                             flex-direction: column;
-            //                             justify-content: space-between;
-            //                             .modal_header{
-            //                                 min-height: 75px;
-            //                                 height: 15%;
-            //                                 width: 80%;
-            //                                 margin: auto;
-            //                                 border-bottom: 1px solid #eae0b8;
-            //                                 display: flex;
-            //                                 justify-content: center;
-            //                                 align-items: center;
-            //                                 .modal_title{
-            //                                     font-size: 20px;
-            //                                     font-weight: 700;
-            //                                     letter-spacing: 3px;
-            //                                 }
-            //                             }
-            //                             .modal_content{
-            //                                 min-height: 300px;
-            //                                 height: 60%;
-            //                                 form{
-            //                                     width: 100%;
-            //                                     .UpdateProduct-form{
-            //                                         width: 100%;
-            //                                         .formBody{
-            //                                             width: 90%;
-            //                                             margin: auto;
-            //                                             label{
-            //                                                 display: block;
-            //                                                 width: 40%;
-            //                                                 margin-bottom: 5px;
-            //                                                 margin-top: 10px;
-            //                                             }
-            //                                             input{
-            //                                                 width: 100%;
-            //                                                 height: 25px;
-            //                                                 outline: none;
-            //                                             }
-            //                                             textArea{
-            //                                                 outline: none;
-            //                                             }
-            //                                             .divider{
-            //                                                 width: 100%;
-            //                                                 margin: 20px 0px;
-            //                                                 display: flex;
-            //                                                 .divider_column{
-            //                                                     width: 49%;
-            //                                                     .standard{
-            //                                                         width: 100%;
-            //                                                         display: flex;
-            //                                                         flex-direction: column;
-            //                                                         justify-content: space-between;
-            //                                                         align-items: center;
-            //                                                         input[type="text"],input[type="number"]{
-            //                                                             width: 100%;
-            //                                                         }
-            //                                                     }
-            //                                                     .simple{
-            //                                                         width: 100%;
-            //                                                         display: flex;
-            //                                                         flex-direction: column;
-            //                                                         justify-content: space-between;
-            //                                                         align-items: center;
-            //                                                         input[type="text"],input[type="number"]{
-            //                                                             width: 100%;
-            //                                                         }
-            //                                                     }
-            //                                                 }
-            //                                                 .chkbox{
-            //                                                     margin: auto;
-            //                                                     display: flex;
-            //                                                     flex-direction: row ;
-            //                                                     justify-content: center;
-            //                                                     align-items: center;
-            //                                                     position: relative;
-            //                                                     top: 45px;
-            //                                                     width: 80%;
-            //                                                     height: 20%;
-            //                                                     gap: 5px;
-            //                                                     label{
-            //                                                         width: fit-content;
-            //                                                     }
-            //                                                     input{
-            //                                                         position: relative;
-            //                                                         top: 3px;
-            //                                                         width: 20px;
-            //                                                         height: 20px;
-            //                                                     }
-            //                                                     border-bottom: 1px solid #eae0b8;
-            //                                                 }
-            //                                             }
-            //                                         }
-            //                                     }
-            //                                 }
-            //                             }
-            //                             .modal_footer{
-            //                                 display: flex;
-            //                                 justify-content: end;
-            //                                 align-items: center;
-            //                                 width: 80%;
-            //                                 margin: auto;
-            //                                 margin-top: 15px;
-            //                                 border-top: 1px solid #eae0b8;
-            //                                 min-height: 75px;
-            //                                 height: 15%;
-            //                                 .buttons{
-            //                                     margin-right: 30px;
-            //                                     position: relative;
-            //                                     top: -10px;
-            //                                     display: flex;
-            //                                     flex-direction: row;
-            //                                     gap: 8px;
-            //                                     div{
-            //                                         font-weight: 700;
-            //                                         letter-spacing: 2px;
-            //                                         &:hover{
-            //                                            filter: brightness(115%), saturate(115%);
-            //                                             cursor: pointer;
-            //                                         }
-            //                                     }
-            //                                     .accept{
-            //                                         background-color: #000;
-            //                                         padding: 10px 20px;
-            //                                         color: #fff;
-            //                                     }
-            //                                     .cancel_update{
-            //                                         background-color: #eae0b8;
-            //                                         padding: 10px 20px;
-            //                                         color: #000;
-            //                                     }
-            //                                 }
-            //                             }
-            //                         }
-            //                     }
-            //                 }
-            //             }
-            //             .active{
-            //                 display: block;
-            //             }
-                        
-                        
-            //     }
-            // }
+    }
+    .profilePageWrap{
+        margin-top: 70px;
+        min-height: 70vh;
+        width: 100%;
+        .mainInfo_container{
+            background-color: #ffcd9c;
+            padding: 50px;
+            border-radius: 4px;
+            width: 70%;
+            height: 300px;
+            display: flex;
+            flex-direction: row;
+            margin: auto;
+            gap: 14px;
+            .avatarContainer{
+                background-color: #e1dfdf;
+                padding: -5px;
+                min-width: 300px;
+                min-height: 300px;
+                overflow: hidden;
+                border-radius: 100%;
+                .avatarDiv{
+                    border-radius: 100%;
+                    max-width: 300px;
+                    max-height: 300px;
+                    position: relative;
+                    .avatar{
+                        max-width: 100%;
+                        max-height: 100%;
+                        min-height: 300px;
+                        min-width: 300px;
+                    }
+                    .hoverEffect{
+                        top: 0px;
+                        transition: .3s;
+                        left: 0px;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0;
+                        background-color: #cfcfcf75;
+                        .innerDiv{
+                            position: relative;
+                            top: -20px;
+                            right: -5px;
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+                            justify-content: 100%;
+                            justify-content: center;
+                            align-items: center;
+                            .innerDiv_Image{
+                                width: 100px;
+                            }
+                            p{
+                                font-size: 23px;
+                                color: white;
+                            }
+                        }
+
+                    }
+                    &:hover{
+                        .hoverEffect{
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            .userCredential_container{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly   ;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                .credential{
+                    margin-left: 50px;
+                    h3{
+                        font-size: 25px;
+                    }
+                    p{
+                        font-family: "Nunito Sans", sans-serif;
+                        text-transform: uppercase;
+                        font-size: 20px;
+                    }
+                }
+                .userID{
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    display: flex;
+                    h3,p{
+                        font-size: 10px;
+                        color: #989898;
+                        margin: 2px;
+                    }
+                }
+            }
+        }
     }
 }
 .animated-fadeInDown{
