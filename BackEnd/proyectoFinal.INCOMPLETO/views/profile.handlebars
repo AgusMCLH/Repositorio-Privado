@@ -5,7 +5,7 @@
             </h1>
                 <a href="/">Home</a><span>Profile</span>
         </div>
-    </div>
+</div>
 
 <div class="profilePageWrap">
     <div class="mainInfo_container">
@@ -15,17 +15,47 @@
                 <div class="hoverEffect">
                     <div class="innerDiv">
                         <img src="/img/icon/subir.png" class="innerDiv_Image" alt="Upload Image">
-                        <p>Subir imagen</p>
+                        <p>Upload Image</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="userCredential_container">
             <div class="credential userID"><h3>User ID:</h3><p>{{user._id}}</p></div>
-            <div class="credential"><h3>Nombre</h3><p>{{user.firstName}} {{user.lastName}}</p></div>
-            <div class="credential"><h3>Correo</h3><p>{{user.email}}</p></div>
-            <div class="credential"><h3>Rol</h3><p>{{user.role}}</p></div>
+            <div class="credential"><h3>Name</h3><p>{{user.firstName}} {{user.lastName}}</p></div>
+            <div class="credential"><h3>Email</h3><p>{{user.email}}</p></div>
+            <div class="credential"><h3>Role</h3><p>{{user.role}}</p></div>
         </div>
+    </div>
+
+    <div class="secondaryInfo_container">
+        <div class="documentStatusList">
+            <div class="documentStatusList_title">
+                <h2>My Documents</h2>
+            </div>
+            <div class="documentItem">
+                <div class="labelWraper">
+                    <div class="documentStatus {{#if documents.identification}}true{{else}}false{{/if}}"></div>
+                    <p>Cedula de Identidad</p>
+                </div> 
+                <p class="uploadButton {{#if documents.identification}}true{{else}}false{{/if}}">Upload</p>
+            </div>
+            <div class="documentItem">
+                <div class="labelWraper">
+                    <div class="documentStatus {{#if documents.residence}}true{{else}}false{{/if}}"></div>
+                    <p>Constancia de domicilio</p>
+                </div> 
+                <p class="uploadButton {{#if documents.identification}}true{{else}}false{{/if}}">Upload</p>
+            </div>
+            <div class="documentItem">
+                <div class="labelWraper">
+                    <div class="documentStatus {{#if documents.accStatus}}true{{else}}false{{/if}}"></div>
+                    <p>Comprobante de estado de cuenta</p>
+                </div> 
+                <p class="uploadButton {{#if documents.identification}}true{{else}}false{{/if}}">Upload</p>
+            </div>
+        </div>
+        <div class="usersProductList"></div>
     </div>
 </div>
 

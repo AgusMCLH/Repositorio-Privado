@@ -117,7 +117,26 @@ export default class UserRouter extends CustomRouter {
 
     this.get('/profile', ['USUARIO', 'ADMINISTRADOR'], [], async (req, res) => {
       const user = req.session.user;
-      res.render('profile', { title: 'Profile', user });
+      let documents = {
+        identification: false,
+        residence: false,
+        accStatus: false,
+      };
+      user.documents.forEach((document) => {
+        if (
+          document.name === 'BackIdImage' ||
+          document.name === 'FrontIdImage'
+        ) {
+          documents.identification = true;
+        }
+        if (document.name === 'Residence') {
+          documents.residence = true;
+        }
+        if (document.name === 'AccStatus') {
+          documents.accStatus = true;
+        }
+      });
+      res.render('profile', { title: 'Profile', user, documents });
     });
 
     this.get('/forgottenPassword', ['PUBLIC'], [], async (req, res) => {

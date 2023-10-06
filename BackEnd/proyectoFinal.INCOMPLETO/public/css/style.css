@@ -952,6 +952,7 @@ body .notFoundPage .wraper a {
   font-family: "Nunito Sans", sans-serif;
 }
 body .ownermenu {
+  margin-top: 30px;
   min-height: 70vh;
 }
 body .ownermenu .product_list_wrapper {
@@ -1220,11 +1221,9 @@ body .profilePageWrap {
   width: 100%;
 }
 body .profilePageWrap .mainInfo_container {
-  background-color: #ffcd9c;
-  padding: 50px;
-  border-radius: 4px;
-  width: 70%;
-  height: 300px;
+  background-color: #f3f2ee;
+  border-radius: 15px;
+  width: 85%;
   display: flex;
   flex-direction: row;
   margin: auto;
@@ -1232,7 +1231,7 @@ body .profilePageWrap .mainInfo_container {
 }
 body .profilePageWrap .mainInfo_container .avatarContainer {
   background-color: #e1dfdf;
-  padding: -5px;
+  margin: 30px 0px 30px 30px;
   min-width: 300px;
   min-height: 300px;
   overflow: hidden;
@@ -1289,10 +1288,12 @@ body .profilePageWrap .mainInfo_container .userCredential_container {
   flex-direction: column;
   justify-content: space-evenly;
   width: 100%;
-  height: 100%;
+  height: 300px;
   position: relative;
 }
 body .profilePageWrap .mainInfo_container .userCredential_container .credential {
+  position: relative;
+  top: 30px;
   margin-left: 50px;
 }
 body .profilePageWrap .mainInfo_container .userCredential_container .credential h3 {
@@ -1305,14 +1306,65 @@ body .profilePageWrap .mainInfo_container .userCredential_container .credential 
 }
 body .profilePageWrap .mainInfo_container .userCredential_container .userID {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 5px;
+  right: 5px;
   display: flex;
 }
 body .profilePageWrap .mainInfo_container .userCredential_container .userID h3, body .profilePageWrap .mainInfo_container .userCredential_container .userID p {
   font-size: 10px;
   color: #989898;
   margin: 2px;
+}
+body .profilePageWrap .secondaryInfo_container {
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 30px auto 0px auto;
+  gap: 14px;
+}
+body .profilePageWrap .secondaryInfo_container .documentStatusList {
+  border-radius: 15px;
+  background-color: #f3f2ee;
+  width: 500px;
+}
+body .profilePageWrap .secondaryInfo_container .documentStatusList .documentStatusList_title {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #b7b7b7;
+}
+body .profilePageWrap .secondaryInfo_container .documentStatusList .documentStatusList_title h2 {
+  font-weight: 700;
+  margin-left: 10px;
+}
+body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem {
+  padding: 0px 10px;
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem .labelWraper {
+  display: flex;
+}
+body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem .labelWraper .documentStatus {
+  border-radius: 100%;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem .uploadButton {
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem .true {
+  background-color: green;
+}
+body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem .false {
+  background-color: red;
 }
 
 .animated-fadeInDown {

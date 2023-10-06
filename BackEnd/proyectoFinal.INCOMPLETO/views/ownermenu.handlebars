@@ -1,35 +1,15 @@
-<div class="ownermenu">
-    {{!-- <form autocomplete="off" class="animated-fadeInDown" action="/ownermenu/insertproduct" method="post">
-        <div class="insertProduct-form">
-            <h1>Insert Product</h1>
-            <div>
-            <img src="/img/illustrations/Handshake_Two Color.svg" alt="">
-            </div>
-            <div class="formBody">
-            <label for="productName">Product Name</label>
-            <input type="text" name="productName" id="productName" placeholder="Product Name" required />
-            <label for="productDescription">Product Description</label>
-            <input type="text" name="productDescription" id="productDescription" placeholder="Product Description" required />
-            <label for="productPrice">Product Price</label>
-            <input type="number" name="productPrice" id="productPrice" min="1" placeholder="Product Price" required />
-            <label for="productImage">Product Image</label>
-            <input type="text" name="productImage" id="productImage" placeholder="Product Image" required />
-            <label for="productCategory">Product Category</label>
-            <input type="text" name="productCategory" id="productCategory" placeholder="Product Category" required />
-            <label for="productStock">Product Stock</label>
-            <input type="number" name="productStock" id="productStock" placeholder="Product Stock" required />
-            <label for="productCode">Product Code</label>
-            <input type="text" name="productCode" id="productCode" placeholder="Product Code" required />
-            <label for="productVisibility">Product Visibility</label>
-            <input name="productVisibility" type="checkbox" id="productVisible" checked/>
-            <input type="submit" value="enviar" id="sentAddProductButton">
+<div class="pageLabel_container">
+        <div class="pageLabel_wraper">
+            <h1>
+                Owner Menu
+            </h1>
+                <a href="/">Home</a><span>Owner Menu</span>
         </div>
-        <div id="errorpanel"> <p id="errortext">{{message}}</p></div>
-    </form> --}}
+</div>
 
+<div class="ownermenu">
 
     <div class="product_list_wrapper">
-        {{!-- <a href="#" class="product_list_item_wrapper">###</a> --}}
         <div class="insertProduct_Button" onclick="showmodal('insert', null)">
             <img src="/img/icon/plus.png" alt="Plus ICON"><p>ADD PRODUCT</p>
         </div>
@@ -131,97 +111,7 @@
 
 
 
-    {{!-- <div class="product_list">
-        {{#if products}}
-                 <div class="productsentity">
-                    <div class="productsentity_header">
-                        <div class="product_image">IMAGE</div>
-                        <div class="product_title">TITLE</div>
-                        <div class="product_price">PRICE</div>
-                        <div class="product_stock">STOCK</div>
-                        <div class="product_visible">VISIBLE</div>
-                        <div class="modal">Edit</div>
-                    </div>
-
-                </div>
-            {{#each products}}
-                <div class="productsentity">
-                    <a href='/api/products/{{this._id}}' >
-                        <div class="product_image"><img src="{{this.thumbnail.[0]}}" alt="{{productimage}}"></div>
-                        <div class="product_title">{{this.title}}</div>
-                        <div class="product_price">{{this.price}}</div>
-                        <div class="product_stock">{{this.stock}}</div>
-                        <div class="product_visible">{{this.visible}}</div>
-                    </a>
-                        <div class="modal_switch"><div class="editIcon"></div></div>
-                        <div class="modal_wrapper">
-                            <div class="modal_wrapper2">
-                                <div class="modal_container animated-fadeInDown">
-                                    <div class="modal_body">
-                                        <div class="modal_header">
-                                            <h3 class="modal_title">Update Product</h3>
-                                        </div>
-                                        <div class="modal_content">
-                                            <form autocomplete="off" class="" action="/ownermenu/updateProduct" method="post">
-                                                <div class="UpdateProduct-form">
-                                                    <div class="formBody">
-                                                        <input type="hidden" name="ProductId" id='Update-productID' value="{{this._id}}">
-                                                        <label for="Update-productName">Product Name</label>
-                                                        <input type="text" name="Update-productName" id="Update-productName" placeholder="Product Name" value="{{this.title}}" required />
-                                                        <label for="Update-productDescription">Product Description</label>
-                                                        <textarea  name="Update-productDescription" id="Update-productDescription" placeholder="Product Description"  required  cols="90" rows="10">{{this.description}}</textarea>
-                                                        <div class="divider">
-                                                            <div class="divider_column">
-                                                                <div class="standard">
-                                                                    <label for="Update-productCategory">Product Category</label>
-                                                                    <input type="text" name="Update-productCategory" id="Update-productCategory" placeholder="Product Category" required value="{{this.category}}"/>
-                                                                </div>
-                                                                <div class="standard">
-                                                                    <label for="Update-productStock">Product Stock</label>
-                                                                    <input type="number" name="Update-productStock" id="Update-productStock" placeholder="Product Stock" value="{{this.stock}}" />
-                                                                </div>
-                                                                <div class="simple">
-                                                                    <label for="Update-productPrice">Product Price</label>
-                                                                    <input type="number" name="Update-productPrice" id="Update-productPrice" min="1" placeholder="Product Price" value="{{this.price}}" required />
-                                                                </div>
-                                                            </div>
-                                                            <div class="divider_column">
-                                                                <div class="standard">
-                                                                    <label for="Update-productCode">Product Code</label>
-                                                                    <input type="text" name="Update-productCode" id="Update-productCode" placeholder="Product Code" required value="{{this.code}}" />
-                                                                </div>
-                                                                <div class="chkbox">
-                                                                    <label for="Update-productVisibility">Product Visibility</label>
-                                                                    <input name="Update-productVisibility" type="checkbox" id="Update-productVisible" checked/>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                        <label for="Update-productImage">Product Image</label>
-                                                        <input type="text" name="Update-productImage" id="Update-productImage" placeholder="Product Image" required value="{{this.thumbnail.[0]}}"/>
-                                                        
-                                                        <input type="submit" value="enviar" id="sentUpdateProductButton" style="display: none;">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal_footer">
-                                            <div class="buttons">
-                                                <div class="accept" onclick="document.getElementById('sentUpdateProductButton').click()"><p>ACCEPT</p></div>
-                                                <div class="cancel_update"><p>CANCEL</p></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="deletebutton" onclick="deletefunction('{{this._id}}')"><div class="deleteicon"></div></div>
-                </div>
-            {{/each}}
-        {{/if}}
-        <div class="productsentity"></div>
-    </div> --}}
+   
 
 
 </div>
