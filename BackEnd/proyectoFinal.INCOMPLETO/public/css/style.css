@@ -1356,15 +1356,57 @@ body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem
   margin-right: 5px;
 }
 body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem .uploadButton {
+  margin-right: 10px;
+  display: block;
+  padding: 6px 12px;
+  letter-spacing: 2px;
+  text-align: center;
+  background-color: #000000;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
   cursor: pointer;
-  padding: 5px 15px;
-  border-radius: 10px;
 }
 body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem .true {
   background-color: green;
 }
 body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem .false {
   background-color: red;
+}
+body .profilePageWrap .secondaryInfo_container .usersProductList {
+  border-radius: 15px;
+  background-color: #f3f2ee;
+  width: 900px;
+  position: relative;
+}
+body .profilePageWrap .secondaryInfo_container .usersProductList .usersProductList_title {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #b7b7b7;
+}
+body .profilePageWrap .secondaryInfo_container .usersProductList .usersProductList_title h2 {
+  font-weight: 700;
+  margin-left: 10px;
+}
+body .profilePageWrap .secondaryInfo_container .usersProductList .usersProductList_title .usersProductList_button {
+  display: block;
+  padding: 12px 10px;
+  letter-spacing: 2px;
+  text-align: center;
+  background-color: #000000;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  position: absolute;
+  right: 20px;
+}
+body .profilePageWrap .secondaryInfo_container .usersProductList .usersProductList_title_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0px;
 }
 
 .animated-fadeInDown {

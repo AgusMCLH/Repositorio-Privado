@@ -6,6 +6,7 @@ import { logger } from '../middleware/logger.middleware.js';
 import { userService } from '../repository/users/instance.js';
 import { userController } from '../controller/user.controller.js';
 import { uploadFiles } from '../middleware/uploadfile.middleware.js';
+import productController from '../controller/products.controller.js';
 
 export default class UserRouter extends CustomRouter {
   init() {
@@ -122,6 +123,10 @@ export default class UserRouter extends CustomRouter {
         residence: false,
         accStatus: false,
       };
+      const userProducts = await productController.getProductByOwner(
+        user.email
+      );
+      const userProductsBool = true;
       user.documents.forEach((document) => {
         if (
           document.name === 'BackIdImage' ||
@@ -136,7 +141,13 @@ export default class UserRouter extends CustomRouter {
           documents.accStatus = true;
         }
       });
-      res.render('profile', { title: 'Profile', user, documents });
+      res.render('profile', {
+        title: 'Profile',
+        user,
+        documents,
+        userProducts,
+        userProductsBool,
+      });
     });
 
     this.get('/forgottenPassword', ['PUBLIC'], [], async (req, res) => {

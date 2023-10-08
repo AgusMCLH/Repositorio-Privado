@@ -1449,9 +1449,16 @@ body{
                         }
                     }
                     .uploadButton{
+                        margin-right: 10px;
+                        display: block;
+                        padding: 6px 12px;
+                        letter-spacing: 2px;
+                        text-align: center;
+                        background-color: #000000;
+                        color: #fff;
+                        text-decoration: none;
+                        font-weight: 700;
                         cursor: pointer;
-                        padding: 5px 15px;
-                        border-radius: 10px;
                     }
                     .true{
                         background-color: green;
@@ -1459,6 +1466,42 @@ body{
                     .false{
                         background-color: red;
                     }
+                }
+            }
+            .usersProductList{
+                border-radius: 15px;
+                background-color: #f3f2ee;
+                width: 900px;
+                position: relative;
+                .usersProductList_title{
+                    height: 80px;
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    border-bottom: 1px solid #b7b7b7;
+                    h2{
+                        font-weight: 700;
+                        margin-left: 10px;
+                    }
+                    .usersProductList_button{
+                        display: block;
+                        padding: 12px 10px;
+                        letter-spacing: 2px;
+                        text-align: center;
+                        background-color: #000000;
+                        color: #fff;
+                        text-decoration: none;
+                        font-weight: 700;
+                        position: absolute;
+                        right: 20px;
+                        // margin: 20px auto 0px auto;
+                    }
+                }
+                .usersProductList_title_item{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    margin:0px;
                 }
             }
         }

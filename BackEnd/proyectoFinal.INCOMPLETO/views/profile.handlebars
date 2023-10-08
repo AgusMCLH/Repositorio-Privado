@@ -38,24 +38,42 @@
                     <div class="documentStatus {{#if documents.identification}}true{{else}}false{{/if}}"></div>
                     <p>Cedula de Identidad</p>
                 </div> 
-                <p class="uploadButton {{#if documents.identification}}true{{else}}false{{/if}}">Upload</p>
+                <p class="uploadButton">Upload</p>
             </div>
             <div class="documentItem">
                 <div class="labelWraper">
                     <div class="documentStatus {{#if documents.residence}}true{{else}}false{{/if}}"></div>
                     <p>Constancia de domicilio</p>
                 </div> 
-                <p class="uploadButton {{#if documents.identification}}true{{else}}false{{/if}}">Upload</p>
+                <p class="uploadButton">Upload</p>
             </div>
             <div class="documentItem">
                 <div class="labelWraper">
                     <div class="documentStatus {{#if documents.accStatus}}true{{else}}false{{/if}}"></div>
                     <p>Comprobante de estado de cuenta</p>
                 </div> 
-                <p class="uploadButton {{#if documents.identification}}true{{else}}false{{/if}}">Upload</p>
+                <p class="uploadButton">Upload</p>
             </div>
         </div>
-        <div class="usersProductList"></div>
+        <div class="usersProductList">
+            <div class="usersProductList_title">
+                <h2>My Products</h2>
+                {{#if user.premium}}
+                    <a class="usersProductList_button" href="/ownermenu">Edit products</a>
+                {{else}}
+                    <a class="usersProductList_button" href="/users/premium/{{user._id}}">Go premium</a>
+                {{/if}}
+            </div>
+            {{#if userProductsBool}}
+                {{#each userProducts}}
+                    <div class="usersProductList_title_item"><p class="productItem_title">{{this.title}}</p> <p class="productItem_visible">{{#if this.visible}}Visible{{else}}Invisible{{/if}}</p> <p class="productItem_price">{{this.price}}</p></div>
+                {{/each}}
+            {{else}}
+                <div class="UserNullProducts">
+                    <h3>You don't have any product</h3>
+                </div>
+            {{/if}}
+        </div>
     </div>
 </div>
 
