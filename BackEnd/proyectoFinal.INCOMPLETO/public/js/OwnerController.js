@@ -20,6 +20,7 @@ for (let i = 0; i < modalButtons.length; i++) {
   });
 }
 
+let homeURL = window.location.href.split('/')[2];
 let cancelButtons = document.getElementsByClassName('cancel_update');
 
 for (let j = 0; j < cancelButtons.length; j++) {
@@ -34,7 +35,6 @@ for (let j = 0; j < cancelButtons.length; j++) {
 ////////////////////////////////////
 
 async function sendProductEvent() {
-  let warn = '';
   if (
     UpdateProductCode.value.trim().length <= 0 ||
     UpdateProductName.value.trim().length <= 0 ||
@@ -59,7 +59,7 @@ async function sendProductEvent() {
     visible: UpdateProductVisible.checked,
   };
   let response = '';
-  await fetch(`http://localhost:8080/ownermenu/insertproduct`, {
+  await fetch(`http://${homeURL}/ownermenu/insertproduct`, {
     method: 'POST',
     body: JSON.stringify(product),
     headers: {
@@ -120,7 +120,7 @@ async function updateProductEvent() {
   };
   console.log(product);
   let response = '';
-  await fetch(`http://localhost:8080/ownermenu/updateproduct`, {
+  await fetch(`http://${homeURL}/ownermenu/updateproduct`, {
     method: 'PUT',
     body: JSON.stringify(product),
     headers: {
@@ -158,7 +158,7 @@ async function deletefunction(id) {
     cancelButtonText: 'Volver',
   }).then(async (result) => {
     if (result.isConfirmed) {
-      await fetch(`http://localhost:8080/ownermenu/deleteproduct`, {
+      await fetch(`http://${homeURL}/ownermenu/deleteproduct`, {
         method: 'delete',
         body: JSON.stringify({ id: id }),
         headers: {
@@ -204,7 +204,7 @@ const showmodal = async (type, id) => {
     document.getElementById('modal').classList.add('active');
   } else if (type === 'update') {
     modal_title.innerHTML = 'Editar Producto';
-    let product = await fetch(`http://localhost:8080/api/products/${id}/json`, {
+    let product = await fetch(`http://${homeURL}/api/products/${id}/json`, {
       method: 'get',
       headers: {
         'Content-type': 'application/json; charset=UTF-8',

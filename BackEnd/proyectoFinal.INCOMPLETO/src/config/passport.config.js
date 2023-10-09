@@ -129,7 +129,7 @@ const initializePassport = async () => {
       {
         clientID: config.GitHSID,
         clientSecret: config.GitHSSecret,
-        callBackURL: 'http://localhost:8080/users/signin/githubcallback',
+        callBackURL: `${config.HomeURL}/users/signin/githubcallback`,
       },
       async (accessToken, refreshToken, profile, done) => {
         try {

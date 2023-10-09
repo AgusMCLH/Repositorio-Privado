@@ -2,6 +2,7 @@ let deleteButtons = document.getElementsByClassName(
   'cart-table-tbody__delete-button'
 );
 let cartID = window.location.href.split('/').pop();
+let homeURL = window.location.href.split('/')[2];
 
 console.log(cartID);
 for (let i = 0; i < deleteButtons.length; i++) {
@@ -9,7 +10,7 @@ for (let i = 0; i < deleteButtons.length; i++) {
     deleteButtons[i].classList.remove('button-background');
     deleteButtons[i].classList.add('loader');
     const response = await fetch(
-      `http://localhost:8080/api/carts/${cartID}/product/${deleteButtons[
+      `http://${homeURL}/api/carts/${cartID}/product/${deleteButtons[
         i
       ].getAttribute('productid')}`,
       {

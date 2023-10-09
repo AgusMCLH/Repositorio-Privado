@@ -106,11 +106,11 @@ const initializePassport = () => {
     'github',
     new GitHubStrategy(
       {
-        clientID: 'Iv1.4cbf0bd8610e5f87',
-        clientSecret: '2356eb3b145c7b4541ba4b9c754f3e4bd96e2ab1',
-        callBackURL: 'http://localhost:8080/users/signin/githubcallback',
+        clientID: '',
+        clientSecret: '',
+        callBackURL: '',
       },
-      async (accessToken, refreshToken, profile, done) => {
+      async (profile, done) => {
         try {
           let user = await userService.getUserByEmail(profile._json.email);
           if (!user) {

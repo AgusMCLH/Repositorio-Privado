@@ -53,7 +53,7 @@ class RecoveryController {
       to: `${email}`,
     };
 
-    mailOptions.html = `<a href="http://localhost:${config.PORT}/users/passwordrecovery/${code}">CLICK AQUI PARA RECUPERAR</a>`;
+    mailOptions.html = `<a href="${config.HomeURL}/users/passwordrecovery/${code}">CLICK AQUI PARA RECUPERAR</a>`;
 
     transporter.sendMail(mailOptions, (err, info) => {
       if (err) {

@@ -22,4 +22,5 @@ export default {
   PERSISTANCEMODULE: process.env.persistenceModule,
   Mail_USR: process.env.MAIL_USER,
   Mail_PWD: process.env.MAIL_PASSWORD,
+  HomeURL: process.env.homeURL,
 };
