@@ -236,7 +236,6 @@ export default class UserRouter extends CustomRouter {
         });
       }
 
-      console.log('valid', valid);
       if (valid) {
         const messagge = await userController.switchPremium(uid);
         req.session.user = await userService.getById(uid);

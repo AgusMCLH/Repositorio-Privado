@@ -8,6 +8,9 @@ const ResidenceField = document.getElementById('ResidenceField');
 const AccStatusForm = document.getElementById('AccStatusForm');
 const AccStatusField = document.getElementById('AccStatusField');
 
+const FilesModal = document.getElementById('modalWrapper');
+const OpenModalButtons = document.getElementsByClassName('uploadButton');
+
 IdentificationForm.addEventListener('submit', sendIDEvent, false);
 ResidenceForm.addEventListener('submit', sendResidenceEvent, false);
 AccStatusForm.addEventListener('submit', sendAccStatusEvent, false);
@@ -98,4 +101,73 @@ async function PostFiles(files, userId) {
   });
   const data = await response.json();
   return data;
+}
+
+async function sendUserAvatar(event) {
+  event.preventDefault();
+  if (UserAvatarField.files.length === 0) {
+    alert('You must select a file to upload');
+    return;
+  }
+  if (UserAvatarField.files[0].type.split('/')[1] !== 'image') {
+    console.log(UserAvatarField.files[0].type);
+    alert('The selected file is not an image');
+    return;
+  }
+  let extension = UserAvatarField.files[0].type.split('/')[1];
+  let NewAccStatusFile = new File(
+    [UserAvatarField.files[0]],
+    'Avatar.' + extension,
+    { type: UserAvatarField.files[0].type }
+  );
+  const UserId = UserAvatarField.attributes.user.value;
+  const data = await PostFiles([NewAccStatusFile], UserId);
+  console.log(data);
+}
+
+for (let i = 0; i < OpenModalButtons.length; i++) {
+  OpenModalButtons[i].addEventListener('click', openModal);
+}
+
+function openModal(event) {
+  let FileType = event.target.attributes.file.value;
+
+  switch (FileType) {
+    case 'identification':
+      document.getElementById('ModalTitle').innerText =
+        'Upload your Identification files';
+      document.getElementById('IdentificationForm_div').classList.add('Active');
+      break;
+    case 'residence':
+      document.getElementById('ModalTitle').innerText =
+        'Upload your Residence file';
+      document.getElementById('ResidenceForm_div').classList.add('Active');
+      break;
+    case 'accStatus':
+      document.getElementById('ModalTitle').innerText =
+        'Upload your Account Status file';
+      document.getElementById('AccStatusForm_div').classList.add('Active');
+      break;
+    case 'UserAvatar':
+      document.getElementById('ModalTitle').innerText =
+        'Upload your Profile Picture';
+      break;
+    default:
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'OCURRIO UN ERROR',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      break;
+  }
+  FilesModal.classList.add('Active');
+}
+
+function closemodal() {
+  FilesModal.classList.remove('Active');
+  document.getElementById('IdentificationForm_div').classList.remove('Active');
+  document.getElementById('ResidenceForm_div').classList.remove('Active');
+  document.getElementById('AccStatusForm_div').classList.remove('Active');
 }

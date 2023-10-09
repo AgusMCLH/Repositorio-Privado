@@ -349,11 +349,11 @@ body .product-page .product-list a .product-item .product-item__content .imgCont
   max-height: 300px;
   transition: opacity 0.9s;
 }
-body .product-page .product-list a .product-item .product-item__content .imgContaiener .imgWrapper img:first-child {
-  opacity: 100%;
-}
 body .product-page .product-list a .product-item .product-item__content .imgContaiener .imgWrapper img:last-child {
   opacity: 0%;
+}
+body .product-page .product-list a .product-item .product-item__content .imgContaiener .imgWrapper img:first-child {
+  opacity: 100%;
 }
 body .product-page .product-list a .product-item .product-item__content .product-item__title {
   color: #111111;
@@ -1327,6 +1327,7 @@ body .profilePageWrap .secondaryInfo_container .documentStatusList {
   border-radius: 15px;
   background-color: #f3f2ee;
   width: 500px;
+  height: 250px;
 }
 body .profilePageWrap .secondaryInfo_container .documentStatusList .documentStatusList_title {
   height: 80px;
@@ -1368,10 +1369,10 @@ body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem
   cursor: pointer;
 }
 body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem .true {
-  background-color: green;
+  background-color: #BAD4AA;
 }
 body .profilePageWrap .secondaryInfo_container .documentStatusList .documentItem .false {
-  background-color: red;
+  background-color: #F69D79;
 }
 body .profilePageWrap .secondaryInfo_container .usersProductList {
   border-radius: 15px;
@@ -1406,7 +1407,134 @@ body .profilePageWrap .secondaryInfo_container .usersProductList .usersProductLi
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 0px;
+  padding: 0px 10px;
+  margin: 20px 0px;
+}
+body .profilePageWrap .secondaryInfo_container .usersProductList .usersProductList_title_item p {
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+body .profilePageWrap .secondaryInfo_container .usersProductList .usersProductList_title_item .productItem_title {
+  width: 160px;
+}
+body .profilePageWrap .secondaryInfo_container .usersProductList .usersProductList_title_item .productItem_visible {
+  width: 60px;
+}
+body .profilePageWrap .secondaryInfo_container .usersProductList .usersProductList_title_item .productItem_price {
+  width: 60px;
+}
+body .profilePageWrap .modalWrapper {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 17, 17, 0.2470588235);
+}
+body .profilePageWrap .modalWrapper .Modal {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #f3f2ee;
+  border-radius: 15px;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalTitle {
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #b7b7b7;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalTitle h3 {
+  font-weight: 700;
+  margin-left: 10px;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalTitle .CloseIcon {
+  position: absolute;
+  right: 20px;
+  width: 15px;
+  top: 20px;
+  cursor: pointer;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalHero {
+  margin: auto;
+  width: 500px;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalContent {
+  margin: auto;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalContent div {
+  display: none;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalContent .Active {
+  display: flex;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalContent .InsideForm .FileLabel {
+  color: #000;
+  text-transform: capitalize;
+  margin: 20px auto 0px auto;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalContent .InsideForm .CustomizedFileInput {
+  background-color: #e7dcb7;
+  width: 500px;
+  color: #000;
+  text-transform: uppercase;
+  position: relative;
+  border: 1px solid #eae0b8;
+  display: flex;
+  align-items: center;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalContent .InsideForm .CustomizedFileInput::file-selector-button {
+  height: 100%;
+  margin-right: 10px;
+  padding: 6px 12px;
+  letter-spacing: 2px;
+  text-align: center;
+  background-color: #000000;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalContent .InsideForm .CustomizedFileInput::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  background: url(/img/icon/subir.png) no-repeat center;
+  background-size: 100%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalContent .InsideForm .CustomizedFileInput::-moz-placeholder {
+  color: blue;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalContent .InsideForm .CustomizedFileInput::placeholder {
+  color: blue;
+}
+body .profilePageWrap .modalWrapper .Modal .ModalContent .InsideForm .SendDocumentButton {
+  margin: 20px auto 20px auto;
+  display: block;
+  padding: 12px 10px;
+  letter-spacing: 2px;
+  text-align: center;
+  background-color: #000000;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+body .profilePageWrap .Active {
+  display: flex;
 }
 
 .animated-fadeInDown {
