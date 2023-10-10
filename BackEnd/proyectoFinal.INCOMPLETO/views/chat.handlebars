@@ -1,10 +1,31 @@
-<p>Chat</p>
+<div class="pageLabel_container">
+        <div class="pageLabel_wraper">
+            <h4>CHAT</h4>
+            <a href="/">Home</a><span>Chat</span>
+        </div>
+</div>
 
-<div id="chat-history"></div>
-<p style="display: none;" id="user-email">{{user.email}}</p>
+<div class="ChatPageWrapper">
+    {{!-- <div id="chat-history"></div> --}}
+    <p style="display: none;" id="user-data">{{user.email}}###{{user.firstName}}</p>
+    <input type="text"  id="message-form" class="keyboardInput">
 
 
-<input type="text"  id="message-form">
+
+
+    <div class="chat" id="chat-history">
+        <div data-time="16:35" class="msg sent">Hi!<br>What's up?</div>
+        <div data-time="Anna 16:36" class="msg rcvd">Hi dear! <br>Doing some CSS research, you?</div>
+        <div data-time="16:38" class="msg sent">Also learning some cool CSS stuff 🦄</div>
+        <div data-time="16:38" class="msg sent">!!</div>
+        <div data-time="16:38" class="msg sent">Up for a coffee today? ☕</div>
+        <div data-time="Anna 16:40" class="msg rcvd">It would be a pleasure!</div>
+        <div data-time="Anna 16:40" class="msg rcvd">😍</div>
+    </div>
+
+</div>
+
+
 
 
 <script src="/socket.io/socket.io.js"></script>

@@ -140,13 +140,23 @@ export default class UserRouter extends CustomRouter {
         if (document.name === 'AccStatus') {
           documents.accStatus = true;
         }
+        if (document.name === 'Avatar') {
+          documents.avatar = true;
+        }
       });
+      let AvatarURL =
+        user.documents
+          .find((doc) => doc.name === 'Avatar')
+          ?.reference.split('public')[1] || undefined;
+
+      logger.debug(`AvatarURL ${AvatarURL}`);
       res.render('profile', {
         title: 'Profile',
         user,
         documents,
         userProducts,
         userProductsBool,
+        AvatarURL,
       });
     });
 

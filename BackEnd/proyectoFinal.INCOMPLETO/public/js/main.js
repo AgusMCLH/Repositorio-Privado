@@ -1,7 +1,8 @@
 const socket = io();
 
-const email = document.getElementById('user-email').innerText;
-document.getElementById('user-email').remove();
+const email = document.getElementById('user-data').innerText.split('###')[0];
+const UserName = document.getElementById('user-data').innerText.split('###')[1];
+document.getElementById('user-data').remove();
 console.log(email);
 
 let messageForm = document.getElementById('message-form');
@@ -13,7 +14,8 @@ messageForm.addEventListener('keyup', (e) => {
       console.log('ejecuta');
       socket.emit('NewMessage', {
         message: messageFormData,
-        user: email,
+        user: UserName,
+        email,
       });
       messageForm.value = '';
     }
@@ -27,9 +29,14 @@ socket.on('ShowMessages', (messages) => {
 const renderMessages = (messages) => {
   let html = messages
     .map((message) => {
-      return `<div>
-      <p>${message.user}: ${message.message}</p>
-      </div>`;
+      let messageType = 'rcvd';
+      console.log('|' + message.email + '|' + email + '|');
+      if (message.email === email) {
+        messageType = 'sent';
+      }
+      console.log(messageType);
+      return `
+      <div data-time="${message.user} 16:40" class="msg ${messageType}">${message.message}</div>`;
     })
     .join(' ');
   document.getElementById('chat-history').innerHTML = html;
