@@ -10,6 +10,9 @@ export default class UserRepository {
   async getUsers() {
     return await this.dao.getUsers();
   }
+  async getAllUsers() {
+    return await this.dao.getUsers();
+  }
 
   async getUserByEmail(email) {
     return await this.dao.getUserByEmail(email);

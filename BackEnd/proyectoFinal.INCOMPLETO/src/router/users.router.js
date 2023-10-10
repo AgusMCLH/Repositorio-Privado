@@ -7,9 +7,22 @@ import { userService } from '../repository/users/instance.js';
 import { userController } from '../controller/user.controller.js';
 import { uploadFiles } from '../middleware/uploadfile.middleware.js';
 import productController from '../controller/products.controller.js';
+import UserDTO from '../DTOs/user.DTO.js';
 
 export default class UserRouter extends CustomRouter {
   init() {
+    this.get('/', ['PUBLIC'], [], async (req, res) => {
+      const usersPure = await userService.getAllUsers();
+      const users = new UserDTO(usersPure);
+
+      res.send(users);
+    });
+
+    this.delete('/', ['PUBLIC'], [], async (req, res) => {
+      const response = await userController.deleteIncativeUsers();
+      res.send('Delete');
+    });
+
     this.get('/signin', ['PUBLIC'], [isGuest], async (req, res) => {
       let error = false;
       let errorText = [];
