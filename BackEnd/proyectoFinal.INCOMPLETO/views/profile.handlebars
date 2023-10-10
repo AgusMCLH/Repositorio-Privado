@@ -11,10 +11,14 @@
     <div class="mainInfo_container">
         <div class="avatarContainer">
             <div class="avatarDiv">
-                <img src="/img/placeholder/avatar-placeholder.png" class="avatar" alt="avatar Placeholder">
-                <div class="hoverEffect">
-                    <div class="innerDiv">
-                        <img src="/img/icon/subir.png" class="innerDiv_Image" alt="Upload Image">
+                {{#if AvatarURL}}
+                    <img src="{{AvatarURL}}" alt="{{user.firstName}}">
+                {{else}}
+                    <img src="/img/placeholder/avatar-placeholder.png" class="avatar" alt="avatar Placeholder" onclick="openAvatarModal()">
+                {{/if}}
+                <div class="hoverEffect" onclick="openAvatarModal()">
+                    <div class="innerDiv" onclick="openAvatarModal()">
+                        <img src="/img/icon/subir.png" class="innerDiv_Image" alt="Upload Image" onclick="openAvatarModal()">
                         <p>Upload Image</p>
                     </div>
                 </div>
@@ -113,14 +117,19 @@
                     </form>
                 </div>
 
-                <div class="UserAvatarModal_div">
-
+                <div class="InsideForm" id="UserAvatarModal_div">
+                    <form action="" method="post" enctype="multipart/form-data" id="UserAvatarForm" user="{{user._id}}">
+                        <label class="block text-sm font-medium dark:text-white FileLabel" for="default_size">Avatar File</label>
+                        <input class="block text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:placeholder-gray-400 CustomizedFileInput" id="UserAvatarField" accept='.png' type="file">     
+                        <button type="submit" id="UserAvatarSendButton" class="SendDocumentButton">Enviar</button>
+                    </form>
                 </div>
 
             </div>
         </div>
 
-
+    {{log user}}
+    {{log AvatarURL}}
 
 
 

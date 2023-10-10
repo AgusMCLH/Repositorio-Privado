@@ -8,12 +8,16 @@ const ResidenceField = document.getElementById('ResidenceField');
 const AccStatusForm = document.getElementById('AccStatusForm');
 const AccStatusField = document.getElementById('AccStatusField');
 
+const UserAvatarForm = document.getElementById('UserAvatarForm');
+const UserAvatarField = document.getElementById('UserAvatarField');
+
 const FilesModal = document.getElementById('modalWrapper');
 const OpenModalButtons = document.getElementsByClassName('uploadButton');
 
 IdentificationForm.addEventListener('submit', sendIDEvent, false);
 ResidenceForm.addEventListener('submit', sendResidenceEvent, false);
 AccStatusForm.addEventListener('submit', sendAccStatusEvent, false);
+UserAvatarForm.addEventListener('submit', sendUserAvatar, false);
 
 async function sendIDEvent(event) {
   event.preventDefault();
@@ -109,7 +113,7 @@ async function sendUserAvatar(event) {
     alert('You must select a file to upload');
     return;
   }
-  if (UserAvatarField.files[0].type.split('/')[1] !== 'image') {
+  if (UserAvatarField.files[0].type.split('/')[0] !== 'image') {
     console.log(UserAvatarField.files[0].type);
     alert('The selected file is not an image');
     return;
@@ -120,13 +124,18 @@ async function sendUserAvatar(event) {
     'Avatar.' + extension,
     { type: UserAvatarField.files[0].type }
   );
-  const UserId = UserAvatarField.attributes.user.value;
+  const UserId = UserAvatarForm.attributes.user.value;
   const data = await PostFiles([NewAccStatusFile], UserId);
   console.log(data);
 }
 
 for (let i = 0; i < OpenModalButtons.length; i++) {
   OpenModalButtons[i].addEventListener('click', openModal);
+}
+
+function openAvatarModal() {
+  let event = { target: { attributes: { file: { value: 'UserAvatar' } } } };
+  openModal(event);
 }
 
 function openModal(event) {
@@ -151,6 +160,7 @@ function openModal(event) {
     case 'UserAvatar':
       document.getElementById('ModalTitle').innerText =
         'Upload your Profile Picture';
+      document.getElementById('UserAvatarModal_div').classList.add('Active');
       break;
     default:
       Swal.fire({
@@ -170,4 +180,5 @@ function closemodal() {
   document.getElementById('IdentificationForm_div').classList.remove('Active');
   document.getElementById('ResidenceForm_div').classList.remove('Active');
   document.getElementById('AccStatusForm_div').classList.remove('Active');
+  document.getElementById('UserAvatarModal_div').classList.remove('Active');
 }
