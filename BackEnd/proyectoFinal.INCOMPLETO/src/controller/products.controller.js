@@ -1,5 +1,7 @@
 import { logger } from '../middleware/logger.middleware.js';
 import { productService } from '../repository/products/instance.js';
+import nodemailer from 'nodemailer';
+import config from '../config/config.js';
 
 class ProductController {
   async addProduct({
@@ -188,6 +190,45 @@ class ProductController {
   }
   async deleteProduct(id) {
     return await productService.deleteProduct(id);
+  }
+  async deleteOwnerProduct(id, req) {
+    let { product } = await this.getProductByID(req.body.id, req);
+    logger.debug(
+      `Product: ${product.title} Owner: ${product.owner} User: ${req.session.user.email}`
+    );
+    if (product.owner !== 'Admin') {
+      if (req.session.user.email !== product.owner) {
+        logger.debug(
+          `User ${req.session.user.email} tried to delete product ${req.body.id} that belongs to ${product.owner}`
+        );
+        this.#deletedProductMail(product);
+      }
+    }
+    return await productService.deleteProduct(id);
+  }
+
+  async #deletedProductMail(product) {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      port: 587,
+      auth: {
+        user: `${config.Mail_USR}`,
+        pass: `${config.Mail_PWD}`,
+      },
+    });
+    let mailOptions = {
+      from: `Male Fashion <${config.USER}>`,
+      subject: 'Male Fashion - Your product has been deleted',
+      to: `${product.owner}`,
+    };
+    mailOptions.html = `<h1>Hi ${product.owner}!</h1><p>We are sorry to inform you that your product ${product.title} has been deleted.</p>`;
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        logger.error(err);
+      }
+      logger.info('Enviado!');
+    });
+    return;
   }
 
   async getProductByOwner(owner) {

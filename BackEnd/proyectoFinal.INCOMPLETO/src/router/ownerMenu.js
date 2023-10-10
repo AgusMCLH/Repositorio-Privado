@@ -3,6 +3,7 @@ import isPremium from '../middleware/IsPremium.middleware.js';
 import productController from '../controller/products.controller.js';
 import OwnerProductDTO from '../DTOs/ownerproduct.DTO.js';
 import OwnerProductUpdateDTO from '../DTOs/ownerproductUpdate.DTO.js';
+import { logger } from '../middleware/logger.middleware.js';
 
 export default class OwnerMenuRouter extends CustomRouter {
   init() {
@@ -29,7 +30,10 @@ export default class OwnerMenuRouter extends CustomRouter {
       return res.json(response).status(200);
     });
     this.delete('/deleteproduct', ['PUBLIC'], [isPremium], async (req, res) => {
-      let response = await productController.deleteProduct(req.body.id);
+      let response = await productController.deleteOwnerProduct(
+        req.body.id,
+        req
+      );
       return res.json(response).status(200);
     });
   }
