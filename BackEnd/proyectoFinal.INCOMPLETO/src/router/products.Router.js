@@ -31,8 +31,10 @@ export default class ProductsRouter extends CustomRouter {
       } else {
         const { product, hasImages, AddtoCartURL } = productObj;
         const user = req.session.user;
-        if (product.owner === user.email) {
-          product.visible = false;
+        if (req.session.user) {
+          if (product.owner === user.email) {
+            product.visible = false;
+          }
         }
         res.render('productPage', { product, hasImages, user, AddtoCartURL });
       }
